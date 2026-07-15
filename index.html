@@ -3214,6 +3214,260 @@
   pointer-events: none;
 }
 
+
+/* ================================================================
+   BRUTAL STYLE - Superjet200 + Web Agency enhancements
+================================================================ */
+
+/* ---- SUPERJET: animated sky/depth hero background ---- */
+[data-style="brutal"] .hero {
+  position: relative;
+  overflow: hidden;
+}
+[data-style="brutal"] .hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 0%, rgba(255,92,26,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 10% 80%, rgba(255,140,66,0.10) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,92,26,0.05) 0%, transparent 70%);
+  z-index: 0;
+  animation: skyShift 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes skyShift {
+  from { opacity: 0.6; transform: scale(1); }
+  to   { opacity: 1;   transform: scale(1.05) translateX(10px); }
+}
+[data-style="brutal"] .hero .container { position: relative; z-index: 2; }
+
+/* Floating SVG shapes (Superjet parallax clouds-inspired) */
+[data-style="brutal"] .brutal-shapes { display: block !important; }
+.brutal-shapes {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.brutal-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.06;
+  background: #FF5C1A;
+  animation: shapeFloat linear infinite;
+}
+.brutal-shape:nth-child(1) { width: 500px; height: 500px; top: -100px; right: -150px; animation-duration: 12s; animation-delay: 0s; }
+.brutal-shape:nth-child(2) { width: 200px; height: 200px; bottom: 20%; left: -60px; animation-duration: 9s; animation-delay: -3s; opacity: 0.04; }
+.brutal-shape:nth-child(3) { width: 80px; height: 80px; top: 30%; right: 30%; animation-duration: 7s; animation-delay: -5s; opacity: 0.08; }
+@keyframes shapeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%       { transform: translateY(-30px) rotate(8deg); }
+  66%       { transform: translateY(15px) rotate(-5deg); }
+}
+
+/* ---- SUPERJET: Horizontal specs strip ---- */
+[data-style="brutal"] .brutal-specs-strip { display: flex !important; }
+.brutal-specs-strip {
+  display: none;
+  overflow-x: auto;
+  gap: 0;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,92,26,0.2);
+  border-bottom: 1px solid rgba(255,92,26,0.2);
+  margin: 40px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.brutal-specs-strip::-webkit-scrollbar { display: none; }
+.brutal-spec {
+  flex: 0 0 auto;
+  padding: 0 28px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  min-width: 130px;
+}
+.brutal-spec:last-child { border-right: none; }
+.brutal-spec-val {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  display: block;
+  white-space: nowrap;
+}
+.brutal-spec-val em {
+  color: #FF5C1A;
+  font-style: normal;
+}
+.brutal-spec-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.35);
+  display: block;
+  margin-top: 4px;
+}
+
+/* ---- WEB AGENCY: Skewed section dividers ---- */
+[data-style="brutal"] .section-skew { display: block !important; }
+.section-skew {
+  display: none;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  line-height: 0;
+}
+.section-skew svg { display: block; width: 100%; height: 60px; }
+
+/* ---- WEB AGENCY: 8-advantages tab grid ---- */
+[data-style="brutal"] .brutal-advantages { display: block !important; }
+.brutal-advantages {
+  display: none;
+  margin: 60px 0;
+  padding: 48px;
+  background: rgba(28,28,28,0.8);
+  border: 1.5px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.brutal-advantages::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5C1A, #FF8C42, #FF5C1A);
+}
+.brutal-advantages-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+.brutal-advantages-title em {
+  color: #FF5C1A;
+  font-style: normal;
+}
+.brutal-adv-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 768px) {
+  .brutal-adv-grid { grid-template-columns: repeat(2, 1fr); }
+  .brutal-advantages { padding: 28px 20px; }
+}
+.brutal-adv-card {
+  background: rgba(255,255,255,0.03);
+  border: 1.5px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.brutal-adv-card:hover,
+.brutal-adv-card.active {
+  background: rgba(255,92,26,0.1);
+  border-color: #FF5C1A;
+  transform: translateY(-2px);
+}
+.brutal-adv-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  display: block;
+}
+.brutal-adv-card-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+.brutal-adv-card.active .brutal-adv-card-title { color: #FF8C42; }
+
+/* ---- WEB AGENCY: Play button / video CTA ---- */
+[data-style="brutal"] .brutal-play-cta { display: flex !important; }
+.brutal-play-cta {
+  display: none;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  margin: 24px 0;
+}
+.brutal-play-btn {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF5C1A, #FF8C42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(255,92,26,0.15), 0 0 0 16px rgba(255,92,26,0.07);
+  animation: playPulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.brutal-play-btn:hover { transform: scale(1.1); }
+.brutal-play-btn svg { margin-left: 3px; }
+@keyframes playPulse {
+  0%, 100% { box-shadow: 0 0 0 8px rgba(255,92,26,0.15), 0 0 0 16px rgba(255,92,26,0.07); }
+  50%       { box-shadow: 0 0 0 12px rgba(255,92,26,0.2), 0 0 0 24px rgba(255,92,26,0.05); }
+}
+.brutal-play-text { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
+.brutal-play-text strong { display: block; color: #fff; font-size: 15px; }
+
+/* ---- WEB AGENCY: Skewed highlight on services ---- */
+[data-style="brutal"] .services-section {
+  position: relative;
+}
+[data-style="brutal"] .services-section::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -5%; right: -5%;
+  height: 60px;
+  background: #141414;
+  transform: skewY(-1.5deg);
+  z-index: 1;
+}
+
+/* ---- SUPERJET: specs table-style "about stack" in services ---- */
+[data-style="brutal"] .brutal-stack-bar { display: flex !important; }
+.brutal-stack-bar {
+  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,92,26,0.2);
+}
+.brutal-stack-pill {
+  padding: 6px 14px;
+  border: 1.5px solid rgba(255,92,26,0.3);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FF8C42;
+  background: rgba(255,92,26,0.06);
+  transition: all 0.2s;
+}
+.brutal-stack-pill:hover {
+  background: #FF5C1A;
+  color: #fff;
+  border-color: #FF5C1A;
+}
+
+/* ---- section transition skew fix ---- */
+[data-style="brutal"] #portfolio { position: relative; }
+
 </style>
 
 </head>
@@ -3697,6 +3951,29 @@
       <a href="#blog">Блог</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Контакты</a>
+      <!-- BRUTAL: Superjet-style horizontal specs strip -->
+      <div class="brutal-specs-strip">
+        <div class="brutal-spec">
+          <span class="brutal-spec-val">aiogram <em>3</em></span>
+          <span class="brutal-spec-label">Framework</span>
+        </div>
+        <div class="brutal-spec">
+          <span class="brutal-spec-val">Fast<em>API</em></span>
+          <span class="brutal-spec-label">Backend</span>
+        </div>
+        <div class="brutal-spec">
+          <span class="brutal-spec-val">pg<em>vector</em></span>
+          <span class="brutal-spec-label">AI Search</span>
+        </div>
+        <div class="brutal-spec">
+          <span class="brutal-spec-val">Neon <em>PG</em></span>
+          <span class="brutal-spec-label">Database</span>
+        </div>
+        <div class="brutal-spec">
+          <span class="brutal-spec-val"><em>RAG</em></span>
+          <span class="brutal-spec-label">AI Pipeline</span>
+        </div>
+      </div>
       <a href="https://t.me/Bro_piton?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" class="nav-cta" target="_blank">Написать в Telegram</a>
     </div>
     <div class="header-right">
@@ -3752,11 +4029,30 @@
 
 <!-- HERO -->
 <section class="hero">
+
+    <!-- BRUTAL: Superjet parallax shapes -->
+    <div class="brutal-shapes">
+      <div class="brutal-shape"></div>
+      <div class="brutal-shape"></div>
+      <div class="brutal-shape"></div>
+    </div>
   <div class="container">
     <div class="hero-text fade-up visible">
       <div class="hero-tag">Разработчик чат-ботов и AI-ассистентов</div>
       <h1>Создаю <em>умных</em> ботов,<br>которые работают 24/7</h1>
       <p class="hero-sub">Автоматизирую продажи, запись клиентов и поддержку. Интегрирую с CRM, Google Sheets, календарями и нейросетями. <span style="color:var(--accent);font-weight:600">Разрабатываю собственные CRM-системы</span> — уникальные под каждый проект.</p>
+      <!-- BRUTAL: Web Agency play button -->
+      <div class="brutal-play-cta">
+        <div class="brutal-play-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+        <div class="brutal-play-text">
+          <strong>Посмотреть как это работает</strong>
+          Примеры ботов в действии · 2 мин
+        </div>
+      </div>
       <div class="hero-numbers">
         <div class="hero-num"><span class="hero-num-val"><span class="counter" data-target="8">0</span>+</span><span class="hero-num-label">проектов</span></div>
         <div class="hero-num"><span class="hero-num-val"><span class="counter" data-target="3">0</span></span><span class="hero-num-label">платформы</span></div>
@@ -3767,6 +4063,17 @@
         Обсудить проект
       </a>
       <p class="cta-note">🔒 Бесплатная консультация · Код передаю вам · Отвечаю в течение дня</p>
+    </div>
+    <!-- BRUTAL: tech stack pills -->
+    <div class="brutal-stack-bar">
+      <span class="brutal-stack-pill">Python</span>
+      <span class="brutal-stack-pill">aiogram 3</span>
+      <span class="brutal-stack-pill">FastAPI</span>
+      <span class="brutal-stack-pill">PostgreSQL</span>
+      <span class="brutal-stack-pill">pgvector</span>
+      <span class="brutal-stack-pill">Render</span>
+      <span class="brutal-stack-pill">Neon</span>
+      <span class="brutal-stack-pill">Claude AI</span>
     </div>
     <div class="hero-visual fade-up visible">
       <div id="threejs-cube-container"></div>
@@ -3867,6 +4174,14 @@
   </div>
 </div>
 
+
+<!-- BRUTAL: Superjet skewed section divider -->
+<div class="section-skew">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+    <polygon points="0,0 1440,0 1440,60 0,20" fill="#141414"/>
+    <line x1="0" y1="20" x2="1440" y2="60" stroke="rgba(255,92,26,0.3)" stroke-width="1.5"/>
+  </svg>
+</div>
 <!-- TECH STACK -->
 <section class="tech-stack"><div class="container"><h2 class="section-title">Технологии</h2><div class="tech-grid"><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%232AABEE' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Telegram</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%233776AB' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Python</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23336791' d='M42 13.976v20.048c0 1.444-.77 2.78-2.017 3.51L25.017 43.5c-1.247.73-2.787.73-4.034 0L8.017 37.534C6.77 36.804 6 35.468 6 34.024V13.976c0-1.444.77-2.78 2.017-3.51L22.983 4.5c1.247-.73 2.787-.73 4.034 0l14.966 8.966c1.247.73 2.017 2.066 2.017 3.51z'/%3E%3C/svg%3E" width="40"></div><span>PostgreSQL</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FF6F00' d='M4 12h40v24H4z'/%3E%3C/svg%3E" width="40"></div><span>OpenAI</span></div></div></div></section>
 
@@ -3876,6 +4191,47 @@
 <!-- SERVICES -->
 <section id="services" class="container" style="padding: 40px 0;"><h2 class="section-title">Что я делаю</h2><div class="services-grid"><div class="service-card magnetic fade-up"><div class="service-icon">💬</div><h3>Чат-боты для продаж</h3><p>Приём заказов, консультация, оплата. Интеграция с CRM.</p></div><div class="service-card magnetic fade-up"><div class="service-icon">📅</div><h3>Запись и напоминания</h3><p>Google Calendar, уведомления клиентам.</p></div><div class="service-card magnetic fade-up"><div class="service-icon">🤖</div><h3>AI-ассистенты</h3><p>RAG, обучение на базе знаний компании.</p></div></div></section>
 
+
+  <!-- BRUTAL: Web Agency 8-advantages grid (inside services) -->
+  <div class="brutal-advantages">
+    <div class="brutal-advantages-title">
+      <em>8 причин</em> выбрать botforge
+    </div>
+    <div class="brutal-adv-grid">
+      <div class="brutal-adv-card active">
+        <span class="brutal-adv-icon">&#9889;</span>
+        <div class="brutal-adv-card-title">Быстрый старт<br>за 3-5 дней</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#129504;</span>
+        <div class="brutal-adv-card-title">AI &amp; RAG<br>интеграции</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#128274;</span>
+        <div class="brutal-adv-card-title">Код передаю<br>вам полностью</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#128202;</span>
+        <div class="brutal-adv-card-title">CRM на<br>любой вкус</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#128260;</span>
+        <div class="brutal-adv-card-title">24/7 без<br>остановок</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#127760;</span>
+        <div class="brutal-adv-card-title">Telegram<br>Mini App</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#127919;</span>
+        <div class="brutal-adv-card-title">Воронки<br>продаж</div>
+      </div>
+      <div class="brutal-adv-card">
+        <span class="brutal-adv-icon">&#128172;</span>
+        <div class="brutal-adv-card-title">Поддержка<br>после сдачи</div>
+      </div>
+    </div>
+  </div>
 <!-- CRM секция -->
 <section class="container fade-up" style="padding: 0 20px 60px;">
   <div id="crm-comparison" style="background: linear-gradient(135deg, rgba(0,240,255,0.06) 0%, rgba(176,0,255,0.06) 100%); border: 1px solid rgba(0,240,255,0.2); border-radius: 24px; padding: 36px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto;">
