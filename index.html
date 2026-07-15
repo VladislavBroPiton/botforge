@@ -6547,411 +6547,162 @@ function switchBookingTab(tab, btn) {
 
 <script>
 (function() {
-  // ⚠️ ПОДСТАВЬ СЮДА АДРЕС СВОЕГО BACKEND ПОСЛЕ ДЕПЛОЯ НА RENDER
-  const BACKEND_URL = 'https://helper-jj9j.onrender.com';
+  // ============================================================
+  // LIVECHAT — статический режим (без бэкенда)
+  // Открывает чат → показывает welcome → кнопка в Telegram
+  // ============================================================
+  const TG_URL     = 'https://t.me/Bro_piton?text=Здравствуйте! Хочу обсудить проект.';
+  const toggle     = document.getElementById('livechatToggle');
+  const panel      = document.getElementById('livechatPanel');
+  const body       = document.getElementById('livechatBody');
+  const badge      = document.getElementById('livechatBadge');
+  const closeBtn   = document.getElementById('livechatClose');
+  const input      = document.getElementById('livechatInput');
+  const sendBtn    = document.getElementById('livechatSend');
 
-  const toggle    = document.getElementById('livechatToggle');
-  const panel     = document.getElementById('livechatPanel');
-  const body      = document.getElementById('livechatBody');
-  const badge     = document.getElementById('livechatBadge');
-  const input     = document.getElementById('livechatInput');
-  const sendBtn   = document.getElementById('livechatSend');
-  const escalateBtn = document.getElementById('livechatEscalate');
-  const statusEl  = document.getElementById('livechatStatus');
-  const resetBtn  = document.getElementById('livechatReset');
-  const leadBtn   = document.getElementById('livechatLeadBtn');
-  const leadForm  = document.getElementById('livechatLeadForm');
-  const leadName  = document.getElementById('livechatLeadName');
-  const leadContact = document.getElementById('livechatLeadContact');
-  const leadError = document.getElementById('livechatLeadError');
-  const leadSubmit = document.getElementById('livechatLeadSubmit');
+  if (!toggle || !panel) return;
 
-  function validateContact(value) {
-    const v = value.trim();
-    if (!v) return 'Введите номер телефона или @username';
-    if (v.startsWith('@')) {
-      // Telegram username: @ + минимум 5 символов, только буквы/цифры/подчёркивание
-      if (!/^@[a-zA-Z0-9_]{3,}$/.test(v)) {
-        return 'Telegram @username должен содержать минимум 3 символа (буквы, цифры, _)';
-      }
-      return null; // ок
-    }
-    // Телефон: извлекаем только цифры (без +, пробелов, скобок, тире)
-    const digits = v.replace(/\D/g, '');
-    if (digits.length < 10) {
-      return 'Введите полный номер телефона (минимум 10 цифр) с кодом страны, например +7 999 123 45 67';
-    }
-    return null; // ок
-  }
+  let isOpen    = false;
+  let welcomed  = false;
+  let tgShown   = false;
 
-  if (!toggle) return;
-
-  function getOrCreateSessionId() {
-    let id = localStorage.getItem('botforge_chat_session');
-    if (!id) {
-      id = (crypto.randomUUID ? crypto.randomUUID() : 'sess-' + Date.now() + '-' + Math.random().toString(16).slice(2));
-      localStorage.setItem('botforge_chat_session', id);
-    }
-    return id;
-  }
-
-  let sessionId = getOrCreateSessionId();
-  let lastId = 0;
-  let isOpen = false;
-  let unread = 0;
-  let started = false;
-  let userToggled = false;
-  let visitorMsgCount = 0;
-  let leadSuggested = false;
-
-  function cleanMarkdown(text) {
-    return text
-      .replace(/^\s*\*\s+/gm, '• ')      // "* пункт" -> "• пункт"
-      .replace(/\*\*(.*?)\*\*/g, '$1')   // **жирный** -> жирный
-      .replace(/(^|\n)#+\s*/g, '$1');    // убираем markdown-заголовки
-  }
-
-  function formatTimeMSK(iso) {
-    try {
-      const d = new Date(iso);
-      return d.toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit' }) + ' МСК';
-    } catch (e) { return ''; }
-  }
-
-  function linkify(text) {
-    // Делаем t.me/... ссылки кликабельными прямо в чате
-    return text.replace(/(https?:\/\/t\.me\/[^\s,;)]+)/g, (url) => {
-      const name = url.replace('https://t.me/', '@');
-      return `\x01${url}\x02${name}\x03`;
-    });
-  }
-
-  function renderMessage(m) {
-    const div = document.createElement('div');
-    div.className = 'livechat-msg lc-' + m.sender;
-    if (m.sender === 'admin') {
-      const tag = document.createElement('span');
-      tag.className = 'livechat-tag';
-      tag.textContent = 'Владислав';
-      div.appendChild(tag);
-    }
-    const cleanedText = (m.sender === 'ai') ? cleanMarkdown(m.text) : m.text;
-    if (m.sender === 'ai' && cleanedText.includes('\x01')) {
-      // Есть ссылки — парсим вручную
-      const parts = linkify(cleanedText).split(/(\x01[^\x03]+\x03)/);
-      parts.forEach(part => {
-        const match = part.match(/\x01([^\x02]+)\x02([^\x03]+)\x03/);
-        if (match) {
-          const a = document.createElement('a');
-          a.href = match[1]; a.target = '_blank'; a.rel = 'noopener';
-          a.textContent = match[2];
-          a.style.cssText = 'color:var(--lc-accent,var(--accent,#00F0FF));text-decoration:underline;';
-          div.appendChild(a);
-        } else {
-          div.appendChild(document.createTextNode(part));
-        }
-      });
-    } else {
-      div.appendChild(document.createTextNode(cleanedText));
-    }
-    if (m.created_at && m.sender !== 'system') {
-      const time = document.createElement('span');
-      time.className = 'livechat-time';
-      time.textContent = formatTimeMSK(m.created_at);
-      div.appendChild(time);
-    }
-    body.appendChild(div);
-    if (m.id > lastId) lastId = m.id;
-  }
-
+  // ---- helpers ----
   function scrollToBottom() {
-    body.scrollTop = body.scrollHeight;
+    if (body) body.scrollTop = body.scrollHeight;
   }
 
-  function showTyping() {
-    if (document.getElementById('livechatTyping')) return;
-    const t = document.createElement('div');
-    t.className = 'livechat-typing';
-    t.id = 'livechatTyping';
-    t.innerHTML = '<span></span><span></span><span></span>';
-    body.appendChild(t);
-    scrollToBottom();
-  }
-
-  function hideTyping() {
-    const t = document.getElementById('livechatTyping');
-    if (t) t.remove();
-  }
-
-  const QUICK_REPLIES = [
-    { label: '🎮 Какие проекты?', text: 'Какие у вас есть проекты?' },
-    { label: '💰 Сколько стоит?', text: 'Сколько стоит разработка?' },
-    { label: '⏱ Какие сроки?', text: 'Какие сроки разработки?' },
-  ];
-
-  function renderQuickReplies() {
+  function addMsg(text, sender) {
+    if (!body) return;
     const wrap = document.createElement('div');
-    wrap.className = 'livechat-quickreplies';
-    wrap.id = 'livechatQuickReplies';
-    QUICK_REPLIES.forEach(qr => {
-      const btn = document.createElement('button');
-      btn.className = 'livechat-qr-btn';
-      btn.textContent = qr.label;
-      btn.addEventListener('click', () => {
-        wrap.remove();
-        input.value = qr.text;
-        sendMessage();
-      });
-      wrap.appendChild(btn);
-    });
+    wrap.className = 'lc-msg ' + (sender === 'visitor' ? 'lc-msg--visitor' : 'lc-msg--agent');
+    wrap.innerHTML = '<div class="lc-bubble">' + text + '</div>';
     body.appendChild(wrap);
     scrollToBottom();
   }
 
-  function maybeSuggestLead() {
-    if (leadSuggested || visitorMsgCount < 3) return;
-    leadSuggested = true;
-    renderMessage({
-      id: ++lastId, sender: 'system',
-      text: 'Хотите, чтобы Владислав сам вам написал? Оставьте контакт кнопкой ниже 👇'
-    });
+  function showTyping() {
+    if (!body) return;
+    const t = document.createElement('div');
+    t.className = 'lc-msg lc-msg--agent lc-typing-wrap';
+    t.innerHTML = '<div class="lc-bubble lc-typing"><span></span><span></span><span></span></div>';
+    body.appendChild(t);
+    scrollToBottom();
+    return t;
+  }
+
+  function showTgButton() {
+    if (tgShown || !body) return;
+    tgShown = true;
+    const wrap = document.createElement('div');
+    wrap.className = 'lc-msg lc-msg--agent';
+    wrap.innerHTML = `
+      <div class="lc-bubble" style="padding:0;overflow:hidden;background:transparent;border:none;box-shadow:none;">
+        <a href="${TG_URL}" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:10px;padding:12px 16px;
+                  background:linear-gradient(135deg,#229ED9,#1a8bbf);
+                  border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:13px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.608c-.15.672-.548.836-1.11.52l-3.07-2.262-1.482 1.427c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.116c.246-.22-.054-.34-.383-.12L7.34 13.84l-3.024-.944c-.657-.206-.672-.657.137-.973l11.822-4.558c.548-.198 1.027.134.287.883z"/>
+          </svg>
+          Написать в Telegram
+        </a>
+      </div>`;
+    body.appendChild(wrap);
     scrollToBottom();
   }
 
-  async function startSession() {
-    if (started) return;
-    started = true;
-    try {
-      await fetch(BACKEND_URL + '/api/chat/start', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId })
-      });
-    } catch (e) { console.error('livechat start error', e); }
-    await poll();
-    if (body.children.length <= 1) renderQuickReplies();
+  // ---- welcome sequence ----
+  function showWelcome() {
+    if (welcomed) return;
+    welcomed = true;
+    badge.classList.remove('show');
+
+    setTimeout(() => {
+      const typing = showTyping();
+      setTimeout(() => {
+        typing.remove();
+        addMsg('Привет! 👋 Я Гриша, разработчик Telegram-ботов и AI-ассистентов.', 'agent');
+        setTimeout(() => {
+          const t2 = showTyping();
+          setTimeout(() => {
+            t2.remove();
+            addMsg('Расскажите о вашем проекте — отвечу в течение дня. Для быстрой связи нажмите кнопку ниже 👇', 'agent');
+            showTgButton();
+          }, 1200);
+        }, 600);
+      }, 1200);
+    }, 400);
   }
 
-  // --- Robust poll with exponential backoff ---
-  let _pollDelay   = 4000;   // start: 4s
-  const _pollMin   = 4000;   // min interval
-  const _pollMax   = 60000;  // max interval (1 min when server is down)
-  const _pollStep  = 1.5;    // backoff multiplier
-  let   _pollTimer = null;
-  let   _pollFail  = 0;      // consecutive failures
-
-  async function poll() {
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 8000); // 8s timeout
-      const res = await fetch(
-        BACKEND_URL + '/api/chat/messages?session_id=' + encodeURIComponent(sessionId) + '&after=' + lastId,
-        { signal: controller.signal }
-      );
-      clearTimeout(timeout);
-
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-
-      // Success — reset backoff
-      _pollFail  = 0;
-      _pollDelay = _pollMin;
-
-      if (data.messages && data.messages.length) {
-        const newMsgs = data.messages.filter(m => m.sender !== 'visitor');
-        newMsgs.forEach(renderMessage);
-        if (newMsgs.length) scrollToBottom();
-        data.messages.forEach(m => { if (m.id > lastId) lastId = m.id; });
-        if (!isOpen) {
-          unread += newMsgs.filter(m => m.sender !== 'visitor').length;
-          if (unread > 0) {
-            badge.textContent = unread > 9 ? '9+' : unread;
-            badge.classList.add('show');
-          }
-        }
-      }
-    } catch (e) {
-      // CORS / network / timeout — back off silently
-      _pollFail++;
-      _pollDelay = Math.min(_pollDelay * _pollStep, _pollMax);
-      // Only log in dev, not every 4 seconds in production
-      if (_pollFail <= 3) console.warn('livechat: server unavailable, retrying in', Math.round(_pollDelay/1000) + 's');
-    }
-    // Reschedule with current delay
-    _pollTimer = setTimeout(poll, _pollDelay);
-  }
-
-  async function sendMessage() {
-    const text = input.value.trim();
-    if (!text) return;
-    input.value = '';
-    const qr = document.getElementById('livechatQuickReplies');
-    if (qr) qr.remove();
-
-    renderMessage({ id: ++lastId, sender: 'visitor', text, created_at: new Date().toISOString() });
-    scrollToBottom();
-    visitorMsgCount++;
-
-    showTyping();
-    try {
-      await fetch(BACKEND_URL + '/api/chat/message', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId, text })
-      });
-      await poll();
-    } catch (e) {
-      console.error('livechat send error', e);
-    }
-    hideTyping();
-    maybeSuggestLead();
-  }
-
-  async function escalate() {
-    escalateBtn.disabled = true;
-    escalateBtn.textContent = '↗️ Открываю...';
-
-    const lines = [];
-    body.querySelectorAll('.livechat-msg').forEach(el => {
-      if (el.classList.contains('lc-system')) return;
-      const who = el.classList.contains('lc-visitor') ? 'Клиент' : 'AI-ассистент';
-      const text = el.textContent.replace('Владислав', '').trim();
-      if (text) lines.push(who + ': ' + text);
-    });
-    const summary = lines.slice(-6).join('\n');
-    const message = 'Здравствуйте! Пишу с сайта через AI-чат.\n\n' + summary;
-
-    const tgLink = 'https://t.me/Bro_piton?text=' + encodeURIComponent(message);
-    window.open(tgLink, '_blank');
-
-    statusEl.textContent = 'Чат открыт в Telegram у @Bro_piton';
-    escalateBtn.textContent = '✅ В Telegram';
-
-    try {
-      await fetch(BACKEND_URL + '/api/chat/escalate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId })
-      });
-    } catch (e) { /* не критично — чат у клиента уже открыт */ }
-  }
-
-  async function submitLead() {
-    const name = (leadName ? leadName.value.trim() : '');
-    const contactRaw = (leadContact ? leadContact.value.trim() : '');
-
-    // Сброс ошибки
-    if (leadError) leadError.style.display = 'none';
-
-    if (!name) {
-      if (leadName) { leadName.focus(); leadName.style.borderColor = '#FF4D6D'; }
-      return;
-    }
-    leadName.style.borderColor = '';
-
-    const contactErr = validateContact(contactRaw);
-    if (contactErr) {
-      if (leadError) { leadError.textContent = contactErr; leadError.style.display = 'block'; }
-      if (leadContact) { leadContact.focus(); leadContact.style.borderColor = '#FF4D6D'; }
-      return;
-    }
-    if (leadContact) leadContact.style.borderColor = '';
-
-    const combined = `${name} — ${contactRaw}`;
-    leadSubmit.disabled = true;
-    leadSubmit.textContent = '...';
-    try {
-      await fetch(BACKEND_URL + '/api/chat/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id: sessionId, contact: combined })
-      });
-      leadForm.classList.remove('show');
-      if (leadName) leadName.value = '';
-      if (leadContact) leadContact.value = '';
-      if (leadError) leadError.style.display = 'none';
-      await poll();
-    } catch (e) {
-      console.error('livechat lead error', e);
-    }
-    leadSubmit.disabled = false;
-    leadSubmit.textContent = 'Отправить';
-  }
-
-  function resetChat() {
-    if (!confirm('Начать новый чат? История текущего разговора будет скрыта.')) return;
-    localStorage.removeItem('botforge_chat_session');
-    sessionId = getOrCreateSessionId();
-    body.innerHTML = '';
-    lastId = 0;
-    started = false;
-    visitorMsgCount = 0;
-    leadSuggested = false;
-    statusEl.textContent = 'Отвечаю 24/7 · можно позвать Владислава';
-    escalateBtn.disabled = false;
-    escalateBtn.textContent = '📞 Позвать человека';
-    leadForm.classList.remove('show');
-    startSession();
-  }
-
-  function openPanel() {
+  // ---- toggle open/close ----
+  function openChat() {
     isOpen = true;
     panel.classList.add('open');
-    toggle.classList.add('open');
-    unread = 0;
-    badge.classList.remove('show');
-    startSession();
+    toggle.classList.add('active');
+    showWelcome();
+    if (input) setTimeout(() => input.focus(), 300);
   }
 
-  toggle.addEventListener('click', () => {
-    userToggled = true;
-    isOpen = panel.classList.toggle('open');
-    toggle.classList.toggle('open', isOpen);
-    if (isOpen) {
-      unread = 0;
-      badge.classList.remove('show');
-      startSession();
-      setTimeout(() => input.focus(), 150);
-    }
+  function closeChat() {
+    isOpen = false;
+    panel.classList.remove('open');
+    toggle.classList.remove('active');
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  if (closeBtn) closeBtn.addEventListener('click', closeChat);
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (isOpen && !panel.contains(e.target) && !toggle.contains(e.target)) closeChat();
   });
 
-  sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
-  escalateBtn.addEventListener('click', escalate);
-  resetBtn.addEventListener('click', resetChat);
-  leadBtn.addEventListener('click', () => {
-    leadForm.classList.toggle('show');
-    if (leadForm.classList.contains('show') && leadName) leadName.focus();
-  });
-  leadSubmit.addEventListener('click', submitLead);
-  if (leadContact) {
-    leadContact.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitLead(); });
-    leadContact.addEventListener('input', () => {
-      if (leadError) leadError.style.display = 'none';
-      leadContact.style.borderColor = '';
+  // ---- send message (local only + show TG button) ----
+  function handleSend() {
+    const text = input ? input.value.trim() : '';
+    if (!text) return;
+    input.value = '';
+    addMsg(text, 'visitor');
+
+    // After user types → show typing then nudge to Telegram
+    setTimeout(() => {
+      const t = showTyping();
+      setTimeout(() => {
+        t.remove();
+        if (!tgShown) {
+          addMsg('Спасибо! Напишите мне в Telegram — там отвечу быстрее всего 👇', 'agent');
+          showTgButton();
+        } else {
+          addMsg('Жду вас в Telegram! 🙌', 'agent');
+        }
+      }, 1000);
+    }, 400);
+  }
+
+  if (sendBtn) sendBtn.addEventListener('click', handleSend);
+  if (input) {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
     });
   }
 
-  // Опрос новых сообщений (например, история после "Начать заново" на другой вкладке)
-  // Start polling with backoff (replaces setInterval)
-  _pollTimer = setTimeout(poll, _pollDelay);
-
-  // ===== Проактивное открытие чата (один раз за вкладку) =====
-  if (!sessionStorage.getItem('livechat_auto_opened')) {
-    const tryAutoOpen = () => {
-      if (userToggled || isOpen) return;
-      sessionStorage.setItem('livechat_auto_opened', '1');
-      openPanel();
-    };
-    setTimeout(tryAutoOpen, 25000);
-    const portfolioEl = document.getElementById('portfolio');
-    if (portfolioEl && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { tryAutoOpen(); io.disconnect(); } });
-      }, { threshold: 0.3 });
-      io.observe(portfolioEl);
+  // ---- proactive badge after 8s ----
+  setTimeout(() => {
+    if (!isOpen) {
+      badge.textContent = '1';
+      badge.classList.add('show');
     }
-  }
+  }, 8000);
+
+  // ---- quick replies (если есть в HTML) ----
+  document.querySelectorAll('.lc-qr-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!isOpen) openChat();
+      const qText = btn.textContent.trim();
+      setTimeout(() => { if (input) { input.value = qText; handleSend(); } }, 300);
+    });
+  });
+
 })();
 </script>
 <!-- ===== КОНЕЦ ЖИВОГО AI-ЧАТА ===== -->
