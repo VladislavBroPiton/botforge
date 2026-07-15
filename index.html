@@ -6732,18 +6732,35 @@ function switchBookingTab(tab, btn) {
     if (body.children.length <= 1) renderQuickReplies();
   }
 
+  // --- Robust poll with exponential backoff ---
+  let _pollDelay   = 4000;   // start: 4s
+  const _pollMin   = 4000;   // min interval
+  const _pollMax   = 60000;  // max interval (1 min when server is down)
+  const _pollStep  = 1.5;    // backoff multiplier
+  let   _pollTimer = null;
+  let   _pollFail  = 0;      // consecutive failures
+
   async function poll() {
     try {
-      const res = await fetch(BACKEND_URL + '/api/chat/messages?session_id=' + encodeURIComponent(sessionId) + '&after=' + lastId);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000); // 8s timeout
+      const res = await fetch(
+        BACKEND_URL + '/api/chat/messages?session_id=' + encodeURIComponent(sessionId) + '&after=' + lastId,
+        { signal: controller.signal }
+      );
+      clearTimeout(timeout);
+
+      if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
+
+      // Success — reset backoff
+      _pollFail  = 0;
+      _pollDelay = _pollMin;
+
       if (data.messages && data.messages.length) {
-        // Фильтруем сообщения посетителя из поллинга — они уже показаны локально при отправке
         const newMsgs = data.messages.filter(m => m.sender !== 'visitor');
         newMsgs.forEach(renderMessage);
-        if (newMsgs.length) {
-          scrollToBottom();
-        }
-        // lastId обновляем по ВСЕМ сообщениям (включая visitor), чтобы не терять позицию
+        if (newMsgs.length) scrollToBottom();
         data.messages.forEach(m => { if (m.id > lastId) lastId = m.id; });
         if (!isOpen) {
           unread += newMsgs.filter(m => m.sender !== 'visitor').length;
@@ -6753,7 +6770,15 @@ function switchBookingTab(tab, btn) {
           }
         }
       }
-    } catch (e) { console.error('livechat poll error', e); }
+    } catch (e) {
+      // CORS / network / timeout — back off silently
+      _pollFail++;
+      _pollDelay = Math.min(_pollDelay * _pollStep, _pollMax);
+      // Only log in dev, not every 4 seconds in production
+      if (_pollFail <= 3) console.warn('livechat: server unavailable, retrying in', Math.round(_pollDelay/1000) + 's');
+    }
+    // Reschedule with current delay
+    _pollTimer = setTimeout(poll, _pollDelay);
   }
 
   async function sendMessage() {
@@ -6908,7 +6933,8 @@ function switchBookingTab(tab, btn) {
   }
 
   // Опрос новых сообщений (например, история после "Начать заново" на другой вкладке)
-  setInterval(poll, 4000);
+  // Start polling with backoff (replaces setInterval)
+  _pollTimer = setTimeout(poll, _pollDelay);
 
   // ===== Проактивное открытие чата (один раз за вкладку) =====
   if (!sessionStorage.getItem('livechat_auto_opened')) {
