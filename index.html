@@ -1492,7 +1492,6 @@
   }
 
 </style>
-
 <style>
   /* Явные цвета для случаев, когда CSS-переменных сайта нет */
   :root {
@@ -2314,1162 +2313,6 @@
   }
 }
 </style>
-
-<style id="style-override">
-/* ================================================================
-   BRUTAL ORANGE style — data-style="brutal"
-   Inspired by m3.fan: dark bg, orange accent, Druk-style type,
-   white cards with colored icons, vertical side marquee feel
-================================================================ */
-
-/* ---- TONE VARIABLES ---- */
-[data-style="brutal"] {
-  --bg:            #141414;
-  --surface:       #1C1C1C;
-  --surface-solid: #1C1C1C;
-  --surface-dark:  #0A0A0A;
-  --text:          #FFFFFF;
-  --text-dim:      #CCCCCC;
-  --text-muted:    #888888;
-  --accent:        #FF5C1A;
-  --accent-2:      #FF8C42;
-  --accent-glow:   rgba(255,92,26,0.25);
-  --border:        rgba(255,255,255,0.10);
-  --border-light:  rgba(255,255,255,0.06);
-  --shadow:        0 4px 24px rgba(0,0,0,0.5);
-  --shadow-hover:  0 12px 40px rgba(255,92,26,0.25);
-  --header-bg:     rgba(20,20,20,0.96);
-  --glow-1:        rgba(255,92,26,0.35);
-  --glow-2:        rgba(255,140,66,0.25);
-}
-
-/* ---- PARTICLES OFF, custom cursor off ---- */
-[data-style="brutal"] #particles-js { display: none !important; }
-[data-style="brutal"] .cursor,
-[data-style="brutal"] .cursor-dot { display: none !important; }
-[data-style="brutal"] body { cursor: auto !important; }
-
-/* ---- GRADIENT BG → flat dark ---- */
-[data-style="brutal"] .gradient-bg {
-  background: radial-gradient(ellipse at 60% 20%, #2a1000 0%, #141414 60%) !important;
-}
-
-/* ---- VERTICAL SIDE TEXT (m3.fan vibe) ---- */
-[data-style="brutal"] body::before,
-[data-style="brutal"] body::after {
-  content: 'BOTFORGE · BOT · AI · CRM · TELEGRAM · BOTFORGE · BOT · AI · CRM · TELEGRAM · ';
-  position: fixed;
-  top: 0;
-  width: 28px;
-  height: 100vh;
-  writing-mode: vertical-rl;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: rgba(255,92,26,0.18);
-  text-transform: uppercase;
-  white-space: nowrap;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-}
-[data-style="brutal"] body::before { left: 0; transform: rotate(180deg); }
-[data-style="brutal"] body::after  { right: 0; }
-@media (max-width: 768px) {
-  [data-style="brutal"] body::before,
-  [data-style="brutal"] body::after { display: none !important; }
-}
-
-/* ---- LOGO ---- */
-[data-style="brutal"] .logo span {
-  background: linear-gradient(135deg, #FF5C1A, #FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* ---- NAV ---- */
-[data-style="brutal"] .nav-links a:hover { color: var(--accent) !important; }
-[data-style="brutal"] .nav-links a::after { background: linear-gradient(90deg,#FF5C1A,#FF8C42) !important; }
-
-/* ---- BUTTONS ---- */
-[data-style="brutal"] .btn-primary,
-[data-style="brutal"] .btn-order,
-[data-style="brutal"] .bot-link,
-[data-style="brutal"] .telegram-btn,
-[data-style="brutal"] .nav-cta {
-  background: linear-gradient(135deg, #FF5C1A, #FF8C42) !important;
-  border-radius: 100px !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.4) !important;
-  animation: none !important;
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-}
-[data-style="brutal"] .btn-primary:hover,
-[data-style="brutal"] .btn-order:hover,
-[data-style="brutal"] .telegram-btn:hover {
-  box-shadow: 0 0 35px rgba(255,92,26,0.6) !important;
-  transform: translateY(-2px) !important;
-}
-[data-style="brutal"] .btn-outline,
-[data-style="brutal"] .btn-show-more {
-  border-color: rgba(255,92,26,0.5) !important;
-  color: var(--accent) !important;
-  border-radius: 100px !important;
-  background: transparent !important;
-}
-[data-style="brutal"] .btn-outline:hover,
-[data-style="brutal"] .btn-show-more:hover {
-  background: linear-gradient(135deg, #FF5C1A, #FF8C42) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.4) !important;
-}
-
-/* ---- FILTER BUTTONS ---- */
-[data-style="brutal"] .filter-btn.active {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  border-color: transparent !important;
-  color: #fff !important;
-  box-shadow: 0 0 18px rgba(255,92,26,0.4) !important;
-}
-[data-style="brutal"] .filter-btn:hover {
-  border-color: var(--accent) !important;
-  color: var(--accent) !important;
-}
-
-/* ---- HERO ---- */
-[data-style="brutal"] .hero-tag {
-  background: rgba(255,92,26,0.15) !important;
-  border-color: rgba(255,92,26,0.4) !important;
-  color: #FF8C42 !important;
-  border-radius: 6px !important;
-}
-[data-style="brutal"] .hero h1 {
-  background: linear-gradient(135deg, #FFFFFF 40%, #FF8C42 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  font-size: clamp(38px, 5vw, 58px) !important;
-  letter-spacing: -0.03em !important;
-}
-[data-style="brutal"] .hero h1 em {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  font-style: italic !important;
-}
-[data-style="brutal"] .hero-num-val { text-shadow: 0 0 20px rgba(255,92,26,0.5) !important; color: #fff !important; }
-[data-style="brutal"] .hero-sub span { color: #FF8C42 !important; }
-
-/* ---- SECTION TITLE ---- */
-[data-style="brutal"] .section-title {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  background: none !important;
-}
-[data-style="brutal"] .section-title::after {
-  background: linear-gradient(90deg,#FF5C1A,#FF8C42) !important;
-  width: 50px;
-}
-
-/* ---- SERVICE CARDS → white on dark ---- */
-[data-style="brutal"] .service-card {
-  background: #F5F5F5 !important;
-  border: none !important;
-  border-radius: 20px !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: none !important;
-  color: #111 !important;
-}
-[data-style="brutal"] .service-card h3 { color: #111 !important; }
-[data-style="brutal"] .service-card p  { color: #444 !important; }
-[data-style="brutal"] .service-card:hover {
-  transform: translateY(-6px) scale(1.02) !important;
-  box-shadow: 0 16px 40px rgba(255,92,26,0.25) !important;
-  border: 2px solid #FF5C1A !important;
-}
-[data-style="brutal"] .service-card::before,
-[data-style="brutal"] .service-card::after { display: none !important; }
-[data-style="brutal"] .service-icon {
-  background: rgba(255,92,26,0.12) !important;
-  border-radius: 14px !important;
-}
-
-/* ---- PROJECT CARDS ---- */
-[data-style="brutal"] .project-card {
-  border-radius: 20px !important;
-  border: 1.5px solid rgba(255,255,255,0.08) !important;
-  background: #1C1C1C !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: none !important;
-}
-[data-style="brutal"] .project-card:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 30px rgba(255,92,26,0.3) !important;
-  transform: translateY(-6px) !important;
-}
-[data-style="brutal"] .project-card::after { display: none !important; }
-[data-style="brutal"] .project-tag { color: #FF8C42 !important; }
-[data-style="brutal"] .project-link { color: #FF5C1A !important; }
-
-/* ---- TESTIMONIAL CARDS ---- */
-[data-style="brutal"] .testimonial-card {
-  background: #1C1C1C !important;
-  border: 1.5px solid rgba(255,255,255,0.08) !important;
-  border-radius: 20px !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-}
-[data-style="brutal"] .testimonial-card:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 25px rgba(255,92,26,0.25) !important;
-}
-[data-style="brutal"] .testimonial-card::before { display: none !important; }
-[data-style="brutal"] .testimonial-avatar {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-}
-[data-style="brutal"] .testimonial-avatar-inner { color: #fff !important; }
-
-/* ---- BLOG CARDS ---- */
-[data-style="brutal"] .blog-card {
-  background: #1C1C1C !important;
-  border: 1.5px solid rgba(255,255,255,0.08) !important;
-  border-radius: 20px !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-}
-[data-style="brutal"] .blog-card:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 25px rgba(255,92,26,0.25) !important;
-}
-[data-style="brutal"] .blog-link { color: #FF5C1A !important; }
-
-/* ---- PROCESS STEPS ---- */
-[data-style="brutal"] .step {
-  background: #1C1C1C !important;
-  border: 1.5px solid rgba(255,255,255,0.08) !important;
-  border-radius: 16px !important;
-  backdrop-filter: none !important;
-}
-[data-style="brutal"] .step:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 25px rgba(255,92,26,0.25) !important;
-}
-[data-style="brutal"] .step-num {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-[data-style="brutal"] .step::after {
-  background: #FF5C1A !important;
-  box-shadow: 0 0 12px rgba(255,92,26,0.6) !important;
-}
-[data-style="brutal"] .process-steps::before {
-  background: linear-gradient(90deg,#FF5C1A,#FF8C42,#FF5C1A) !important;
-  opacity: 0.5 !important;
-}
-
-/* ---- FAQ ---- */
-[data-style="brutal"] .faq-item {
-  background: #1C1C1C !important;
-  border: 1.5px solid rgba(255,255,255,0.08) !important;
-  border-radius: 16px !important;
-  backdrop-filter: none !important;
-}
-[data-style="brutal"] .faq-item:hover,
-[data-style="brutal"] .faq-item.active { border-color: #FF5C1A !important; box-shadow: 0 0 18px rgba(255,92,26,0.2) !important; }
-[data-style="brutal"] .faq-icon { color: #FF5C1A !important; }
-[data-style="brutal"] .faq-question:hover { color: #FF8C42 !important; }
-
-/* ---- MODAL ---- */
-[data-style="brutal"] .modal-content {
-  background: #1A1A1A !important;
-  border-color: rgba(255,92,26,0.4) !important;
-  box-shadow: 0 0 60px rgba(255,92,26,0.2), 0 20px 40px rgba(0,0,0,0.5) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-radius: 24px !important;
-}
-[data-style="brutal"] .modal-header h3 {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-[data-style="brutal"] .modal-body h4 { color: #FF8C42 !important; }
-[data-style="brutal"] .tab-btn.active {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  border-color: transparent !important;
-  color: #fff !important;
-  box-shadow: 0 0 12px rgba(255,92,26,0.3) !important;
-}
-[data-style="brutal"] .modal-close:hover {
-  color: #FF5C1A !important;
-  box-shadow: 0 0 12px rgba(255,92,26,0.3) !important;
-}
-
-/* ---- CRM BLOCK ---- */
-[data-style="brutal"] #crm-comparison {
-  background: linear-gradient(135deg, rgba(255,92,26,0.06) 0%, rgba(255,140,66,0.06) 100%) !important;
-  border-color: rgba(255,92,26,0.3) !important;
-}
-
-/* ---- POLL / CONTACT ---- */
-[data-style="brutal"] .poll-cta {
-  background: #1A1A1A !important;
-  border-color: rgba(255,92,26,0.3) !important;
-  box-shadow: 0 0 50px rgba(255,92,26,0.15) !important;
-}
-[data-style="brutal"] .poll-cta::before {
-  background: radial-gradient(circle, #FF5C1A 0%, transparent 70%) !important;
-}
-[data-style="brutal"] .poll-cta h2 {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-[data-style="brutal"] .poll-option {
-  background: rgba(28,28,28,0.9) !important;
-  border-color: rgba(255,255,255,0.10) !important;
-  border-radius: 16px !important;
-}
-[data-style="brutal"] .poll-option:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.25) !important;
-}
-[data-style="brutal"] .poll-option.selected {
-  background: linear-gradient(135deg, rgba(255,92,26,0.15), rgba(255,140,66,0.15)) !important;
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.3) !important;
-}
-[data-style="brutal"] .poll-detail {
-  background: rgba(255,92,26,0.06) !important;
-  border-color: rgba(255,92,26,0.25) !important;
-}
-[data-style="brutal"] .poll-detail-header h3 {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-[data-style="brutal"] .poll-detail-content h4 { color: #FF8C42 !important; }
-
-/* ---- FLOATING BUTTONS ---- */
-[data-style="brutal"] .floating-telegram {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  box-shadow: 0 0 25px rgba(255,92,26,0.5) !important;
-}
-[data-style="brutal"] .floating-telegram:hover {
-  box-shadow: 0 0 40px rgba(255,92,26,0.7) !important;
-}
-[data-style="brutal"] .scroll-top:hover {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.3) !important;
-}
-[data-style="brutal"] .livechat-toggle {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.4) !important;
-}
-[data-style="brutal"] .livechat-header {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-}
-
-/* ---- FORM ---- */
-[data-style="brutal"] .form-group input:focus,
-[data-style="brutal"] .form-group textarea:focus {
-  border-color: #FF5C1A !important;
-  box-shadow: 0 0 15px rgba(255,92,26,0.2) !important;
-}
-[data-style="brutal"] .btn-submit {
-  background: linear-gradient(135deg,#FF5C1A,#FF8C42) !important;
-  box-shadow: 0 0 20px rgba(255,92,26,0.4) !important;
-  border-radius: 100px !important;
-  animation: none !important;
-}
-
-/* ---- CTA BLOCK ---- */
-[data-style="brutal"] .cta-block {
-  border-color: rgba(255,92,26,0.3) !important;
-  box-shadow: 0 0 50px rgba(255,92,26,0.15) !important;
-}
-[data-style="brutal"] .cta-block::before {
-  background: radial-gradient(circle, #FF5C1A 0%, transparent 70%) !important;
-}
-
-/* ---- SCROLLBAR ---- */
-[data-style="brutal"] ::-webkit-scrollbar-thumb { background: #FF5C1A !important; }
-[data-style="brutal"] ::-webkit-scrollbar-thumb:hover { background: #FF8C42 !important; }
-
-/* ======== STYLE TOGGLE BUTTON ======== */
-.style-toggle {
-  background: var(--surface-solid);
-  border: 1.5px solid var(--border);
-  border-radius: 40px;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: var(--text-dim);
-  transition: all 0.2s;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.style-toggle:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 15px var(--accent-glow);
-}
-/* Icons inside the toggle */
-.style-toggle .icon-neon,
-.style-toggle .icon-brutal {
-  position: absolute;
-  transition: opacity 0.25s, transform 0.25s;
-}
-.style-toggle .icon-neon   { opacity: 1; transform: scale(1); }
-.style-toggle .icon-brutal { opacity: 0; transform: scale(0.6); }
-[data-style="brutal"] .style-toggle .icon-neon   { opacity: 0; transform: scale(0.6); }
-[data-style="brutal"] .style-toggle .icon-brutal { opacity: 1; transform: scale(1); }
-[data-style="brutal"] .style-toggle:hover {
-  border-color: #FF5C1A !important;
-  color: #FF5C1A !important;
-  box-shadow: 0 0 15px rgba(255,92,26,0.4) !important;
-}
-
-/* ================================================================
-   BRUTAL STYLE - HERO VISUAL: geometric character + chess grid
-================================================================ */
-[data-style="brutal"] #threejs-cube-container { display: none !important; }
-[data-style="brutal"] .hero-visual { position: relative; }
-[data-style="brutal"] .brutal-character { display: flex !important; }
-
-.brutal-character {
-  display: none;
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  height: 460px;
-  margin: 0 auto;
-  align-items: flex-end;
-  justify-content: center;
-}
-.brutal-character::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 280px; height: 280px;
-  background: radial-gradient(circle, rgba(255,92,26,0.35) 0%, transparent 70%);
-  border-radius: 50%;
-  z-index: 0;
-  animation: brutGlow 3s ease-in-out infinite alternate;
-}
-@keyframes brutGlow {
-  from { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
-  to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
-}
-.brutal-character svg.char-svg {
-  position: relative;
-  z-index: 2;
-  width: 260px;
-  height: auto;
-  filter: drop-shadow(0 20px 40px rgba(255,92,26,0.4));
-  animation: brutFloat 4s ease-in-out infinite;
-}
-@keyframes brutFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-18px); }
-}
-.brut-tag {
-  position: absolute;
-  background: #FF5C1A;
-  color: #fff;
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  z-index: 10;
-  box-shadow: 0 8px 24px rgba(255,92,26,0.4);
-  max-width: 160px;
-  line-height: 1.3;
-  animation: tagFloat 3s ease-in-out infinite;
-}
-.brut-tag.tag-white {
-  background: #fff;
-  color: #111;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
-.brut-tag .tag-title { font-size: 12px; font-weight: 800; display: block; margin-bottom: 2px; }
-.brut-tag .tag-desc  { font-size: 10px; font-weight: 500; opacity: 0.85; }
-.brut-tag--1 { top: 12%;  left: -10px; animation-delay: 0s; }
-.brut-tag--2 { top: 8%;   right: -10px; animation-delay: 0.6s; }
-.brut-tag--3 { top: 42%;  left: -20px; animation-delay: 1.2s; }
-@keyframes tagFloat {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-8px) rotate(1deg); }
-}
-.char-shadow {
-  position: absolute;
-  bottom: 8px; left: 50%; transform: translateX(-50%);
-  width: 160px; height: 24px;
-  background: rgba(255,92,26,0.25);
-  border-radius: 50%;
-  filter: blur(12px);
-  z-index: 1;
-}
-[data-style="brutal"] .hero-numbers {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 3px !important;
-  border: none !important;
-  padding: 0 !important;
-  margin-top: 32px !important;
-  background: transparent !important;
-  width: 100% !important;
-  max-width: 480px !important;
-}
-[data-style="brutal"] .hero-num {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 18px 12px !important;
-  border-radius: 12px !important;
-  border: none !important;
-  min-height: 90px !important;
-}
-[data-style="brutal"] .hero-num:nth-child(odd) {
-  background: #FF5C1A !important;
-}
-[data-style="brutal"] .hero-num:nth-child(even) {
-  background: #1C1C1C !important;
-  border: 1.5px solid rgba(255,255,255,0.10) !important;
-}
-[data-style="brutal"] .hero-num:nth-child(odd) .hero-num-val,
-[data-style="brutal"] .hero-num:nth-child(odd) .hero-num-label {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  text-shadow: none !important;
-}
-[data-style="brutal"] .hero-num:nth-child(even) .hero-num-val {
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  text-shadow: 0 0 15px rgba(255,92,26,0.6) !important;
-}
-[data-style="brutal"] .hero-num:nth-child(even) .hero-num-label {
-  color: rgba(255,255,255,0.6) !important;
-}
-[data-style="brutal"] .hero-num-val {
-  font-size: 28px !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
-}
-[data-style="brutal"] .hero-num-label {
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1px !important;
-  margin-top: 4px !important;
-  text-align: center !important;
-}
-
-
-/* ================================================================
-   BRUTAL STYLE - ENHANCED: Tom Carder + Voxr AI + Only Agency
-================================================================ */
-
-/* ---- VOXR AI STYLE: Big % stats row ---- */
-[data-style="brutal"] .brutal-stats-row {
-  display: flex !important;
-}
-.brutal-stats-row {
-  display: none;
-  gap: 0;
-  margin: 48px 0 0;
-  border: 1.5px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  overflow: hidden;
-  max-width: 700px;
-}
-.brutal-stat-item {
-  flex: 1;
-  padding: 28px 20px;
-  border-right: 1.5px solid rgba(255,255,255,0.08);
-  position: relative;
-}
-.brutal-stat-item:last-child { border-right: none; }
-.brutal-stat-item:nth-child(odd) { background: rgba(255,92,26,0.06); }
-.brutal-stat-num {
-  font-size: 36px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #FF5C1A;
-  line-height: 1;
-  display: block;
-  margin-bottom: 6px;
-}
-.brutal-stat-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.3;
-}
-
-/* ---- ONLY AGENCY STYLE: Category chips on project cards ---- */
-[data-style="brutal"] .project-tags-row {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.project-tags-row { display: none; }
-.project-chip {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 4px 10px;
-  border-radius: 100px;
-  border: 1px solid rgba(255,92,26,0.4);
-  color: #FF8C42;
-  background: rgba(255,92,26,0.08);
-}
-
-/* ---- TOM CARDER: Sticky section number indicator ---- */
-[data-style="brutal"] .section-num {
-  display: inline-flex !important;
-}
-.section-num {
-  display: none;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-.section-num-digit {
-  font-size: 11px;
-  font-weight: 800;
-  color: #FF5C1A;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.section-num-line {
-  width: 40px;
-  height: 1.5px;
-  background: #FF5C1A;
-  opacity: 0.6;
-}
-.section-num-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.4);
-}
-
-/* ---- VOXR AI: Process steps - numbered timeline style ---- */
-[data-style="brutal"] .process-steps {
-  position: relative;
-}
-[data-style="brutal"] .step {
-  position: relative;
-  overflow: visible !important;
-}
-/* Add step number badge (Voxr style) */
-[data-style="brutal"] .step::before {
-  content: counter(step-counter, decimal-leading-zero);
-  counter-increment: step-counter;
-  position: absolute;
-  top: -14px;
-  left: 20px;
-  font-size: 11px;
-  font-weight: 800;
-  color: #FF5C1A;
-  letter-spacing: 1px;
-  background: #141414;
-  padding: 0 8px;
-  border: 1.5px solid rgba(255,92,26,0.4);
-  border-radius: 100px;
-  line-height: 22px;
-  height: 22px;
-}
-[data-style="brutal"] .process-steps {
-  counter-reset: step-counter;
-}
-
-/* ---- TOM CARDER: Section label above titles ---- */
-[data-style="brutal"] .section-eyebrow {
-  display: block !important;
-}
-.section-eyebrow {
-  display: none;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #FF5C1A;
-  margin-bottom: 14px;
-}
-
-/* ---- ONLY AGENCY: Project card meta footer ---- */
-[data-style="brutal"] .project-meta-footer {
-  display: flex !important;
-}
-.project-meta-footer {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-}
-.project-meta-year {
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 1px;
-}
-.project-meta-arrow {
-  width: 28px; height: 28px;
-  border: 1.5px solid rgba(255,92,26,0.4);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #FF5C1A;
-  font-size: 14px;
-  transition: all 0.2s;
-}
-[data-style="brutal"] .project-card:hover .project-meta-arrow {
-  background: #FF5C1A;
-  color: #fff;
-  border-color: #FF5C1A;
-}
-
-/* ---- VOXR AI: Marquee ticker (social proof bar) ---- */
-[data-style="brutal"] .brutal-ticker {
-  display: block !important;
-}
-.brutal-ticker {
-  display: none;
-  overflow: hidden;
-  border-top: 1px solid rgba(255,92,26,0.2);
-  border-bottom: 1px solid rgba(255,92,26,0.2);
-  padding: 14px 0;
-  background: rgba(255,92,26,0.04);
-  margin: 0 0 0;
-}
-.brutal-ticker-inner {
-  display: flex;
-  gap: 0;
-  animation: ticker-scroll 22s linear infinite;
-  white-space: nowrap;
-  width: max-content;
-}
-.brutal-ticker-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 32px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: rgba(255,255,255,0.45);
-}
-.brutal-ticker-item span {
-  color: #FF5C1A;
-  font-size: 16px;
-}
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ---- TOM CARDER: Hover overlay on project cards ---- */
-[data-style="brutal"] .project-card {
-  overflow: hidden !important;
-}
-[data-style="brutal"] .project-card .project-overlay {
-  display: flex !important;
-}
-.project-overlay {
-  display: none;
-  position: absolute;
-  inset: 0;
-  background: rgba(255,92,26,0.92);
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 5;
-  border-radius: 20px;
-  pointer-events: none;
-}
-.project-overlay-text {
-  font-size: 15px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  color: #fff;
-}
-[data-style="brutal"] .project-card:hover .project-overlay {
-  opacity: 1;
-}
-[data-style="brutal"] .project-card { position: relative !important; }
-
-/* ---- ONLY AGENCY: Services section - horizontal accent line ---- */
-[data-style="brutal"] .services-section .section-title::before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #FF5C1A;
-  margin-bottom: 20px;
-  border-radius: 2px;
-}
-
-/* ---- TOM CARDER: Footer style ---- */
-[data-style="brutal"] .footer {
-  border-top: 1px solid rgba(255,92,26,0.2) !important;
-  background: #0A0A0A !important;
-}
-[data-style="brutal"] .footer::before {
-  content: 'BOTFORGE';
-  display: block;
-  font-size: clamp(48px, 8vw, 120px);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: rgba(255,92,26,0.06);
-  text-align: center;
-  margin-bottom: -40px;
-  line-height: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-/* ---- VOXR AI: nav gets orange active indicator ---- */
-[data-style="brutal"] .nav-links a.active,
-[data-style="brutal"] .nav-links a:hover {
-  color: #FF5C1A !important;
-}
-[data-style="brutal"] .nav-links a::after {
-  background: #FF5C1A !important;
-}
-
-/* ---- Blog cards: Only agency style category tag top-left ---- */
-[data-style="brutal"] .blog-card {
-  position: relative !important;
-}
-[data-style="brutal"] .blog-cat-chip {
-  display: inline-block !important;
-}
-.blog-cat-chip {
-  display: none;
-  position: absolute;
-  top: 12px; left: 12px;
-  font-size: 9px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  padding: 4px 10px;
-  border-radius: 100px;
-  background: #FF5C1A;
-  color: #fff;
-  z-index: 2;
-}
-
-/* ---- Testimonials: Voxr AI quote style ---- */
-[data-style="brutal"] .testimonial-card {
-  position: relative !important;
-}
-[data-style="brutal"] .testimonial-card::after {
-  content: '"';
-  position: absolute;
-  top: 10px; right: 20px;
-  font-size: 80px;
-  font-weight: 900;
-  color: rgba(255,92,26,0.12);
-  line-height: 1;
-  font-family: Georgia, serif;
-  pointer-events: none;
-}
-
-
-/* ================================================================
-   BRUTAL STYLE - Superjet200 + Web Agency enhancements
-================================================================ */
-
-/* ---- SUPERJET: animated sky/depth hero background ---- */
-[data-style="brutal"] .hero {
-  position: relative;
-  overflow: hidden;
-}
-[data-style="brutal"] .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 70% 0%, rgba(255,92,26,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 10% 80%, rgba(255,140,66,0.10) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 50%, rgba(255,92,26,0.05) 0%, transparent 70%);
-  z-index: 0;
-  animation: skyShift 8s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-@keyframes skyShift {
-  from { opacity: 0.6; transform: scale(1); }
-  to   { opacity: 1;   transform: scale(1.05) translateX(10px); }
-}
-[data-style="brutal"] .hero .container { position: relative; z-index: 2; }
-
-/* Floating SVG shapes (Superjet parallax clouds-inspired) */
-[data-style="brutal"] .brutal-shapes { display: block !important; }
-.brutal-shapes {
-  display: none;
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-.brutal-shape {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.06;
-  background: #FF5C1A;
-  animation: shapeFloat linear infinite;
-}
-.brutal-shape:nth-child(1) { width: 500px; height: 500px; top: -100px; right: -150px; animation-duration: 12s; animation-delay: 0s; }
-.brutal-shape:nth-child(2) { width: 200px; height: 200px; bottom: 20%; left: -60px; animation-duration: 9s; animation-delay: -3s; opacity: 0.04; }
-.brutal-shape:nth-child(3) { width: 80px; height: 80px; top: 30%; right: 30%; animation-duration: 7s; animation-delay: -5s; opacity: 0.08; }
-@keyframes shapeFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33%       { transform: translateY(-30px) rotate(8deg); }
-  66%       { transform: translateY(15px) rotate(-5deg); }
-}
-
-/* ---- SUPERJET: Horizontal specs strip ---- */
-[data-style="brutal"] .brutal-specs-strip { display: flex !important; }
-.brutal-specs-strip {
-  display: none;
-  overflow-x: auto;
-  gap: 0;
-  padding: 24px 0;
-  border-top: 1px solid rgba(255,92,26,0.2);
-  border-bottom: 1px solid rgba(255,92,26,0.2);
-  margin: 40px 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.brutal-specs-strip::-webkit-scrollbar { display: none; }
-.brutal-spec {
-  flex: 0 0 auto;
-  padding: 0 28px;
-  border-right: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
-  min-width: 130px;
-}
-.brutal-spec:last-child { border-right: none; }
-.brutal-spec-val {
-  font-size: 22px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.03em;
-  display: block;
-  white-space: nowrap;
-}
-.brutal-spec-val em {
-  color: #FF5C1A;
-  font-style: normal;
-}
-.brutal-spec-label {
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.35);
-  display: block;
-  margin-top: 4px;
-}
-
-/* ---- WEB AGENCY: Skewed section dividers ---- */
-[data-style="brutal"] .section-skew { display: block !important; }
-.section-skew {
-  display: none;
-  width: 100%;
-  height: 60px;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  line-height: 0;
-}
-.section-skew svg { display: block; width: 100%; height: 60px; }
-
-/* ---- WEB AGENCY: 8-advantages tab grid ---- */
-[data-style="brutal"] .brutal-advantages { display: block !important; }
-.brutal-advantages {
-  display: none;
-  margin: 60px 0;
-  padding: 48px;
-  background: rgba(28,28,28,0.8);
-  border: 1.5px solid rgba(255,255,255,0.06);
-  border-radius: 24px;
-  position: relative;
-  overflow: hidden;
-}
-.brutal-advantages::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #FF5C1A, #FF8C42, #FF5C1A);
-}
-.brutal-advantages-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 32px;
-  letter-spacing: -0.02em;
-}
-.brutal-advantages-title em {
-  color: #FF5C1A;
-  font-style: normal;
-}
-.brutal-adv-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-@media (max-width: 768px) {
-  .brutal-adv-grid { grid-template-columns: repeat(2, 1fr); }
-  .brutal-advantages { padding: 28px 20px; }
-}
-.brutal-adv-card {
-  background: rgba(255,255,255,0.03);
-  border: 1.5px solid rgba(255,255,255,0.06);
-  border-radius: 14px;
-  padding: 20px 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.brutal-adv-card:hover,
-.brutal-adv-card.active {
-  background: rgba(255,92,26,0.1);
-  border-color: #FF5C1A;
-  transform: translateY(-2px);
-}
-.brutal-adv-icon {
-  font-size: 24px;
-  margin-bottom: 10px;
-  display: block;
-}
-.brutal-adv-card-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.3;
-}
-.brutal-adv-card.active .brutal-adv-card-title { color: #FF8C42; }
-
-/* ---- WEB AGENCY: Play button / video CTA ---- */
-[data-style="brutal"] .brutal-play-cta { display: flex !important; }
-.brutal-play-cta {
-  display: none;
-  align-items: center;
-  gap: 14px;
-  cursor: pointer;
-  margin: 24px 0;
-}
-.brutal-play-btn {
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #FF5C1A, #FF8C42);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 8px rgba(255,92,26,0.15), 0 0 0 16px rgba(255,92,26,0.07);
-  animation: playPulse 2s ease-in-out infinite;
-  flex-shrink: 0;
-  transition: transform 0.2s;
-}
-.brutal-play-btn:hover { transform: scale(1.1); }
-.brutal-play-btn svg { margin-left: 3px; }
-@keyframes playPulse {
-  0%, 100% { box-shadow: 0 0 0 8px rgba(255,92,26,0.15), 0 0 0 16px rgba(255,92,26,0.07); }
-  50%       { box-shadow: 0 0 0 12px rgba(255,92,26,0.2), 0 0 0 24px rgba(255,92,26,0.05); }
-}
-.brutal-play-text { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); line-height: 1.3; }
-.brutal-play-text strong { display: block; color: #fff; font-size: 15px; }
-
-/* ---- WEB AGENCY: Skewed highlight on services ---- */
-[data-style="brutal"] .services-section {
-  position: relative;
-}
-[data-style="brutal"] .services-section::after {
-  content: '';
-  position: absolute;
-  bottom: -30px; left: -5%; right: -5%;
-  height: 60px;
-  background: #141414;
-  transform: skewY(-1.5deg);
-  z-index: 1;
-}
-
-/* ---- SUPERJET: specs table-style "about stack" in services ---- */
-[data-style="brutal"] .brutal-stack-bar { display: flex !important; }
-.brutal-stack-bar {
-  display: none;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,92,26,0.2);
-}
-.brutal-stack-pill {
-  padding: 6px 14px;
-  border: 1.5px solid rgba(255,92,26,0.3);
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #FF8C42;
-  background: rgba(255,92,26,0.06);
-  transition: all 0.2s;
-}
-.brutal-stack-pill:hover {
-  background: #FF5C1A;
-  color: #fff;
-  border-color: #FF5C1A;
-}
-
-/* ---- section transition skew fix ---- */
-[data-style="brutal"] #portfolio { position: relative; }
-
-</style>
-
 </head>
 <body>
 
@@ -3931,7 +2774,6 @@
   })();
 </script>
 
-
 <!-- MAIN PAGE CONTENT -->
 <!-- Фоны и курсор -->
 <div class="gradient-bg" id="gradientBg"></div>
@@ -3951,75 +2793,11 @@
       <a href="#blog">Блог</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Контакты</a>
-      <!-- BRUTAL: Superjet-style horizontal specs strip -->
-      <div class="brutal-specs-strip">
-        <div class="brutal-spec">
-          <span class="brutal-spec-val">aiogram <em>3</em></span>
-          <span class="brutal-spec-label">Framework</span>
-        </div>
-        <div class="brutal-spec">
-          <span class="brutal-spec-val">Fast<em>API</em></span>
-          <span class="brutal-spec-label">Backend</span>
-        </div>
-        <div class="brutal-spec">
-          <span class="brutal-spec-val">pg<em>vector</em></span>
-          <span class="brutal-spec-label">AI Search</span>
-        </div>
-        <div class="brutal-spec">
-          <span class="brutal-spec-val">Neon <em>PG</em></span>
-          <span class="brutal-spec-label">Database</span>
-        </div>
-        <div class="brutal-spec">
-          <span class="brutal-spec-val"><em>RAG</em></span>
-          <span class="brutal-spec-label">AI Pipeline</span>
-        </div>
-      </div>
       <a href="https://t.me/Bro_piton?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" class="nav-cta" target="_blank">Написать в Telegram</a>
     </div>
     <div class="header-right">
       <div class="theme-toggle" id="themeToggle" title="Переключить тему">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.93zM16.95 18.364l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm2.121-14.85l1.414 1.415-2.121 2.121-1.414-1.414 2.121-2.121zM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121zM23 11v2h-3v-2h3zM4 11v2H1v-2h3z"/></svg>
-      </div>
-      <div class="style-toggle" id="styleToggle" title="Переключить стиль">
-        <!-- Neon mode icon: lightning bolt -->
-        <svg class="icon-neon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-        </svg>
-        <!-- Brutal/orange mode icon: fire -->
-        <svg class="icon-brutal" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2c0 0-5 4.5-5 9a5 5 0 0010 0c0-1.5-.5-3-1.5-4.5C15 8 14 10 12 10c0-3-1-5.5 0-8z"/>
-          <path d="M9 17c-.5-1-.5-2 .5-3 .5 1.5 2 2.5 2.5 2.5S14 15.5 14 14c1 1 1 2.5.5 3a3 3 0 01-5.5 0z"/>
-        </svg>
-      </div>
-      <div class="style-toggle" id="styleToggle" title="Переключить на минимал-стиль">
-        <!-- Icon: neon mode (sparkle) -->
-        <svg class="icon-neon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2l1.5 4.5H18l-3.75 2.75 1.5 4.5L12 11 8.25 13.75l1.5-4.5L6 6.5h4.5z"/>
-          <circle cx="12" cy="19" r="1.5"/>
-          <circle cx="6" cy="12" r="1.2"/>
-          <circle cx="18" cy="12" r="1.2"/>
-        </svg>
-        <!-- Icon: minimal mode (clean square) -->
-        <svg class="icon-minimal" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="3"/>
-          <line x1="3" y1="9" x2="21" y2="9"/>
-          <line x1="9" y1="21" x2="9" y2="9"/>
-        </svg>
-      </div>
-      <!-- BRUTAL: Voxr AI-style big stat row -->
-      <div class="brutal-stats-row">
-        <div class="brutal-stat-item">
-          <span class="brutal-stat-num">80%</span>
-          <span class="brutal-stat-label">Экономия времени на рутину</span>
-        </div>
-        <div class="brutal-stat-item">
-          <span class="brutal-stat-num">24/7</span>
-          <span class="brutal-stat-label">Без выходных и праздников</span>
-        </div>
-        <div class="brutal-stat-item">
-          <span class="brutal-stat-num">60с</span>
-          <span class="brutal-stat-label">До первого ответа клиенту</span>
-        </div>
       </div>
       <a href="https://t.me/Bro_piton?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" class="btn-outline magnetic ripple-btn" target="_blank">@Bro_piton</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню"><span class="bar"></span></button>
@@ -4029,30 +2807,11 @@
 
 <!-- HERO -->
 <section class="hero">
-
-    <!-- BRUTAL: Superjet parallax shapes -->
-    <div class="brutal-shapes">
-      <div class="brutal-shape"></div>
-      <div class="brutal-shape"></div>
-      <div class="brutal-shape"></div>
-    </div>
   <div class="container">
     <div class="hero-text fade-up visible">
       <div class="hero-tag">Разработчик чат-ботов и AI-ассистентов</div>
       <h1>Создаю <em>умных</em> ботов,<br>которые работают 24/7</h1>
       <p class="hero-sub">Автоматизирую продажи, запись клиентов и поддержку. Интегрирую с CRM, Google Sheets, календарями и нейросетями. <span style="color:var(--accent);font-weight:600">Разрабатываю собственные CRM-системы</span> — уникальные под каждый проект.</p>
-      <!-- BRUTAL: Web Agency play button -->
-      <div class="brutal-play-cta">
-        <div class="brutal-play-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-        <div class="brutal-play-text">
-          <strong>Посмотреть как это работает</strong>
-          Примеры ботов в действии · 2 мин
-        </div>
-      </div>
       <div class="hero-numbers">
         <div class="hero-num"><span class="hero-num-val"><span class="counter" data-target="8">0</span>+</span><span class="hero-num-label">проектов</span></div>
         <div class="hero-num"><span class="hero-num-val"><span class="counter" data-target="3">0</span></span><span class="hero-num-label">платформы</span></div>
@@ -4064,124 +2823,12 @@
       </a>
       <p class="cta-note">🔒 Бесплатная консультация · Код передаю вам · Отвечаю в течение дня</p>
     </div>
-    <!-- BRUTAL: tech stack pills -->
-    <div class="brutal-stack-bar">
-      <span class="brutal-stack-pill">Python</span>
-      <span class="brutal-stack-pill">aiogram 3</span>
-      <span class="brutal-stack-pill">FastAPI</span>
-      <span class="brutal-stack-pill">PostgreSQL</span>
-      <span class="brutal-stack-pill">pgvector</span>
-      <span class="brutal-stack-pill">Render</span>
-      <span class="brutal-stack-pill">Neon</span>
-      <span class="brutal-stack-pill">Claude AI</span>
-    </div>
     <div class="hero-visual fade-up visible">
       <div id="threejs-cube-container"></div>
-      <!-- BRUTAL MODE: geometric character (shown only in brutal style) -->
-      <div class="brutal-character">
-        <!-- Floating label cards -->
-        <div class="brut-tag brut-tag--1">
-          <span class="tag-title">Создаю ботов</span>
-          <span class="tag-desc">24/7 без выходных</span>
-        </div>
-        <div class="brut-tag tag-white brut-tag--2">
-          <span class="tag-title">AI + CRM</span>
-          <span class="tag-desc">под ваш бизнес</span>
-        </div>
-        <div class="brut-tag brut-tag--3">
-          <span class="tag-title">8+ проектов</span>
-          <span class="tag-desc">в портфолио</span>
-        </div>
-
-        <!-- Abstract geometric character SVG (m3-inspired but original) -->
-        <svg class="char-svg" viewBox="0 0 240 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- BODY - dark hoodie shape -->
-          <path d="M50 230 Q45 210 40 260 L30 390 Q29 398 40 398 L200 398 Q211 398 210 390 L200 260 Q195 210 190 230 Q170 225 155 230 L155 240 Q120 260 85 240 L85 230 Q70 225 50 230Z" fill="#1A1A1A"/>
-          <!-- Hood/shoulders -->
-          <path d="M55 230 Q48 200 50 180 L60 165 Q80 155 95 160 L100 170 Q120 178 140 170 L145 160 Q160 155 180 165 L190 180 Q192 200 185 230 Q170 222 155 225 L155 238 Q120 255 85 238 L85 225 Q70 222 55 230Z" fill="#222"/>
-          <!-- Orange M3-style logo on chest -->
-          <text x="90" y="320" font-family="Arial" font-weight="900" font-size="32" fill="#FF5C1A" letter-spacing="-2">BOT</text>
-          <rect x="88" y="325" width="64" height="4" rx="2" fill="#FF5C1A"/>
-          <!-- HEAD - white sphere -->
-          <ellipse cx="120" cy="130" rx="62" ry="65" fill="#F0F0F0"/>
-          <!-- Head highlight -->
-          <ellipse cx="105" cy="108" rx="18" ry="12" fill="rgba(255,255,255,0.6)" transform="rotate(-20 105 108)"/>
-          <!-- X eyes -->
-          <g stroke="#111" stroke-width="5" stroke-linecap="round">
-            <line x1="96" y1="116" x2="108" y2="128"/>
-            <line x1="108" y1="116" x2="96" y2="128"/>
-            <line x1="132" y1="116" x2="144" y2="128"/>
-            <line x1="144" y1="116" x2="132" y2="128"/>
-          </g>
-          <!-- CROWN -->
-          <g fill="#1A1A1A">
-            <!-- Crown base -->
-            <rect x="78" y="62" width="84" height="18" rx="4" fill="#1A1A1A"/>
-            <!-- Crown points -->
-            <polygon points="78,62 90,30 102,62" fill="#1A1A1A"/>
-            <polygon points="108,62 120,22 132,62" fill="#1A1A1A"/>
-            <polygon points="138,62 150,30 162,62" fill="#1A1A1A"/>
-          </g>
-          <!-- Crown orange gems -->
-          <circle cx="90" cy="32" r="6" fill="#FF5C1A"/>
-          <circle cx="90" cy="32" r="3" fill="#FF8C42"/>
-          <circle cx="120" cy="24" r="7" fill="#FF5C1A"/>
-          <circle cx="120" cy="24" r="3.5" fill="#FF8C42"/>
-          <circle cx="150" cy="32" r="6" fill="#FF5C1A"/>
-          <circle cx="150" cy="32" r="3" fill="#FF8C42"/>
-          <!-- Crown band highlight -->
-          <rect x="78" y="62" width="84" height="5" rx="2" fill="rgba(255,92,26,0.4)"/>
-          <!-- Left arm -->
-          <path d="M55 240 Q30 260 22 300 Q20 315 30 318 Q40 320 48 305 Q55 280 68 265Z" fill="#1A1A1A"/>
-          <!-- Right arm with phone -->
-          <path d="M185 240 Q210 260 218 300 Q220 315 210 318 Q200 320 192 305 Q185 280 172 265Z" fill="#1A1A1A"/>
-          <!-- Phone in right hand -->
-          <rect x="196" y="290" width="32" height="52" rx="5" fill="#333"/>
-          <rect x="199" y="294" width="26" height="42" rx="3" fill="#444"/>
-          <rect x="204" y="298" width="16" height="26" rx="2" fill="#FF5C1A" opacity="0.7"/>
-          <!-- Orange sleeve stripe on right -->
-          <path d="M205 245 Q215 255 218 270 L208 272 Q205 258 195 248Z" fill="#FF5C1A" opacity="0.6"/>
-          <!-- Orange sleeve stripe on left -->
-          <path d="M35 245 Q25 255 22 270 L32 272 Q35 258 45 248Z" fill="#FF5C1A" opacity="0.6"/>
-        </svg>
-        <div class="char-shadow"></div>
-      </div>
     </div>
   </div>
 </section>
 
-
-<!-- BRUTAL: Voxr AI-style marquee ticker -->
-<div class="brutal-ticker">
-  <div class="brutal-ticker-inner">
-    <div class="brutal-ticker-item"><span>⚡</span> Telegram Bot</div>
-    <div class="brutal-ticker-item"><span>◆</span> AI Ассистент</div>
-    <div class="brutal-ticker-item"><span>⚡</span> CRM Система</div>
-    <div class="brutal-ticker-item"><span>◆</span> Mini App</div>
-    <div class="brutal-ticker-item"><span>⚡</span> RAG & Vector DB</div>
-    <div class="brutal-ticker-item"><span>◆</span> FastAPI Backend</div>
-    <div class="brutal-ticker-item"><span>⚡</span> aiogram 3</div>
-    <div class="brutal-ticker-item"><span>◆</span> PostgreSQL</div>
-    <!-- duplicate for seamless loop -->
-    <div class="brutal-ticker-item"><span>⚡</span> Telegram Bot</div>
-    <div class="brutal-ticker-item"><span>◆</span> AI Ассистент</div>
-    <div class="brutal-ticker-item"><span>⚡</span> CRM Система</div>
-    <div class="brutal-ticker-item"><span>◆</span> Mini App</div>
-    <div class="brutal-ticker-item"><span>⚡</span> RAG & Vector DB</div>
-    <div class="brutal-ticker-item"><span>◆</span> FastAPI Backend</div>
-    <div class="brutal-ticker-item"><span>⚡</span> aiogram 3</div>
-    <div class="brutal-ticker-item"><span>◆</span> PostgreSQL</div>
-  </div>
-</div>
-
-
-<!-- BRUTAL: Superjet skewed section divider -->
-<div class="section-skew">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-    <polygon points="0,0 1440,0 1440,60 0,20" fill="#141414"/>
-    <line x1="0" y1="20" x2="1440" y2="60" stroke="rgba(255,92,26,0.3)" stroke-width="1.5"/>
-  </svg>
-</div>
 <!-- TECH STACK -->
 <section class="tech-stack"><div class="container"><h2 class="section-title">Технологии</h2><div class="tech-grid"><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%232AABEE' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Telegram</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%233776AB' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Python</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23336791' d='M42 13.976v20.048c0 1.444-.77 2.78-2.017 3.51L25.017 43.5c-1.247.73-2.787.73-4.034 0L8.017 37.534C6.77 36.804 6 35.468 6 34.024V13.976c0-1.444.77-2.78 2.017-3.51L22.983 4.5c1.247-.73 2.787-.73 4.034 0l14.966 8.966c1.247.73 2.017 2.066 2.017 3.51z'/%3E%3C/svg%3E" width="40"></div><span>PostgreSQL</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FF6F00' d='M4 12h40v24H4z'/%3E%3C/svg%3E" width="40"></div><span>OpenAI</span></div></div></div></section>
 
@@ -4191,47 +2838,6 @@
 <!-- SERVICES -->
 <section id="services" class="container" style="padding: 40px 0;"><h2 class="section-title">Что я делаю</h2><div class="services-grid"><div class="service-card magnetic fade-up"><div class="service-icon">💬</div><h3>Чат-боты для продаж</h3><p>Приём заказов, консультация, оплата. Интеграция с CRM.</p></div><div class="service-card magnetic fade-up"><div class="service-icon">📅</div><h3>Запись и напоминания</h3><p>Google Calendar, уведомления клиентам.</p></div><div class="service-card magnetic fade-up"><div class="service-icon">🤖</div><h3>AI-ассистенты</h3><p>RAG, обучение на базе знаний компании.</p></div></div></section>
 
-
-  <!-- BRUTAL: Web Agency 8-advantages grid (inside services) -->
-  <div class="brutal-advantages">
-    <div class="brutal-advantages-title">
-      <em>8 причин</em> выбрать botforge
-    </div>
-    <div class="brutal-adv-grid">
-      <div class="brutal-adv-card active">
-        <span class="brutal-adv-icon">&#9889;</span>
-        <div class="brutal-adv-card-title">Быстрый старт<br>за 3-5 дней</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#129504;</span>
-        <div class="brutal-adv-card-title">AI &amp; RAG<br>интеграции</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#128274;</span>
-        <div class="brutal-adv-card-title">Код передаю<br>вам полностью</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#128202;</span>
-        <div class="brutal-adv-card-title">CRM на<br>любой вкус</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#128260;</span>
-        <div class="brutal-adv-card-title">24/7 без<br>остановок</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#127760;</span>
-        <div class="brutal-adv-card-title">Telegram<br>Mini App</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#127919;</span>
-        <div class="brutal-adv-card-title">Воронки<br>продаж</div>
-      </div>
-      <div class="brutal-adv-card">
-        <span class="brutal-adv-icon">&#128172;</span>
-        <div class="brutal-adv-card-title">Поддержка<br>после сдачи</div>
-      </div>
-    </div>
-  </div>
 <!-- CRM секция -->
 <section class="container fade-up" style="padding: 0 20px 60px;">
   <div id="crm-comparison" style="background: linear-gradient(135deg, rgba(0,240,255,0.06) 0%, rgba(176,0,255,0.06) 100%); border: 1px solid rgba(0,240,255,0.2); border-radius: 24px; padding: 36px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 900px; margin: 0 auto;">
@@ -4270,12 +2876,10 @@
 
 <!-- КОНЕЦ ПЕРВОГО БЛОКА (часть 1) -->
 
-
 <!-- НАЧАЛО ПЕРВОГО БЛОКА (часть 1b) -->
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="container" style="padding: 60px 0;"><span class="section-eyebrow">Мои работы</span>
-          <h2 class="section-title">Проекты</h2><div class="filter-buttons"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="telegram">Telegram</button><button class="filter-btn" data-filter="ai">AI</button><button class="filter-btn" data-filter="miniapp">Mini App</button><button class="filter-btn" data-filter="crm">🗂 CRM</button><button class="filter-btn" data-filter="study">📚 В изучении</button></div>
+<section id="portfolio" class="container" style="padding: 60px 0;"><h2 class="section-title">Проекты</h2><div class="filter-buttons"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="telegram">Telegram</button><button class="filter-btn" data-filter="ai">AI</button><button class="filter-btn" data-filter="miniapp">Mini App</button><button class="filter-btn" data-filter="crm">🗂 CRM</button><button class="filter-btn" data-filter="study">📚 В изучении</button></div>
 
 <!-- Модалка пароля для раздела "В изучении" -->
 <div class="modal" id="modal-study-lock">
@@ -4297,103 +2901,87 @@
 <div class="portfolio-grid" id="portfolioGrid">
   <!-- Шахтёрская глубина -->
   <div class="project-card magnetic" data-category="miniapp" data-modal="game">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/VpNDtqMY/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Python · Three.js · Telegram Mini App · PostgreSQL</div>
       <h4>Шахтёрская глубина</h4>
       <p>3D-кликер с 13 боссами, крафтом, достижениями и рейтингами. Полноценная игра в Telegram.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   <!-- BeautyBook -->
   <div class="project-card magnetic" data-category="telegram crm" data-modal="beauty">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/PswcdkTZ/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · PostgreSQL · Google Calendar</div>
       <h4>BeautyBook</h4>
       <p>Полноценная система записи: Mini App, защита от овербукинга, напоминания, админ-панель.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   <!-- Quiz Trader -->
   <div class="project-card magnetic" data-category="telegram miniapp" data-modal="quiz">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/3y5bsdbQ/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · Google Sheets · PostgreSQL</div>
       <h4>Quiz Trader</h4>
       <p>Персонализированный квиз с анимациями, темами и автосохранением результатов в Google Sheets.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   
   <!-- DocuHelper Forex -->
   <div class="project-card magnetic" data-category="ai" data-modal="ai">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/Rrjmn0v/Copilot-20260503-140821.webp');"></div>
     <div class="project-content">
       <div class="project-tag">AI · RAG · Telegram Mini App</div>
       <h4>DocuHelper Forex</h4>
       <p>Умный консультант на базе ваших документов. Отвечает на вопросы по Форекс, трейдингу и аналитике — быстро, точно, 24/7.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- DocuHelper Mini App -->
   <div class="project-card magnetic" data-category="ai miniapp" data-modal="docuhelper-mini">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/twhfpCt4/Copilot-2.png');"></div>
     <div class="project-content">
       <div class="project-tag">AI · RAG · Telegram Mini App · pgvector · Cohere</div>
       <h4>DocuHelper Mini App</h4>
       <p>AI‑консультант по трейдингу с чат‑интерфейсом. Гибридный поиск, быстрые вопросы, источник и похожесть ответа.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- ShopBot (исправленная карточка) -->
   <div class="project-card magnetic" data-category="telegram crm" data-modal="shop">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co/WN2xQj7Q/Copilot-20260513-223058.png');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · ЮKassa · PostgreSQL · Render</div>
       <h4>ShopBot</h4>
       <p>Полноценный интернет-магазин в Telegram: каталог, корзина, оплата через ЮKassa, админ‑панель и отчёты в Google Sheets.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
 
   <div class="project-card magnetic" data-category="telegram miniapp crm" data-modal="realty">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/ynbQ14D7/1.png');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · FastAPI · PostgreSQL</div>
       <h4>RealtyBotCRM</h4>
       <p>Полноценная CRM для агентств недвижимости: бот с мини-аппом, воронка продаж, ИИ-оценка объектов и аналитика в реальном времени.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- BookingBot CRM -->
   <div class="project-card magnetic" data-category="telegram miniapp crm" data-modal="bookingbot">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background: linear-gradient(135deg, #1a0a2e 0%, #0d1f3c 50%, #0a2a1a 100%); display:flex; align-items:center; justify-content:center; font-size:48px;">💆‍♀️</div>
     <div class="project-content">
       <div class="project-tag">Python · aiogram 3 · Mini App · PostgreSQL · ЮКасса</div>
       <h4>BookingBot CRM</h4>
       <p>Система онлайн-записи для салона красоты: Mini App для клиентов, CRM-панель в браузере, оплата через ЮКасса и напоминания.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
@@ -4401,35 +2989,29 @@
 
   <!-- EncarBot -->
   <div class="project-card magnetic" data-category="telegram" data-modal="encar">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/JRdpk1KS/Copilot-20260627-001754.png');"></div>
     <div class="project-content">
       <div class="project-tag">Python · aiogram 3 · Telegram · Encar API</div>
       <h4>EncarBot</h4>
       <p>Калькулятор авто из Кореи под ключ: таможня для РФ и КЗ, живой курс воны, поиск на Encar.com за 10 секунд.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
 
   <!-- VoiceBot -->
   <div class="project-card magnetic" data-category="ai telegram miniapp" data-modal="voicebot">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/23S30NbV/154.png');"></div>
     <div class="project-content">
       <div class="project-tag">AI · Python · aiogram 3 · ElevenLabs · Mini App · PostgreSQL</div>
       <h4>VoiceBot — Алиса</h4>
       <p>Голосовой AI-ассистент: говори — отвечу голосом. STT, TTS, память пользователя, анализ фото и документов.</p>
       <span class="project-link">Подробнее →</span>
-      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
-  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-instagram">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div><div class="project-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3ClinearGradient%20id%3D%22ig%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD600%22%2F%3E%3Cstop%20offset%3D%220.3%22%20stop-color%3D%22%23FF0069%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22%23D300C5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237638FA%22%2F%3E%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3C%21--%20Instagram%20logo%20--%3E%20%3Crect%20x%3D%22222%22%20y%3D%22122%22%20width%3D%22156%22%20height%3D%22156%22%20rx%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2212%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2246%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2210%22%2F%3E%20%3Ccircle%20cx%3D%22352%22%20cy%3D%22150%22%20r%3D%2210%22%20fill%3D%22url%28%23ig%29%22%2F%3E%20%3C%21--%20DM%20arrow%20indicating%20direct%20message%20--%3E%20%3Cpath%20d%3D%22M258%20270%20L300%20240%20L342%20270%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M300%20240%20L300%20310%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="project-content"><div class="project-tag">Instagram · Meta Graph API · 📚 В изучении</div><h4>Instagram Lead Bot</h4><p>Автоответы в Direct, Comment-to-DM воронки и передача заявок в CRM через официальный Meta API.</p><span class="project-link">Подробнее →</span></div></div>
-  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-crm">
-        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div><div class="project-thumb" style="background-image: url('https://placehold.co/600x400/7B61FF/white?text=CRM+Lead+Bot');"></div><div class="project-content"><div class="project-tag">amoCRM · Bitrix24 · 📚 В изучении</div><h4>Lead Converter</h4><p>Квалификация лидов и автоматическое создание сделок в CRM.</p><span class="project-link">Подробнее →</span></div></div>
+  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-instagram"><div class="project-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3ClinearGradient%20id%3D%22ig%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD600%22%2F%3E%3Cstop%20offset%3D%220.3%22%20stop-color%3D%22%23FF0069%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22%23D300C5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237638FA%22%2F%3E%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3C%21--%20Instagram%20logo%20--%3E%20%3Crect%20x%3D%22222%22%20y%3D%22122%22%20width%3D%22156%22%20height%3D%22156%22%20rx%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2212%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2246%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2210%22%2F%3E%20%3Ccircle%20cx%3D%22352%22%20cy%3D%22150%22%20r%3D%2210%22%20fill%3D%22url%28%23ig%29%22%2F%3E%20%3C%21--%20DM%20arrow%20indicating%20direct%20message%20--%3E%20%3Cpath%20d%3D%22M258%20270%20L300%20240%20L342%20270%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M300%20240%20L300%20310%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="project-content"><div class="project-tag">Instagram · Meta Graph API · 📚 В изучении</div><h4>Instagram Lead Bot</h4><p>Автоответы в Direct, Comment-to-DM воронки и передача заявок в CRM через официальный Meta API.</p><span class="project-link">Подробнее →</span></div></div>
+  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-crm"><div class="project-thumb" style="background-image: url('https://placehold.co/600x400/7B61FF/white?text=CRM+Lead+Bot');"></div><div class="project-content"><div class="project-tag">amoCRM · Bitrix24 · 📚 В изучении</div><h4>Lead Converter</h4><p>Квалификация лидов и автоматическое создание сделок в CRM.</p><span class="project-link">Подробнее →</span></div></div>
 </div>
 
 <div class="blog-more-wrapper">
@@ -5272,8 +3854,7 @@ function switchBookingTab(tab, btn) {
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="container" style="padding: 60px 0;">
-  <span class="section-eyebrow">Отзывы клиентов</span>
-          <h2 class="section-title" style="text-align:center;">Отзывы клиентов</h2>
+  <h2 class="section-title" style="text-align:center;">Отзывы клиентов</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card magnetic fade-up"><div class="testimonial-header"><div class="testimonial-avatar"><div class="testimonial-avatar-inner">АК</div></div><div class="testimonial-info"><h4>Анна К.</h4><p>Владелец салона</p></div></div><div class="testimonial-text">«Бот сэкономил кучу времени. Клиенты довольны!»</div><div class="stars">★★★★★</div></div>
     <div class="testimonial-card magnetic fade-up"><div class="testimonial-header"><div class="testimonial-avatar"><div class="testimonial-avatar-inner">МЛ</div></div><div class="testimonial-info"><h4>Михаил Л.</h4><p>IT-отдел</p></div></div><div class="testimonial-text">«AI-бот отвечает на вопросы сотрудников мгновенно.»</div><div class="stars">★★★★★</div></div>
@@ -5283,25 +3864,17 @@ function switchBookingTab(tab, btn) {
 
 <!-- BLOG (сетка карточек) -->
 <section id="blog" class="container" style="padding: 60px 0;">
-  <span class="section-eyebrow">Полезное</span>
-          <h2 class="section-title" style="text-align:center;">Блог и советы</h2>
+  <h2 class="section-title" style="text-align:center;">Блог и советы</h2>
   <div class="blog-grid" id="blogGrid">
-    <div class="blog-card magnetic fade-up" data-modal="blog1"><div class="blog-cat-chip">Кейс</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310243a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%223%22%20opacity%3D%220.7%22%3E%20%3Cline%20x1%3D%22180%22%20y1%3D%22120%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22200%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22280%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%20%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22140%22%2F%3E%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22260%22%2F%3E%3C%2Fg%3E%20%3Cg%20fill%3D%22%230A0A18%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%224%22%3E%20%3Ccircle%20cx%3D%22180%22%20cy%3D%22120%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22200%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22280%22%20r%3D%2215%22%2F%3E%20%3Ccircle%20cx%3D%22420%22%20cy%3D%22140%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22260%22%20r%3D%2215%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%224%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как AI меняет чат-ботов в 2026</h4><p>RAG, мультимодальные модели и автономные агенты — что действительно работает уже сегодня.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up" data-modal="blog2"><div class="blog-cat-chip">Гайд</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%20%3Cpath%20d%3D%22M185%20150%20H215%20L252%20200%22%2F%3E%3Cpath%20d%3D%22M252%20200%20H452%20L420%20282%20H285%20Z%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22312%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Запуск магазина в Telegram: пошаговое руководство</h4><p>От идеи до первого заказа — как создать бота-магазин с оплатой через ЮKassa.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up" data-modal="blog3"><div class="blog-cat-chip">Инструменты</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22106%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3C%2Fg%3E%20%3Cpath%20d%3D%22M200%20150%20H400%20L322%20238%20V300%20H278%20V238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22332%22%20r%3D%2213%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Интеграция бота с CRM: amoCRM и Bitrix24</h4><p>Как автоматически передавать лиды из Telegram в вашу CRM и не потерять ни одной заявки.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog4"><div class="blog-cat-chip">Опыт</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cpath%20d%3D%22M300%20108%20L402%20144%20V214%20C402%20272%20356%20302%20300%20322%20C244%20302%20198%20272%20198%20214%20V144%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2222%22%20fill%3D%22%2300F0FF%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22212%22%20width%3D%2218%22%20height%3D%2244%22%20rx%3D%227%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Безопасность Telegram-ботов: как защитить данные клиентов</h4><p>Простые правила, которые спасут вас от утечек и штрафов.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog5"><div class="blog-cat-chip">AI</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a1a2e%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%232AABEE%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%232AABEE%22%3E%20%3Crect%20x%3D%22175%22%20y%3D%22252%22%20width%3D%2242%22%20height%3D%2278%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%2242%22%20height%3D%22118%22%20rx%3D%226%22%2F%3E%20%3Crect%20x%3D%22301%22%20y%3D%22232%22%20width%3D%2242%22%20height%3D%2298%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22364%22%20y%3D%22172%22%20width%3D%2242%22%20height%3D%22158%22%20rx%3D%226%22%2F%3E%3C%2Fg%3E%20%3Cpolyline%20points%3D%22190%2C248%20255%2C198%20318%2C218%20388%2C150%20450%2C118%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M450%20118%20L424%20124%20M450%20118%20L444%20144%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3Cline%20x1%3D%22160%22%20y1%3D%22332%22%20x2%3D%22470%22%20y2%3D%22332%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%225%22%20opacity%3D%220.5%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Аналитика в ботах: что отслеживать и как увеличить конверсию</h4><p>Какие метрики важны и как их использовать для роста продаж.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog6"><div class="blog-cat-chip">Разработка</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Crect%20x%3D%22232%22%20y%3D%2286%22%20width%3D%22136%22%20height%3D%22228%22%20rx%3D%2224%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%229%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Crect%20x%3D%22255%22%20y%3D%22118%22%20width%3D%2290%22%20height%3D%2214%22%20rx%3D%227%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%22146%22%20width%3D%2266%22%20height%3D%2210%22%20rx%3D%225%22%20opacity%3D%220.6%22%2F%3E%3C%2Fg%3E%20%3Crect%20x%3D%22255%22%20y%3D%22176%22%20width%3D%2290%22%20height%3D%2258%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%225%22%2F%3E%20%3Cpath%20d%3D%22M288%20198%20L312%20205%20L288%20212%20Z%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22290%22%20r%3D%229%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Telegram Mini Apps: что это и зачем они вашему бизнесу</h4><p>Как заменить мобильное приложение на WebApp внутри Telegram.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog7"><div class="blog-cat-chip">Кейс</div>
-      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke-linejoin%3D%22round%22%3E%20%3Cpath%20d%3D%22M300%20244%20L420%20286%20L300%20328%20L180%20286%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20196%20L420%20238%20L300%20280%20L180%20238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20148%20L420%20190%20L300%20232%20L180%20190%20Z%22%20fill%3D%22%230d2a22%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%2F%3E%3C%2Fg%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как выбрать стек для бота: конструктор vs кастомная разработка</h4><p>Сравнение подходов: когда хватит Salebot, а когда нужен Python.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog1"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310243a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%223%22%20opacity%3D%220.7%22%3E%20%3Cline%20x1%3D%22180%22%20y1%3D%22120%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22200%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22280%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%20%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22140%22%2F%3E%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22260%22%2F%3E%3C%2Fg%3E%20%3Cg%20fill%3D%22%230A0A18%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%224%22%3E%20%3Ccircle%20cx%3D%22180%22%20cy%3D%22120%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22200%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22280%22%20r%3D%2215%22%2F%3E%20%3Ccircle%20cx%3D%22420%22%20cy%3D%22140%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22260%22%20r%3D%2215%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%224%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как AI меняет чат-ботов в 2026</h4><p>RAG, мультимодальные модели и автономные агенты — что действительно работает уже сегодня.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog2"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%20%3Cpath%20d%3D%22M185%20150%20H215%20L252%20200%22%2F%3E%3Cpath%20d%3D%22M252%20200%20H452%20L420%20282%20H285%20Z%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22312%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Запуск магазина в Telegram: пошаговое руководство</h4><p>От идеи до первого заказа — как создать бота-магазин с оплатой через ЮKassa.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog3"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22106%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3C%2Fg%3E%20%3Cpath%20d%3D%22M200%20150%20H400%20L322%20238%20V300%20H278%20V238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22332%22%20r%3D%2213%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Интеграция бота с CRM: amoCRM и Bitrix24</h4><p>Как автоматически передавать лиды из Telegram в вашу CRM и не потерять ни одной заявки.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog4"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cpath%20d%3D%22M300%20108%20L402%20144%20V214%20C402%20272%20356%20302%20300%20322%20C244%20302%20198%20272%20198%20214%20V144%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2222%22%20fill%3D%22%2300F0FF%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22212%22%20width%3D%2218%22%20height%3D%2244%22%20rx%3D%227%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Безопасность Telegram-ботов: как защитить данные клиентов</h4><p>Простые правила, которые спасут вас от утечек и штрафов.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog5"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a1a2e%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%232AABEE%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%232AABEE%22%3E%20%3Crect%20x%3D%22175%22%20y%3D%22252%22%20width%3D%2242%22%20height%3D%2278%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%2242%22%20height%3D%22118%22%20rx%3D%226%22%2F%3E%20%3Crect%20x%3D%22301%22%20y%3D%22232%22%20width%3D%2242%22%20height%3D%2298%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22364%22%20y%3D%22172%22%20width%3D%2242%22%20height%3D%22158%22%20rx%3D%226%22%2F%3E%3C%2Fg%3E%20%3Cpolyline%20points%3D%22190%2C248%20255%2C198%20318%2C218%20388%2C150%20450%2C118%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M450%20118%20L424%20124%20M450%20118%20L444%20144%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3Cline%20x1%3D%22160%22%20y1%3D%22332%22%20x2%3D%22470%22%20y2%3D%22332%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%225%22%20opacity%3D%220.5%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Аналитика в ботах: что отслеживать и как увеличить конверсию</h4><p>Какие метрики важны и как их использовать для роста продаж.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog6"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Crect%20x%3D%22232%22%20y%3D%2286%22%20width%3D%22136%22%20height%3D%22228%22%20rx%3D%2224%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%229%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Crect%20x%3D%22255%22%20y%3D%22118%22%20width%3D%2290%22%20height%3D%2214%22%20rx%3D%227%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%22146%22%20width%3D%2266%22%20height%3D%2210%22%20rx%3D%225%22%20opacity%3D%220.6%22%2F%3E%3C%2Fg%3E%20%3Crect%20x%3D%22255%22%20y%3D%22176%22%20width%3D%2290%22%20height%3D%2258%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%225%22%2F%3E%20%3Cpath%20d%3D%22M288%20198%20L312%20205%20L288%20212%20Z%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22290%22%20r%3D%229%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Telegram Mini Apps: что это и зачем они вашему бизнесу</h4><p>Как заменить мобильное приложение на WebApp внутри Telegram.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog7"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke-linejoin%3D%22round%22%3E%20%3Cpath%20d%3D%22M300%20244%20L420%20286%20L300%20328%20L180%20286%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20196%20L420%20238%20L300%20280%20L180%20238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20148%20L420%20190%20L300%20232%20L180%20190%20Z%22%20fill%3D%22%230d2a22%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%2F%3E%3C%2Fg%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как выбрать стек для бота: конструктор vs кастомная разработка</h4><p>Сравнение подходов: когда хватит Salebot, а когда нужен Python.</p><span class="blog-link">Читать →</span></div></div>
   </div>
-  <div class="blog-more-wrapper"><button class="btn-show-more" id="showMoreBlogBtn"><span class="btn-text">Показать ещё статьи</span> <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button></div>
+  <div class="blog-more-wrapper"><button class="btn-show-more" id="showMoreBlogBtn">Показать ещё статьи <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button></div>
 </section>
 
 <!-- КОНЕЦ ПЕРВОГО БЛОКА (часть 1) -->
@@ -5460,8 +4033,7 @@ function switchBookingTab(tab, btn) {
 
 <!-- PROCESS -->
 <section id="process" class="container" style="padding: 40px 0;">
-  <span class="section-eyebrow">Как мы работаем</span>
-          <h2 class="section-title">Как я работаю</h2>
+  <h2 class="section-title">Как я работаю</h2>
   <div class="process-steps">
     <div class="step magnetic fade-up"><span class="step-icon">🔍</span><div class="step-num">01</div><h4>Анализ</h4><p>Изучаю задачу, готовлю ТЗ</p></div>
     <div class="step magnetic fade-up"><span class="step-icon">📐</span><div class="step-num">02</div><h4>Проектирование</h4><p>Сценарии, архитектура</p></div>
@@ -5472,8 +4044,7 @@ function switchBookingTab(tab, btn) {
 
 <!-- FAQ -->
 <section id="faq" class="container" style="padding: 60px 0;">
-  <span class="section-eyebrow">FAQ</span>
-          <h2 class="section-title" style="text-align:center;">Часто задаваемые вопросы</h2>
+  <h2 class="section-title" style="text-align:center;">Часто задаваемые вопросы</h2>
   <div class="faq-grid">
     <div class="faq-item magnetic fade-up"><div class="faq-question"><span>❓</span> Сколько стоит разработка?<span class="faq-icon">+</span></div><div class="faq-answer">От 40 000 ₽ за простого бота, от 90 000 ₽ за комплексное решение с AI и интеграциями. Точная смета — после уточнения задачи.</div></div>
     <div class="faq-item magnetic fade-up"><div class="faq-question"><span>🔒</span> Кому принадлежит код?<span class="faq-icon">+</span></div><div class="faq-answer">После полной оплаты — вам. Передаю исключительные права и исходный код.</div></div>
@@ -6547,162 +5118,385 @@ function switchBookingTab(tab, btn) {
 
 <script>
 (function() {
-  // ============================================================
-  // LIVECHAT — статический режим (без бэкенда)
-  // Открывает чат → показывает welcome → кнопка в Telegram
-  // ============================================================
-  const TG_URL     = 'https://t.me/Bro_piton?text=Здравствуйте! Хочу обсудить проект.';
-  const toggle     = document.getElementById('livechatToggle');
-  const panel      = document.getElementById('livechatPanel');
-  const body       = document.getElementById('livechatBody');
-  const badge      = document.getElementById('livechatBadge');
-  const closeBtn   = document.getElementById('livechatClose');
-  const input      = document.getElementById('livechatInput');
-  const sendBtn    = document.getElementById('livechatSend');
+  // ⚠️ ПОДСТАВЬ СЮДА АДРЕС СВОЕГО BACKEND ПОСЛЕ ДЕПЛОЯ НА RENDER
+  const BACKEND_URL = 'https://helper-jj9j.onrender.com';
 
-  if (!toggle || !panel) return;
+  const toggle    = document.getElementById('livechatToggle');
+  const panel     = document.getElementById('livechatPanel');
+  const body      = document.getElementById('livechatBody');
+  const badge     = document.getElementById('livechatBadge');
+  const input     = document.getElementById('livechatInput');
+  const sendBtn   = document.getElementById('livechatSend');
+  const escalateBtn = document.getElementById('livechatEscalate');
+  const statusEl  = document.getElementById('livechatStatus');
+  const resetBtn  = document.getElementById('livechatReset');
+  const leadBtn   = document.getElementById('livechatLeadBtn');
+  const leadForm  = document.getElementById('livechatLeadForm');
+  const leadName  = document.getElementById('livechatLeadName');
+  const leadContact = document.getElementById('livechatLeadContact');
+  const leadError = document.getElementById('livechatLeadError');
+  const leadSubmit = document.getElementById('livechatLeadSubmit');
 
-  let isOpen    = false;
-  let welcomed  = false;
-  let tgShown   = false;
-
-  // ---- helpers ----
-  function scrollToBottom() {
-    if (body) body.scrollTop = body.scrollHeight;
+  function validateContact(value) {
+    const v = value.trim();
+    if (!v) return 'Введите номер телефона или @username';
+    if (v.startsWith('@')) {
+      // Telegram username: @ + минимум 5 символов, только буквы/цифры/подчёркивание
+      if (!/^@[a-zA-Z0-9_]{3,}$/.test(v)) {
+        return 'Telegram @username должен содержать минимум 3 символа (буквы, цифры, _)';
+      }
+      return null; // ок
+    }
+    // Телефон: извлекаем только цифры (без +, пробелов, скобок, тире)
+    const digits = v.replace(/\D/g, '');
+    if (digits.length < 10) {
+      return 'Введите полный номер телефона (минимум 10 цифр) с кодом страны, например +7 999 123 45 67';
+    }
+    return null; // ок
   }
 
-  function addMsg(text, sender) {
-    if (!body) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'lc-msg ' + (sender === 'visitor' ? 'lc-msg--visitor' : 'lc-msg--agent');
-    wrap.innerHTML = '<div class="lc-bubble">' + text + '</div>';
-    body.appendChild(wrap);
-    scrollToBottom();
+  if (!toggle) return;
+
+  function getOrCreateSessionId() {
+    let id = localStorage.getItem('botforge_chat_session');
+    if (!id) {
+      id = (crypto.randomUUID ? crypto.randomUUID() : 'sess-' + Date.now() + '-' + Math.random().toString(16).slice(2));
+      localStorage.setItem('botforge_chat_session', id);
+    }
+    return id;
+  }
+
+  let sessionId = getOrCreateSessionId();
+  let lastId = 0;
+  let isOpen = false;
+  let unread = 0;
+  let started = false;
+  let userToggled = false;
+  let visitorMsgCount = 0;
+  let leadSuggested = false;
+
+  function cleanMarkdown(text) {
+    return text
+      .replace(/^\s*\*\s+/gm, '• ')      // "* пункт" -> "• пункт"
+      .replace(/\*\*(.*?)\*\*/g, '$1')   // **жирный** -> жирный
+      .replace(/(^|\n)#+\s*/g, '$1');    // убираем markdown-заголовки
+  }
+
+  function formatTimeMSK(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleTimeString('ru-RU', { timeZone: 'Europe/Moscow', hour: '2-digit', minute: '2-digit' }) + ' МСК';
+    } catch (e) { return ''; }
+  }
+
+  function linkify(text) {
+    // Делаем t.me/... ссылки кликабельными прямо в чате
+    return text.replace(/(https?:\/\/t\.me\/[^\s,;)]+)/g, (url) => {
+      const name = url.replace('https://t.me/', '@');
+      return `\x01${url}\x02${name}\x03`;
+    });
+  }
+
+  function renderMessage(m) {
+    const div = document.createElement('div');
+    div.className = 'livechat-msg lc-' + m.sender;
+    if (m.sender === 'admin') {
+      const tag = document.createElement('span');
+      tag.className = 'livechat-tag';
+      tag.textContent = 'Владислав';
+      div.appendChild(tag);
+    }
+    const cleanedText = (m.sender === 'ai') ? cleanMarkdown(m.text) : m.text;
+    if (m.sender === 'ai' && cleanedText.includes('\x01')) {
+      // Есть ссылки — парсим вручную
+      const parts = linkify(cleanedText).split(/(\x01[^\x03]+\x03)/);
+      parts.forEach(part => {
+        const match = part.match(/\x01([^\x02]+)\x02([^\x03]+)\x03/);
+        if (match) {
+          const a = document.createElement('a');
+          a.href = match[1]; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = match[2];
+          a.style.cssText = 'color:var(--lc-accent,var(--accent,#00F0FF));text-decoration:underline;';
+          div.appendChild(a);
+        } else {
+          div.appendChild(document.createTextNode(part));
+        }
+      });
+    } else {
+      div.appendChild(document.createTextNode(cleanedText));
+    }
+    if (m.created_at && m.sender !== 'system') {
+      const time = document.createElement('span');
+      time.className = 'livechat-time';
+      time.textContent = formatTimeMSK(m.created_at);
+      div.appendChild(time);
+    }
+    body.appendChild(div);
+    if (m.id > lastId) lastId = m.id;
+  }
+
+  function scrollToBottom() {
+    body.scrollTop = body.scrollHeight;
   }
 
   function showTyping() {
-    if (!body) return;
+    if (document.getElementById('livechatTyping')) return;
     const t = document.createElement('div');
-    t.className = 'lc-msg lc-msg--agent lc-typing-wrap';
-    t.innerHTML = '<div class="lc-bubble lc-typing"><span></span><span></span><span></span></div>';
+    t.className = 'livechat-typing';
+    t.id = 'livechatTyping';
+    t.innerHTML = '<span></span><span></span><span></span>';
     body.appendChild(t);
     scrollToBottom();
-    return t;
   }
 
-  function showTgButton() {
-    if (tgShown || !body) return;
-    tgShown = true;
+  function hideTyping() {
+    const t = document.getElementById('livechatTyping');
+    if (t) t.remove();
+  }
+
+  const QUICK_REPLIES = [
+    { label: '🎮 Какие проекты?', text: 'Какие у вас есть проекты?' },
+    { label: '💰 Сколько стоит?', text: 'Сколько стоит разработка?' },
+    { label: '⏱ Какие сроки?', text: 'Какие сроки разработки?' },
+  ];
+
+  function renderQuickReplies() {
     const wrap = document.createElement('div');
-    wrap.className = 'lc-msg lc-msg--agent';
-    wrap.innerHTML = `
-      <div class="lc-bubble" style="padding:0;overflow:hidden;background:transparent;border:none;box-shadow:none;">
-        <a href="${TG_URL}" target="_blank" rel="noopener"
-           style="display:flex;align-items:center;gap:10px;padding:12px 16px;
-                  background:linear-gradient(135deg,#229ED9,#1a8bbf);
-                  border-radius:12px;color:#fff;text-decoration:none;font-weight:700;font-size:13px;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.04 9.608c-.15.672-.548.836-1.11.52l-3.07-2.262-1.482 1.427c-.164.164-.3.3-.616.3l.22-3.11 5.666-5.116c.246-.22-.054-.34-.383-.12L7.34 13.84l-3.024-.944c-.657-.206-.672-.657.137-.973l11.822-4.558c.548-.198 1.027.134.287.883z"/>
-          </svg>
-          Написать в Telegram
-        </a>
-      </div>`;
+    wrap.className = 'livechat-quickreplies';
+    wrap.id = 'livechatQuickReplies';
+    QUICK_REPLIES.forEach(qr => {
+      const btn = document.createElement('button');
+      btn.className = 'livechat-qr-btn';
+      btn.textContent = qr.label;
+      btn.addEventListener('click', () => {
+        wrap.remove();
+        input.value = qr.text;
+        sendMessage();
+      });
+      wrap.appendChild(btn);
+    });
     body.appendChild(wrap);
     scrollToBottom();
   }
 
-  // ---- welcome sequence ----
-  function showWelcome() {
-    if (welcomed) return;
-    welcomed = true;
-    badge.classList.remove('show');
-
-    setTimeout(() => {
-      const typing = showTyping();
-      setTimeout(() => {
-        typing.remove();
-        addMsg('Привет! 👋 Я Гриша, разработчик Telegram-ботов и AI-ассистентов.', 'agent');
-        setTimeout(() => {
-          const t2 = showTyping();
-          setTimeout(() => {
-            t2.remove();
-            addMsg('Расскажите о вашем проекте — отвечу в течение дня. Для быстрой связи нажмите кнопку ниже 👇', 'agent');
-            showTgButton();
-          }, 1200);
-        }, 600);
-      }, 1200);
-    }, 400);
+  function maybeSuggestLead() {
+    if (leadSuggested || visitorMsgCount < 3) return;
+    leadSuggested = true;
+    renderMessage({
+      id: ++lastId, sender: 'system',
+      text: 'Хотите, чтобы Владислав сам вам написал? Оставьте контакт кнопкой ниже 👇'
+    });
+    scrollToBottom();
   }
 
-  // ---- toggle open/close ----
-  function openChat() {
-    isOpen = true;
-    panel.classList.add('open');
-    toggle.classList.add('active');
-    showWelcome();
-    if (input) setTimeout(() => input.focus(), 300);
+  async function startSession() {
+    if (started) return;
+    started = true;
+    try {
+      await fetch(BACKEND_URL + '/api/chat/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId })
+      });
+    } catch (e) { console.error('livechat start error', e); }
+    await poll();
+    if (body.children.length <= 1) renderQuickReplies();
   }
 
-  function closeChat() {
-    isOpen = false;
-    panel.classList.remove('open');
-    toggle.classList.remove('active');
+  async function poll() {
+    try {
+      const res = await fetch(BACKEND_URL + '/api/chat/messages?session_id=' + encodeURIComponent(sessionId) + '&after=' + lastId);
+      const data = await res.json();
+      if (data.messages && data.messages.length) {
+        // Фильтруем сообщения посетителя из поллинга — они уже показаны локально при отправке
+        const newMsgs = data.messages.filter(m => m.sender !== 'visitor');
+        newMsgs.forEach(renderMessage);
+        if (newMsgs.length) {
+          scrollToBottom();
+        }
+        // lastId обновляем по ВСЕМ сообщениям (включая visitor), чтобы не терять позицию
+        data.messages.forEach(m => { if (m.id > lastId) lastId = m.id; });
+        if (!isOpen) {
+          unread += newMsgs.filter(m => m.sender !== 'visitor').length;
+          if (unread > 0) {
+            badge.textContent = unread > 9 ? '9+' : unread;
+            badge.classList.add('show');
+          }
+        }
+      }
+    } catch (e) { console.error('livechat poll error', e); }
   }
 
-  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
-  if (closeBtn) closeBtn.addEventListener('click', closeChat);
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (isOpen && !panel.contains(e.target) && !toggle.contains(e.target)) closeChat();
-  });
-
-  // ---- send message (local only + show TG button) ----
-  function handleSend() {
-    const text = input ? input.value.trim() : '';
+  async function sendMessage() {
+    const text = input.value.trim();
     if (!text) return;
     input.value = '';
-    addMsg(text, 'visitor');
+    const qr = document.getElementById('livechatQuickReplies');
+    if (qr) qr.remove();
 
-    // After user types → show typing then nudge to Telegram
-    setTimeout(() => {
-      const t = showTyping();
-      setTimeout(() => {
-        t.remove();
-        if (!tgShown) {
-          addMsg('Спасибо! Напишите мне в Telegram — там отвечу быстрее всего 👇', 'agent');
-          showTgButton();
-        } else {
-          addMsg('Жду вас в Telegram! 🙌', 'agent');
-        }
-      }, 1000);
-    }, 400);
-  }
+    renderMessage({ id: ++lastId, sender: 'visitor', text, created_at: new Date().toISOString() });
+    scrollToBottom();
+    visitorMsgCount++;
 
-  if (sendBtn) sendBtn.addEventListener('click', handleSend);
-  if (input) {
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
-    });
-  }
-
-  // ---- proactive badge after 8s ----
-  setTimeout(() => {
-    if (!isOpen) {
-      badge.textContent = '1';
-      badge.classList.add('show');
+    showTyping();
+    try {
+      await fetch(BACKEND_URL + '/api/chat/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, text })
+      });
+      await poll();
+    } catch (e) {
+      console.error('livechat send error', e);
     }
-  }, 8000);
+    hideTyping();
+    maybeSuggestLead();
+  }
 
-  // ---- quick replies (если есть в HTML) ----
-  document.querySelectorAll('.lc-qr-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!isOpen) openChat();
-      const qText = btn.textContent.trim();
-      setTimeout(() => { if (input) { input.value = qText; handleSend(); } }, 300);
+  async function escalate() {
+    escalateBtn.disabled = true;
+    escalateBtn.textContent = '↗️ Открываю...';
+
+    const lines = [];
+    body.querySelectorAll('.livechat-msg').forEach(el => {
+      if (el.classList.contains('lc-system')) return;
+      const who = el.classList.contains('lc-visitor') ? 'Клиент' : 'AI-ассистент';
+      const text = el.textContent.replace('Владислав', '').trim();
+      if (text) lines.push(who + ': ' + text);
     });
+    const summary = lines.slice(-6).join('\n');
+    const message = 'Здравствуйте! Пишу с сайта через AI-чат.\n\n' + summary;
+
+    const tgLink = 'https://t.me/Bro_piton?text=' + encodeURIComponent(message);
+    window.open(tgLink, '_blank');
+
+    statusEl.textContent = 'Чат открыт в Telegram у @Bro_piton';
+    escalateBtn.textContent = '✅ В Telegram';
+
+    try {
+      await fetch(BACKEND_URL + '/api/chat/escalate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId })
+      });
+    } catch (e) { /* не критично — чат у клиента уже открыт */ }
+  }
+
+  async function submitLead() {
+    const name = (leadName ? leadName.value.trim() : '');
+    const contactRaw = (leadContact ? leadContact.value.trim() : '');
+
+    // Сброс ошибки
+    if (leadError) leadError.style.display = 'none';
+
+    if (!name) {
+      if (leadName) { leadName.focus(); leadName.style.borderColor = '#FF4D6D'; }
+      return;
+    }
+    leadName.style.borderColor = '';
+
+    const contactErr = validateContact(contactRaw);
+    if (contactErr) {
+      if (leadError) { leadError.textContent = contactErr; leadError.style.display = 'block'; }
+      if (leadContact) { leadContact.focus(); leadContact.style.borderColor = '#FF4D6D'; }
+      return;
+    }
+    if (leadContact) leadContact.style.borderColor = '';
+
+    const combined = `${name} — ${contactRaw}`;
+    leadSubmit.disabled = true;
+    leadSubmit.textContent = '...';
+    try {
+      await fetch(BACKEND_URL + '/api/chat/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, contact: combined })
+      });
+      leadForm.classList.remove('show');
+      if (leadName) leadName.value = '';
+      if (leadContact) leadContact.value = '';
+      if (leadError) leadError.style.display = 'none';
+      await poll();
+    } catch (e) {
+      console.error('livechat lead error', e);
+    }
+    leadSubmit.disabled = false;
+    leadSubmit.textContent = 'Отправить';
+  }
+
+  function resetChat() {
+    if (!confirm('Начать новый чат? История текущего разговора будет скрыта.')) return;
+    localStorage.removeItem('botforge_chat_session');
+    sessionId = getOrCreateSessionId();
+    body.innerHTML = '';
+    lastId = 0;
+    started = false;
+    visitorMsgCount = 0;
+    leadSuggested = false;
+    statusEl.textContent = 'Отвечаю 24/7 · можно позвать Владислава';
+    escalateBtn.disabled = false;
+    escalateBtn.textContent = '📞 Позвать человека';
+    leadForm.classList.remove('show');
+    startSession();
+  }
+
+  function openPanel() {
+    isOpen = true;
+    panel.classList.add('open');
+    toggle.classList.add('open');
+    unread = 0;
+    badge.classList.remove('show');
+    startSession();
+  }
+
+  toggle.addEventListener('click', () => {
+    userToggled = true;
+    isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    if (isOpen) {
+      unread = 0;
+      badge.classList.remove('show');
+      startSession();
+      setTimeout(() => input.focus(), 150);
+    }
   });
 
+  sendBtn.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+  escalateBtn.addEventListener('click', escalate);
+  resetBtn.addEventListener('click', resetChat);
+  leadBtn.addEventListener('click', () => {
+    leadForm.classList.toggle('show');
+    if (leadForm.classList.contains('show') && leadName) leadName.focus();
+  });
+  leadSubmit.addEventListener('click', submitLead);
+  if (leadContact) {
+    leadContact.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitLead(); });
+    leadContact.addEventListener('input', () => {
+      if (leadError) leadError.style.display = 'none';
+      leadContact.style.borderColor = '';
+    });
+  }
+
+  // Опрос новых сообщений (например, история после "Начать заново" на другой вкладке)
+  setInterval(poll, 4000);
+
+  // ===== Проактивное открытие чата (один раз за вкладку) =====
+  if (!sessionStorage.getItem('livechat_auto_opened')) {
+    const tryAutoOpen = () => {
+      if (userToggled || isOpen) return;
+      sessionStorage.setItem('livechat_auto_opened', '1');
+      openPanel();
+    };
+    setTimeout(tryAutoOpen, 25000);
+    const portfolioEl = document.getElementById('portfolio');
+    if (portfolioEl && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { tryAutoOpen(); io.disconnect(); } });
+      }, { threshold: 0.3 });
+      io.observe(portfolioEl);
+    }
+  }
 })();
 </script>
 <!-- ===== КОНЕЦ ЖИВОГО AI-ЧАТА ===== -->
@@ -6977,31 +5771,5 @@ function switchBookingTab(tab, btn) {
   })();
 </script>
 
-
-<script>
-// STYLE TOGGLE (neon / brutal-orange)
-(function() {
-  var html = document.documentElement;
-  var btn  = document.getElementById('styleToggle');
-  if (!btn) return;
-  var saved = localStorage.getItem('siteStyle') || 'neon';
-  html.setAttribute('data-style', saved);
-
-  function setTitle(style) {
-    btn.title = style === 'brutal'
-      ? 'Переключить на неон-стиль'
-      : 'Переключить на оранжевый стиль';
-  }
-  setTitle(saved);
-
-  btn.addEventListener('click', function() {
-    var cur  = html.getAttribute('data-style') || 'neon';
-    var next = cur === 'neon' ? 'brutal' : 'neon';
-    html.setAttribute('data-style', next);
-    localStorage.setItem('siteStyle', next);
-    setTitle(next);
-  });
-})();
-</script>
 </body>
 </html>
