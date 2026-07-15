@@ -2891,6 +2891,329 @@
   text-align: center !important;
 }
 
+
+/* ================================================================
+   BRUTAL STYLE - ENHANCED: Tom Carder + Voxr AI + Only Agency
+================================================================ */
+
+/* ---- VOXR AI STYLE: Big % stats row ---- */
+[data-style="brutal"] .brutal-stats-row {
+  display: flex !important;
+}
+.brutal-stats-row {
+  display: none;
+  gap: 0;
+  margin: 48px 0 0;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 700px;
+}
+.brutal-stat-item {
+  flex: 1;
+  padding: 28px 20px;
+  border-right: 1.5px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.brutal-stat-item:last-child { border-right: none; }
+.brutal-stat-item:nth-child(odd) { background: rgba(255,92,26,0.06); }
+.brutal-stat-num {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #FF5C1A;
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+.brutal-stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.3;
+}
+
+/* ---- ONLY AGENCY STYLE: Category chips on project cards ---- */
+[data-style="brutal"] .project-tags-row {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.project-tags-row { display: none; }
+.project-chip {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  border: 1px solid rgba(255,92,26,0.4);
+  color: #FF8C42;
+  background: rgba(255,92,26,0.08);
+}
+
+/* ---- TOM CARDER: Sticky section number indicator ---- */
+[data-style="brutal"] .section-num {
+  display: inline-flex !important;
+}
+.section-num {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.section-num-digit {
+  font-size: 11px;
+  font-weight: 800;
+  color: #FF5C1A;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.section-num-line {
+  width: 40px;
+  height: 1.5px;
+  background: #FF5C1A;
+  opacity: 0.6;
+}
+.section-num-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ---- VOXR AI: Process steps - numbered timeline style ---- */
+[data-style="brutal"] .process-steps {
+  position: relative;
+}
+[data-style="brutal"] .step {
+  position: relative;
+  overflow: visible !important;
+}
+/* Add step number badge (Voxr style) */
+[data-style="brutal"] .step::before {
+  content: counter(step-counter, decimal-leading-zero);
+  counter-increment: step-counter;
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #FF5C1A;
+  letter-spacing: 1px;
+  background: #141414;
+  padding: 0 8px;
+  border: 1.5px solid rgba(255,92,26,0.4);
+  border-radius: 100px;
+  line-height: 22px;
+  height: 22px;
+}
+[data-style="brutal"] .process-steps {
+  counter-reset: step-counter;
+}
+
+/* ---- TOM CARDER: Section label above titles ---- */
+[data-style="brutal"] .section-eyebrow {
+  display: block !important;
+}
+.section-eyebrow {
+  display: none;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #FF5C1A;
+  margin-bottom: 14px;
+}
+
+/* ---- ONLY AGENCY: Project card meta footer ---- */
+[data-style="brutal"] .project-meta-footer {
+  display: flex !important;
+}
+.project-meta-footer {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.project-meta-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+}
+.project-meta-arrow {
+  width: 28px; height: 28px;
+  border: 1.5px solid rgba(255,92,26,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF5C1A;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+[data-style="brutal"] .project-card:hover .project-meta-arrow {
+  background: #FF5C1A;
+  color: #fff;
+  border-color: #FF5C1A;
+}
+
+/* ---- VOXR AI: Marquee ticker (social proof bar) ---- */
+[data-style="brutal"] .brutal-ticker {
+  display: block !important;
+}
+.brutal-ticker {
+  display: none;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,92,26,0.2);
+  border-bottom: 1px solid rgba(255,92,26,0.2);
+  padding: 14px 0;
+  background: rgba(255,92,26,0.04);
+  margin: 0 0 0;
+}
+.brutal-ticker-inner {
+  display: flex;
+  gap: 0;
+  animation: ticker-scroll 22s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.brutal-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 32px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.45);
+}
+.brutal-ticker-item span {
+  color: #FF5C1A;
+  font-size: 16px;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ---- TOM CARDER: Hover overlay on project cards ---- */
+[data-style="brutal"] .project-card {
+  overflow: hidden !important;
+}
+[data-style="brutal"] .project-card .project-overlay {
+  display: flex !important;
+}
+.project-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(255,92,26,0.92);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 5;
+  border-radius: 20px;
+  pointer-events: none;
+}
+.project-overlay-text {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #fff;
+}
+[data-style="brutal"] .project-card:hover .project-overlay {
+  opacity: 1;
+}
+[data-style="brutal"] .project-card { position: relative !important; }
+
+/* ---- ONLY AGENCY: Services section - horizontal accent line ---- */
+[data-style="brutal"] .services-section .section-title::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #FF5C1A;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+/* ---- TOM CARDER: Footer style ---- */
+[data-style="brutal"] .footer {
+  border-top: 1px solid rgba(255,92,26,0.2) !important;
+  background: #0A0A0A !important;
+}
+[data-style="brutal"] .footer::before {
+  content: 'BOTFORGE';
+  display: block;
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: rgba(255,92,26,0.06);
+  text-align: center;
+  margin-bottom: -40px;
+  line-height: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ---- VOXR AI: nav gets orange active indicator ---- */
+[data-style="brutal"] .nav-links a.active,
+[data-style="brutal"] .nav-links a:hover {
+  color: #FF5C1A !important;
+}
+[data-style="brutal"] .nav-links a::after {
+  background: #FF5C1A !important;
+}
+
+/* ---- Blog cards: Only agency style category tag top-left ---- */
+[data-style="brutal"] .blog-card {
+  position: relative !important;
+}
+[data-style="brutal"] .blog-cat-chip {
+  display: inline-block !important;
+}
+.blog-cat-chip {
+  display: none;
+  position: absolute;
+  top: 12px; left: 12px;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: #FF5C1A;
+  color: #fff;
+  z-index: 2;
+}
+
+/* ---- Testimonials: Voxr AI quote style ---- */
+[data-style="brutal"] .testimonial-card {
+  position: relative !important;
+}
+[data-style="brutal"] .testimonial-card::after {
+  content: '"';
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255,92,26,0.12);
+  line-height: 1;
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+
 </style>
 
 </head>
@@ -3406,6 +3729,21 @@
           <line x1="9" y1="21" x2="9" y2="9"/>
         </svg>
       </div>
+      <!-- BRUTAL: Voxr AI-style big stat row -->
+      <div class="brutal-stats-row">
+        <div class="brutal-stat-item">
+          <span class="brutal-stat-num">80%</span>
+          <span class="brutal-stat-label">Экономия времени на рутину</span>
+        </div>
+        <div class="brutal-stat-item">
+          <span class="brutal-stat-num">24/7</span>
+          <span class="brutal-stat-label">Без выходных и праздников</span>
+        </div>
+        <div class="brutal-stat-item">
+          <span class="brutal-stat-num">60с</span>
+          <span class="brutal-stat-label">До первого ответа клиенту</span>
+        </div>
+      </div>
       <a href="https://t.me/Bro_piton?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" class="btn-outline magnetic ripple-btn" target="_blank">@Bro_piton</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню"><span class="bar"></span></button>
     </div>
@@ -3505,6 +3843,30 @@
   </div>
 </section>
 
+
+<!-- BRUTAL: Voxr AI-style marquee ticker -->
+<div class="brutal-ticker">
+  <div class="brutal-ticker-inner">
+    <div class="brutal-ticker-item"><span>⚡</span> Telegram Bot</div>
+    <div class="brutal-ticker-item"><span>◆</span> AI Ассистент</div>
+    <div class="brutal-ticker-item"><span>⚡</span> CRM Система</div>
+    <div class="brutal-ticker-item"><span>◆</span> Mini App</div>
+    <div class="brutal-ticker-item"><span>⚡</span> RAG & Vector DB</div>
+    <div class="brutal-ticker-item"><span>◆</span> FastAPI Backend</div>
+    <div class="brutal-ticker-item"><span>⚡</span> aiogram 3</div>
+    <div class="brutal-ticker-item"><span>◆</span> PostgreSQL</div>
+    <!-- duplicate for seamless loop -->
+    <div class="brutal-ticker-item"><span>⚡</span> Telegram Bot</div>
+    <div class="brutal-ticker-item"><span>◆</span> AI Ассистент</div>
+    <div class="brutal-ticker-item"><span>⚡</span> CRM Система</div>
+    <div class="brutal-ticker-item"><span>◆</span> Mini App</div>
+    <div class="brutal-ticker-item"><span>⚡</span> RAG & Vector DB</div>
+    <div class="brutal-ticker-item"><span>◆</span> FastAPI Backend</div>
+    <div class="brutal-ticker-item"><span>⚡</span> aiogram 3</div>
+    <div class="brutal-ticker-item"><span>◆</span> PostgreSQL</div>
+  </div>
+</div>
+
 <!-- TECH STACK -->
 <section class="tech-stack"><div class="container"><h2 class="section-title">Технологии</h2><div class="tech-grid"><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%232AABEE' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Telegram</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%233776AB' d='M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z'/%3E%3C/svg%3E" width="40"></div><span>Python</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23336791' d='M42 13.976v20.048c0 1.444-.77 2.78-2.017 3.51L25.017 43.5c-1.247.73-2.787.73-4.034 0L8.017 37.534C6.77 36.804 6 35.468 6 34.024V13.976c0-1.444.77-2.78 2.017-3.51L22.983 4.5c1.247-.73 2.787-.73 4.034 0l14.966 8.966c1.247.73 2.017 2.066 2.017 3.51z'/%3E%3C/svg%3E" width="40"></div><span>PostgreSQL</span></div><div class="tech-item"><div class="tech-icon"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23FF6F00' d='M4 12h40v24H4z'/%3E%3C/svg%3E" width="40"></div><span>OpenAI</span></div></div></div></section>
 
@@ -3556,7 +3918,8 @@
 <!-- НАЧАЛО ПЕРВОГО БЛОКА (часть 1b) -->
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="container" style="padding: 60px 0;"><h2 class="section-title">Проекты</h2><div class="filter-buttons"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="telegram">Telegram</button><button class="filter-btn" data-filter="ai">AI</button><button class="filter-btn" data-filter="miniapp">Mini App</button><button class="filter-btn" data-filter="crm">🗂 CRM</button><button class="filter-btn" data-filter="study">📚 В изучении</button></div>
+<section id="portfolio" class="container" style="padding: 60px 0;"><span class="section-eyebrow">Мои работы</span>
+          <h2 class="section-title">Проекты</h2><div class="filter-buttons"><button class="filter-btn active" data-filter="all">Все</button><button class="filter-btn" data-filter="telegram">Telegram</button><button class="filter-btn" data-filter="ai">AI</button><button class="filter-btn" data-filter="miniapp">Mini App</button><button class="filter-btn" data-filter="crm">🗂 CRM</button><button class="filter-btn" data-filter="study">📚 В изучении</button></div>
 
 <!-- Модалка пароля для раздела "В изучении" -->
 <div class="modal" id="modal-study-lock">
@@ -3578,87 +3941,103 @@
 <div class="portfolio-grid" id="portfolioGrid">
   <!-- Шахтёрская глубина -->
   <div class="project-card magnetic" data-category="miniapp" data-modal="game">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/VpNDtqMY/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Python · Three.js · Telegram Mini App · PostgreSQL</div>
       <h4>Шахтёрская глубина</h4>
       <p>3D-кликер с 13 боссами, крафтом, достижениями и рейтингами. Полноценная игра в Telegram.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   <!-- BeautyBook -->
   <div class="project-card magnetic" data-category="telegram crm" data-modal="beauty">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/PswcdkTZ/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · PostgreSQL · Google Calendar</div>
       <h4>BeautyBook</h4>
       <p>Полноценная система записи: Mini App, защита от овербукинга, напоминания, админ-панель.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   <!-- Quiz Trader -->
   <div class="project-card magnetic" data-category="telegram miniapp" data-modal="quiz">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/3y5bsdbQ/image.webp');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · Google Sheets · PostgreSQL</div>
       <h4>Quiz Trader</h4>
       <p>Персонализированный квиз с анимациями, темами и автосохранением результатов в Google Sheets.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
   
   <!-- DocuHelper Forex -->
   <div class="project-card magnetic" data-category="ai" data-modal="ai">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/Rrjmn0v/Copilot-20260503-140821.webp');"></div>
     <div class="project-content">
       <div class="project-tag">AI · RAG · Telegram Mini App</div>
       <h4>DocuHelper Forex</h4>
       <p>Умный консультант на базе ваших документов. Отвечает на вопросы по Форекс, трейдингу и аналитике — быстро, точно, 24/7.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- DocuHelper Mini App -->
   <div class="project-card magnetic" data-category="ai miniapp" data-modal="docuhelper-mini">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/twhfpCt4/Copilot-2.png');"></div>
     <div class="project-content">
       <div class="project-tag">AI · RAG · Telegram Mini App · pgvector · Cohere</div>
       <h4>DocuHelper Mini App</h4>
       <p>AI‑консультант по трейдингу с чат‑интерфейсом. Гибридный поиск, быстрые вопросы, источник и похожесть ответа.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- ShopBot (исправленная карточка) -->
   <div class="project-card magnetic" data-category="telegram crm" data-modal="shop">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co/WN2xQj7Q/Copilot-20260513-223058.png');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · ЮKassa · PostgreSQL · Render</div>
       <h4>ShopBot</h4>
       <p>Полноценный интернет-магазин в Telegram: каталог, корзина, оплата через ЮKassa, админ‑панель и отчёты в Google Sheets.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
 
   <div class="project-card magnetic" data-category="telegram miniapp crm" data-modal="realty">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/ynbQ14D7/1.png');"></div>
     <div class="project-content">
       <div class="project-tag">Telegram · Mini App · FastAPI · PostgreSQL</div>
       <h4>RealtyBotCRM</h4>
       <p>Полноценная CRM для агентств недвижимости: бот с мини-аппом, воронка продаж, ИИ-оценка объектов и аналитика в реальном времени.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
   <!-- BookingBot CRM -->
   <div class="project-card magnetic" data-category="telegram miniapp crm" data-modal="bookingbot">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background: linear-gradient(135deg, #1a0a2e 0%, #0d1f3c 50%, #0a2a1a 100%); display:flex; align-items:center; justify-content:center; font-size:48px;">💆‍♀️</div>
     <div class="project-content">
       <div class="project-tag">Python · aiogram 3 · Mini App · PostgreSQL · ЮКасса</div>
       <h4>BookingBot CRM</h4>
       <p>Система онлайн-записи для салона красоты: Mini App для клиентов, CRM-панель в браузере, оплата через ЮКасса и напоминания.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
@@ -3666,29 +4045,35 @@
 
   <!-- EncarBot -->
   <div class="project-card magnetic" data-category="telegram" data-modal="encar">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/JRdpk1KS/Copilot-20260627-001754.png');"></div>
     <div class="project-content">
       <div class="project-tag">Python · aiogram 3 · Telegram · Encar API</div>
       <h4>EncarBot</h4>
       <p>Калькулятор авто из Кореи под ключ: таможня для РФ и КЗ, живой курс воны, поиск на Encar.com за 10 секунд.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
 
   <!-- VoiceBot -->
   <div class="project-card magnetic" data-category="ai telegram miniapp" data-modal="voicebot">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div>
     <div class="project-thumb" style="background-image: url('https://i.ibb.co.com/23S30NbV/154.png');"></div>
     <div class="project-content">
       <div class="project-tag">AI · Python · aiogram 3 · ElevenLabs · Mini App · PostgreSQL</div>
       <h4>VoiceBot — Алиса</h4>
       <p>Голосовой AI-ассистент: говори — отвечу голосом. STT, TTS, память пользователя, анализ фото и документов.</p>
       <span class="project-link">Подробнее →</span>
+      <div class="project-meta-footer"><span class="project-meta-year">2024—25</span><div class="project-meta-arrow">→</div></div>
     </div>
   </div>
 
-  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-instagram"><div class="project-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3ClinearGradient%20id%3D%22ig%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD600%22%2F%3E%3Cstop%20offset%3D%220.3%22%20stop-color%3D%22%23FF0069%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22%23D300C5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237638FA%22%2F%3E%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3C%21--%20Instagram%20logo%20--%3E%20%3Crect%20x%3D%22222%22%20y%3D%22122%22%20width%3D%22156%22%20height%3D%22156%22%20rx%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2212%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2246%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2210%22%2F%3E%20%3Ccircle%20cx%3D%22352%22%20cy%3D%22150%22%20r%3D%2210%22%20fill%3D%22url%28%23ig%29%22%2F%3E%20%3C%21--%20DM%20arrow%20indicating%20direct%20message%20--%3E%20%3Cpath%20d%3D%22M258%20270%20L300%20240%20L342%20270%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M300%20240%20L300%20310%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="project-content"><div class="project-tag">Instagram · Meta Graph API · 📚 В изучении</div><h4>Instagram Lead Bot</h4><p>Автоответы в Direct, Comment-to-DM воронки и передача заявок в CRM через официальный Meta API.</p><span class="project-link">Подробнее →</span></div></div>
-  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-crm"><div class="project-thumb" style="background-image: url('https://placehold.co/600x400/7B61FF/white?text=CRM+Lead+Bot');"></div><div class="project-content"><div class="project-tag">amoCRM · Bitrix24 · 📚 В изучении</div><h4>Lead Converter</h4><p>Квалификация лидов и автоматическое создание сделок в CRM.</p><span class="project-link">Подробнее →</span></div></div>
+  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-instagram">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div><div class="project-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3ClinearGradient%20id%3D%22ig%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD600%22%2F%3E%3Cstop%20offset%3D%220.3%22%20stop-color%3D%22%23FF0069%22%2F%3E%3Cstop%20offset%3D%220.7%22%20stop-color%3D%22%23D300C5%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%237638FA%22%2F%3E%3C%2FlinearGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3C%21--%20Instagram%20logo%20--%3E%20%3Crect%20x%3D%22222%22%20y%3D%22122%22%20width%3D%22156%22%20height%3D%22156%22%20rx%3D%2244%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2212%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2246%22%20fill%3D%22none%22%20stroke%3D%22url%28%23ig%29%22%20stroke-width%3D%2210%22%2F%3E%20%3Ccircle%20cx%3D%22352%22%20cy%3D%22150%22%20r%3D%2210%22%20fill%3D%22url%28%23ig%29%22%2F%3E%20%3C%21--%20DM%20arrow%20indicating%20direct%20message%20--%3E%20%3Cpath%20d%3D%22M258%20270%20L300%20240%20L342%20270%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M300%20240%20L300%20310%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="project-content"><div class="project-tag">Instagram · Meta Graph API · 📚 В изучении</div><h4>Instagram Lead Bot</h4><p>Автоответы в Direct, Comment-to-DM воронки и передача заявок в CRM через официальный Meta API.</p><span class="project-link">Подробнее →</span></div></div>
+  <div class="project-card magnetic hidden-card" data-category="telegram study" data-modal="roadmap-crm">
+        <div class="project-overlay"><span class="project-overlay-text">Открыть →</span></div><div class="project-thumb" style="background-image: url('https://placehold.co/600x400/7B61FF/white?text=CRM+Lead+Bot');"></div><div class="project-content"><div class="project-tag">amoCRM · Bitrix24 · 📚 В изучении</div><h4>Lead Converter</h4><p>Квалификация лидов и автоматическое создание сделок в CRM.</p><span class="project-link">Подробнее →</span></div></div>
 </div>
 
 <div class="blog-more-wrapper">
@@ -4531,7 +4916,8 @@ function switchBookingTab(tab, btn) {
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="container" style="padding: 60px 0;">
-  <h2 class="section-title" style="text-align:center;">Отзывы клиентов</h2>
+  <span class="section-eyebrow">Отзывы клиентов</span>
+          <h2 class="section-title" style="text-align:center;">Отзывы клиентов</h2>
   <div class="testimonials-grid">
     <div class="testimonial-card magnetic fade-up"><div class="testimonial-header"><div class="testimonial-avatar"><div class="testimonial-avatar-inner">АК</div></div><div class="testimonial-info"><h4>Анна К.</h4><p>Владелец салона</p></div></div><div class="testimonial-text">«Бот сэкономил кучу времени. Клиенты довольны!»</div><div class="stars">★★★★★</div></div>
     <div class="testimonial-card magnetic fade-up"><div class="testimonial-header"><div class="testimonial-avatar"><div class="testimonial-avatar-inner">МЛ</div></div><div class="testimonial-info"><h4>Михаил Л.</h4><p>IT-отдел</p></div></div><div class="testimonial-text">«AI-бот отвечает на вопросы сотрудников мгновенно.»</div><div class="stars">★★★★★</div></div>
@@ -4541,15 +4927,23 @@ function switchBookingTab(tab, btn) {
 
 <!-- BLOG (сетка карточек) -->
 <section id="blog" class="container" style="padding: 60px 0;">
-  <h2 class="section-title" style="text-align:center;">Блог и советы</h2>
+  <span class="section-eyebrow">Полезное</span>
+          <h2 class="section-title" style="text-align:center;">Блог и советы</h2>
   <div class="blog-grid" id="blogGrid">
-    <div class="blog-card magnetic fade-up" data-modal="blog1"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310243a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%223%22%20opacity%3D%220.7%22%3E%20%3Cline%20x1%3D%22180%22%20y1%3D%22120%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22200%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22280%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%20%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22140%22%2F%3E%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22260%22%2F%3E%3C%2Fg%3E%20%3Cg%20fill%3D%22%230A0A18%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%224%22%3E%20%3Ccircle%20cx%3D%22180%22%20cy%3D%22120%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22200%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22280%22%20r%3D%2215%22%2F%3E%20%3Ccircle%20cx%3D%22420%22%20cy%3D%22140%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22260%22%20r%3D%2215%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%224%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как AI меняет чат-ботов в 2026</h4><p>RAG, мультимодальные модели и автономные агенты — что действительно работает уже сегодня.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up" data-modal="blog2"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%20%3Cpath%20d%3D%22M185%20150%20H215%20L252%20200%22%2F%3E%3Cpath%20d%3D%22M252%20200%20H452%20L420%20282%20H285%20Z%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22312%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Запуск магазина в Telegram: пошаговое руководство</h4><p>От идеи до первого заказа — как создать бота-магазин с оплатой через ЮKassa.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up" data-modal="blog3"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22106%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3C%2Fg%3E%20%3Cpath%20d%3D%22M200%20150%20H400%20L322%20238%20V300%20H278%20V238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22332%22%20r%3D%2213%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Интеграция бота с CRM: amoCRM и Bitrix24</h4><p>Как автоматически передавать лиды из Telegram в вашу CRM и не потерять ни одной заявки.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog4"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cpath%20d%3D%22M300%20108%20L402%20144%20V214%20C402%20272%20356%20302%20300%20322%20C244%20302%20198%20272%20198%20214%20V144%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2222%22%20fill%3D%22%2300F0FF%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22212%22%20width%3D%2218%22%20height%3D%2244%22%20rx%3D%227%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Безопасность Telegram-ботов: как защитить данные клиентов</h4><p>Простые правила, которые спасут вас от утечек и штрафов.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog5"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a1a2e%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%232AABEE%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%232AABEE%22%3E%20%3Crect%20x%3D%22175%22%20y%3D%22252%22%20width%3D%2242%22%20height%3D%2278%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%2242%22%20height%3D%22118%22%20rx%3D%226%22%2F%3E%20%3Crect%20x%3D%22301%22%20y%3D%22232%22%20width%3D%2242%22%20height%3D%2298%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22364%22%20y%3D%22172%22%20width%3D%2242%22%20height%3D%22158%22%20rx%3D%226%22%2F%3E%3C%2Fg%3E%20%3Cpolyline%20points%3D%22190%2C248%20255%2C198%20318%2C218%20388%2C150%20450%2C118%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M450%20118%20L424%20124%20M450%20118%20L444%20144%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3Cline%20x1%3D%22160%22%20y1%3D%22332%22%20x2%3D%22470%22%20y2%3D%22332%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%225%22%20opacity%3D%220.5%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Аналитика в ботах: что отслеживать и как увеличить конверсию</h4><p>Какие метрики важны и как их использовать для роста продаж.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog6"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Crect%20x%3D%22232%22%20y%3D%2286%22%20width%3D%22136%22%20height%3D%22228%22%20rx%3D%2224%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%229%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Crect%20x%3D%22255%22%20y%3D%22118%22%20width%3D%2290%22%20height%3D%2214%22%20rx%3D%227%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%22146%22%20width%3D%2266%22%20height%3D%2210%22%20rx%3D%225%22%20opacity%3D%220.6%22%2F%3E%3C%2Fg%3E%20%3Crect%20x%3D%22255%22%20y%3D%22176%22%20width%3D%2290%22%20height%3D%2258%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%225%22%2F%3E%20%3Cpath%20d%3D%22M288%20198%20L312%20205%20L288%20212%20Z%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22290%22%20r%3D%229%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Telegram Mini Apps: что это и зачем они вашему бизнесу</h4><p>Как заменить мобильное приложение на WebApp внутри Telegram.</p><span class="blog-link">Читать →</span></div></div>
-    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog7"><div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke-linejoin%3D%22round%22%3E%20%3Cpath%20d%3D%22M300%20244%20L420%20286%20L300%20328%20L180%20286%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20196%20L420%20238%20L300%20280%20L180%20238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20148%20L420%20190%20L300%20232%20L180%20190%20Z%22%20fill%3D%22%230d2a22%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%2F%3E%3C%2Fg%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как выбрать стек для бота: конструктор vs кастомная разработка</h4><p>Сравнение подходов: когда хватит Salebot, а когда нужен Python.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog1"><div class="blog-cat-chip">Кейс</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310243a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2300F0FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%223%22%20opacity%3D%220.7%22%3E%20%3Cline%20x1%3D%22180%22%20y1%3D%22120%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22200%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%3Cline%20x1%3D%22180%22%20y1%3D%22280%22%20x2%3D%22300%22%20y2%3D%22200%22%2F%3E%20%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22140%22%2F%3E%3Cline%20x1%3D%22300%22%20y1%3D%22200%22%20x2%3D%22420%22%20y2%3D%22260%22%2F%3E%3C%2Fg%3E%20%3Cg%20fill%3D%22%230A0A18%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%224%22%3E%20%3Ccircle%20cx%3D%22180%22%20cy%3D%22120%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22200%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22280%22%20r%3D%2215%22%2F%3E%20%3Ccircle%20cx%3D%22420%22%20cy%3D%22140%22%20r%3D%2215%22%2F%3E%3Ccircle%20cx%3D%22420%22%20cy%3D%22260%22%20r%3D%2215%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2232%22%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%224%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как AI меняет чат-ботов в 2026</h4><p>RAG, мультимодальные модели и автономные агенты — что действительно работает уже сегодня.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog2"><div class="blog-cat-chip">Гайд</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%2212%22%20stroke-linejoin%3D%22round%22%20stroke-linecap%3D%22round%22%3E%20%3Cpath%20d%3D%22M185%20150%20H215%20L252%20200%22%2F%3E%3Cpath%20d%3D%22M252%20200%20H452%20L420%20282%20H285%20Z%22%2F%3E%3C%2Fg%3E%20%3Ccircle%20cx%3D%22312%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%3Ccircle%20cx%3D%22398%22%20cy%3D%22318%22%20r%3D%2216%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Запуск магазина в Telegram: пошаговое руководство</h4><p>От идеи до первого заказа — как создать бота-магазин с оплатой через ЮKassa.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up" data-modal="blog3"><div class="blog-cat-chip">Инструменты</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22300%22%20cy%3D%22106%22%20r%3D%2211%22%2F%3E%3Ccircle%20cx%3D%22360%22%20cy%3D%22118%22%20r%3D%2211%22%2F%3E%3C%2Fg%3E%20%3Cpath%20d%3D%22M200%20150%20H400%20L322%20238%20V300%20H278%20V238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22332%22%20r%3D%2213%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Интеграция бота с CRM: amoCRM и Bitrix24</h4><p>Как автоматически передавать лиды из Telegram в вашу CRM и не потерять ни одной заявки.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog4"><div class="blog-cat-chip">Опыт</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232a0d1a%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23E4405F%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cpath%20d%3D%22M300%20108%20L402%20144%20V214%20C402%20272%20356%20302%20300%20322%20C244%20302%20198%20272%20198%20214%20V144%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23E4405F%22%20stroke-width%3D%2211%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%2222%22%20fill%3D%22%2300F0FF%22%2F%3E%3Crect%20x%3D%22291%22%20y%3D%22212%22%20width%3D%2218%22%20height%3D%2244%22%20rx%3D%227%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Безопасность Telegram-ботов: как защитить данные клиентов</h4><p>Простые правила, которые спасут вас от утечек и штрафов.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog5"><div class="blog-cat-chip">AI</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230a1a2e%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232AABEE%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%232AABEE%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20fill%3D%22%232AABEE%22%3E%20%3Crect%20x%3D%22175%22%20y%3D%22252%22%20width%3D%2242%22%20height%3D%2278%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22238%22%20y%3D%22212%22%20width%3D%2242%22%20height%3D%22118%22%20rx%3D%226%22%2F%3E%20%3Crect%20x%3D%22301%22%20y%3D%22232%22%20width%3D%2242%22%20height%3D%2298%22%20rx%3D%226%22%2F%3E%3Crect%20x%3D%22364%22%20y%3D%22172%22%20width%3D%2242%22%20height%3D%22158%22%20rx%3D%226%22%2F%3E%3C%2Fg%3E%20%3Cpolyline%20points%3D%22190%2C248%20255%2C198%20318%2C218%20388%2C150%20450%2C118%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M450%20118%20L424%20124%20M450%20118%20L444%20144%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%2F%3E%20%3Cline%20x1%3D%22160%22%20y1%3D%22332%22%20x2%3D%22470%22%20y2%3D%22332%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%225%22%20opacity%3D%220.5%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Аналитика в ботах: что отслеживать и как увеличить конверсию</h4><p>Какие метрики важны и как их использовать для роста продаж.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog6"><div class="blog-cat-chip">Разработка</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%231A0B2E%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23B000FF%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Crect%20x%3D%22232%22%20y%3D%2286%22%20width%3D%22136%22%20height%3D%22228%22%20rx%3D%2224%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%23B000FF%22%20stroke-width%3D%229%22%2F%3E%20%3Cg%20fill%3D%22%2300F0FF%22%3E%3Crect%20x%3D%22255%22%20y%3D%22118%22%20width%3D%2290%22%20height%3D%2214%22%20rx%3D%227%22%2F%3E%3Crect%20x%3D%22255%22%20y%3D%22146%22%20width%3D%2266%22%20height%3D%2210%22%20rx%3D%225%22%20opacity%3D%220.6%22%2F%3E%3C%2Fg%3E%20%3Crect%20x%3D%22255%22%20y%3D%22176%22%20width%3D%2290%22%20height%3D%2258%22%20rx%3D%2210%22%20fill%3D%22none%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%225%22%2F%3E%20%3Cpath%20d%3D%22M288%20198%20L312%20205%20L288%20212%20Z%22%20fill%3D%22%2300F0FF%22%2F%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22290%22%20r%3D%229%22%20fill%3D%22%23B000FF%22%2F%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Telegram Mini Apps: что это и зачем они вашему бизнесу</h4><p>Как заменить мобильное приложение на WebApp внутри Telegram.</p><span class="blog-link">Читать →</span></div></div>
+    <div class="blog-card magnetic fade-up hidden-card" data-modal="blog7"><div class="blog-cat-chip">Кейс</div>
+      <div class="blog-thumb" style="background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22bg%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230A0A18%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2308221c%22%2F%3E%3C%2FlinearGradient%3E%20%3CradialGradient%20id%3D%22gl%22%20cx%3D%220.5%22%20cy%3D%220.5%22%20r%3D%220.5%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220.35%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%2310B981%22%20stop-opacity%3D%220%22%2F%3E%3C%2FradialGradient%3E%20%3C%2Fdefs%3E%20%3Crect%20width%3D%22600%22%20height%3D%22400%22%20fill%3D%22url%28%23bg%29%22%2F%3E%20%3Cg%20opacity%3D%220.07%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%221%22%3E%20%3Cpath%20d%3D%22M0%20100%20H600%20M0%20200%20H600%20M0%20300%20H600%20M150%200%20V400%20M300%200%20V400%20M450%200%20V400%22%2F%3E%20%3C%2Fg%3E%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22200%22%20r%3D%22175%22%20fill%3D%22url%28%23gl%29%22%2F%3E%20%3Cg%20stroke-linejoin%3D%22round%22%3E%20%3Cpath%20d%3D%22M300%20244%20L420%20286%20L300%20328%20L180%20286%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20196%20L420%20238%20L300%20280%20L180%20238%20Z%22%20fill%3D%22%230A0A18%22%20stroke%3D%22%2310B981%22%20stroke-width%3D%226%22%2F%3E%20%3Cpath%20d%3D%22M300%20148%20L420%20190%20L300%20232%20L180%20190%20Z%22%20fill%3D%22%230d2a22%22%20stroke%3D%22%2300F0FF%22%20stroke-width%3D%226%22%2F%3E%3C%2Fg%3E%20%3C%2Fsvg%3E');"></div><div class="blog-content"><h4>Как выбрать стек для бота: конструктор vs кастомная разработка</h4><p>Сравнение подходов: когда хватит Salebot, а когда нужен Python.</p><span class="blog-link">Читать →</span></div></div>
   </div>
   <div class="blog-more-wrapper"><button class="btn-show-more" id="showMoreBlogBtn"><span class="btn-text">Показать ещё статьи</span> <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button></div>
 </section>
@@ -4710,7 +5104,8 @@ function switchBookingTab(tab, btn) {
 
 <!-- PROCESS -->
 <section id="process" class="container" style="padding: 40px 0;">
-  <h2 class="section-title">Как я работаю</h2>
+  <span class="section-eyebrow">Как мы работаем</span>
+          <h2 class="section-title">Как я работаю</h2>
   <div class="process-steps">
     <div class="step magnetic fade-up"><span class="step-icon">🔍</span><div class="step-num">01</div><h4>Анализ</h4><p>Изучаю задачу, готовлю ТЗ</p></div>
     <div class="step magnetic fade-up"><span class="step-icon">📐</span><div class="step-num">02</div><h4>Проектирование</h4><p>Сценарии, архитектура</p></div>
@@ -4721,7 +5116,8 @@ function switchBookingTab(tab, btn) {
 
 <!-- FAQ -->
 <section id="faq" class="container" style="padding: 60px 0;">
-  <h2 class="section-title" style="text-align:center;">Часто задаваемые вопросы</h2>
+  <span class="section-eyebrow">FAQ</span>
+          <h2 class="section-title" style="text-align:center;">Часто задаваемые вопросы</h2>
   <div class="faq-grid">
     <div class="faq-item magnetic fade-up"><div class="faq-question"><span>❓</span> Сколько стоит разработка?<span class="faq-icon">+</span></div><div class="faq-answer">От 40 000 ₽ за простого бота, от 90 000 ₽ за комплексное решение с AI и интеграциями. Точная смета — после уточнения задачи.</div></div>
     <div class="faq-item magnetic fade-up"><div class="faq-question"><span>🔒</span> Кому принадлежит код?<span class="faq-icon">+</span></div><div class="faq-answer">После полной оплаты — вам. Передаю исключительные права и исходный код.</div></div>
