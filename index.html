@@ -2752,6 +2752,145 @@
   color: #FF5C1A !important;
   box-shadow: 0 0 15px rgba(255,92,26,0.4) !important;
 }
+
+/* ================================================================
+   BRUTAL STYLE - HERO VISUAL: geometric character + chess grid
+================================================================ */
+[data-style="brutal"] #threejs-cube-container { display: none !important; }
+[data-style="brutal"] .hero-visual { position: relative; }
+[data-style="brutal"] .brutal-character { display: flex !important; }
+
+.brutal-character {
+  display: none;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 460px;
+  margin: 0 auto;
+  align-items: flex-end;
+  justify-content: center;
+}
+.brutal-character::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,92,26,0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: brutGlow 3s ease-in-out infinite alternate;
+}
+@keyframes brutGlow {
+  from { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+  to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
+}
+.brutal-character svg.char-svg {
+  position: relative;
+  z-index: 2;
+  width: 260px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(255,92,26,0.4));
+  animation: brutFloat 4s ease-in-out infinite;
+}
+@keyframes brutFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+.brut-tag {
+  position: absolute;
+  background: #FF5C1A;
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(255,92,26,0.4);
+  max-width: 160px;
+  line-height: 1.3;
+  animation: tagFloat 3s ease-in-out infinite;
+}
+.brut-tag.tag-white {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+.brut-tag .tag-title { font-size: 12px; font-weight: 800; display: block; margin-bottom: 2px; }
+.brut-tag .tag-desc  { font-size: 10px; font-weight: 500; opacity: 0.85; }
+.brut-tag--1 { top: 12%;  left: -10px; animation-delay: 0s; }
+.brut-tag--2 { top: 8%;   right: -10px; animation-delay: 0.6s; }
+.brut-tag--3 { top: 42%;  left: -20px; animation-delay: 1.2s; }
+@keyframes tagFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-8px) rotate(1deg); }
+}
+.char-shadow {
+  position: absolute;
+  bottom: 8px; left: 50%; transform: translateX(-50%);
+  width: 160px; height: 24px;
+  background: rgba(255,92,26,0.25);
+  border-radius: 50%;
+  filter: blur(12px);
+  z-index: 1;
+}
+[data-style="brutal"] .hero-numbers {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 3px !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-top: 32px !important;
+  background: transparent !important;
+  width: 100% !important;
+  max-width: 480px !important;
+}
+[data-style="brutal"] .hero-num {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 18px 12px !important;
+  border-radius: 12px !important;
+  border: none !important;
+  min-height: 90px !important;
+}
+[data-style="brutal"] .hero-num:nth-child(odd) {
+  background: #FF5C1A !important;
+}
+[data-style="brutal"] .hero-num:nth-child(even) {
+  background: #1C1C1C !important;
+  border: 1.5px solid rgba(255,255,255,0.10) !important;
+}
+[data-style="brutal"] .hero-num:nth-child(odd) .hero-num-val,
+[data-style="brutal"] .hero-num:nth-child(odd) .hero-num-label {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
+}
+[data-style="brutal"] .hero-num:nth-child(even) .hero-num-val {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: 0 0 15px rgba(255,92,26,0.6) !important;
+}
+[data-style="brutal"] .hero-num:nth-child(even) .hero-num-label {
+  color: rgba(255,255,255,0.6) !important;
+}
+[data-style="brutal"] .hero-num-val {
+  font-size: 28px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+[data-style="brutal"] .hero-num-label {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-top: 4px !important;
+  text-align: center !important;
+}
+
 </style>
 
 </head>
@@ -3293,6 +3432,75 @@
     </div>
     <div class="hero-visual fade-up visible">
       <div id="threejs-cube-container"></div>
+      <!-- BRUTAL MODE: geometric character (shown only in brutal style) -->
+      <div class="brutal-character">
+        <!-- Floating label cards -->
+        <div class="brut-tag brut-tag--1">
+          <span class="tag-title">Создаю ботов</span>
+          <span class="tag-desc">24/7 без выходных</span>
+        </div>
+        <div class="brut-tag tag-white brut-tag--2">
+          <span class="tag-title">AI + CRM</span>
+          <span class="tag-desc">под ваш бизнес</span>
+        </div>
+        <div class="brut-tag brut-tag--3">
+          <span class="tag-title">8+ проектов</span>
+          <span class="tag-desc">в портфолио</span>
+        </div>
+
+        <!-- Abstract geometric character SVG (m3-inspired but original) -->
+        <svg class="char-svg" viewBox="0 0 240 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- BODY - dark hoodie shape -->
+          <path d="M50 230 Q45 210 40 260 L30 390 Q29 398 40 398 L200 398 Q211 398 210 390 L200 260 Q195 210 190 230 Q170 225 155 230 L155 240 Q120 260 85 240 L85 230 Q70 225 50 230Z" fill="#1A1A1A"/>
+          <!-- Hood/shoulders -->
+          <path d="M55 230 Q48 200 50 180 L60 165 Q80 155 95 160 L100 170 Q120 178 140 170 L145 160 Q160 155 180 165 L190 180 Q192 200 185 230 Q170 222 155 225 L155 238 Q120 255 85 238 L85 225 Q70 222 55 230Z" fill="#222"/>
+          <!-- Orange M3-style logo on chest -->
+          <text x="90" y="320" font-family="Arial" font-weight="900" font-size="32" fill="#FF5C1A" letter-spacing="-2">BOT</text>
+          <rect x="88" y="325" width="64" height="4" rx="2" fill="#FF5C1A"/>
+          <!-- HEAD - white sphere -->
+          <ellipse cx="120" cy="130" rx="62" ry="65" fill="#F0F0F0"/>
+          <!-- Head highlight -->
+          <ellipse cx="105" cy="108" rx="18" ry="12" fill="rgba(255,255,255,0.6)" transform="rotate(-20 105 108)"/>
+          <!-- X eyes -->
+          <g stroke="#111" stroke-width="5" stroke-linecap="round">
+            <line x1="96" y1="116" x2="108" y2="128"/>
+            <line x1="108" y1="116" x2="96" y2="128"/>
+            <line x1="132" y1="116" x2="144" y2="128"/>
+            <line x1="144" y1="116" x2="132" y2="128"/>
+          </g>
+          <!-- CROWN -->
+          <g fill="#1A1A1A">
+            <!-- Crown base -->
+            <rect x="78" y="62" width="84" height="18" rx="4" fill="#1A1A1A"/>
+            <!-- Crown points -->
+            <polygon points="78,62 90,30 102,62" fill="#1A1A1A"/>
+            <polygon points="108,62 120,22 132,62" fill="#1A1A1A"/>
+            <polygon points="138,62 150,30 162,62" fill="#1A1A1A"/>
+          </g>
+          <!-- Crown orange gems -->
+          <circle cx="90" cy="32" r="6" fill="#FF5C1A"/>
+          <circle cx="90" cy="32" r="3" fill="#FF8C42"/>
+          <circle cx="120" cy="24" r="7" fill="#FF5C1A"/>
+          <circle cx="120" cy="24" r="3.5" fill="#FF8C42"/>
+          <circle cx="150" cy="32" r="6" fill="#FF5C1A"/>
+          <circle cx="150" cy="32" r="3" fill="#FF8C42"/>
+          <!-- Crown band highlight -->
+          <rect x="78" y="62" width="84" height="5" rx="2" fill="rgba(255,92,26,0.4)"/>
+          <!-- Left arm -->
+          <path d="M55 240 Q30 260 22 300 Q20 315 30 318 Q40 320 48 305 Q55 280 68 265Z" fill="#1A1A1A"/>
+          <!-- Right arm with phone -->
+          <path d="M185 240 Q210 260 218 300 Q220 315 210 318 Q200 320 192 305 Q185 280 172 265Z" fill="#1A1A1A"/>
+          <!-- Phone in right hand -->
+          <rect x="196" y="290" width="32" height="52" rx="5" fill="#333"/>
+          <rect x="199" y="294" width="26" height="42" rx="3" fill="#444"/>
+          <rect x="204" y="298" width="16" height="26" rx="2" fill="#FF5C1A" opacity="0.7"/>
+          <!-- Orange sleeve stripe on right -->
+          <path d="M205 245 Q215 255 218 270 L208 272 Q205 258 195 248Z" fill="#FF5C1A" opacity="0.6"/>
+          <!-- Orange sleeve stripe on left -->
+          <path d="M35 245 Q25 255 22 270 L32 272 Q35 258 45 248Z" fill="#FF5C1A" opacity="0.6"/>
+        </svg>
+        <div class="char-shadow"></div>
+      </div>
     </div>
   </div>
 </section>
