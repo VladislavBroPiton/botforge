@@ -4090,6 +4090,227 @@
 }
 
 </style>
+<style id="mobile-css">
+
+/* ================================================================
+   ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ
+   Breakpoints: 768px (tablet), 480px (phone), 360px (small phone)
+================================================================ */
+
+/* ---- ОБЩЕЕ: уменьшаем всё ---- */
+@media (max-width: 768px) {
+
+  /* Container */
+  .container { padding: 0 16px !important; }
+
+  /* Sections */
+  section { padding: 56px 0 !important; }
+  #python-lab { padding: 56px 0 !important; }
+
+  /* ---- HEADER ---- */
+  header { padding: 0 !important; }
+  .header-inner { padding: 0 16px !important; height: 58px !important; }
+  .logo { font-size: 18px !important; }
+
+  /* Skin switcher — иконка только, без текста */
+  .skin-btn { padding: 0 10px !important; height: 38px !important; gap: 4px !important; font-size: 12px !important; }
+  #skinLabel { display: none !important; }
+  .skin-btn svg { display: none !important; }
+  .skin-panel { right: -8px !important; min-width: 180px !important; }
+  .skin-name { font-size: 12px !important; }
+  .skin-sub  { font-size: 10px !important; }
+
+  /* Theme toggle */
+  .theme-toggle { width: 38px !important; height: 38px !important; }
+  .theme-toggle svg { width: 16px !important; height: 16px !important; }
+
+  /* Nav CTA */
+  .nav-cta { padding: 8px 14px !important; font-size: 12px !important; height: auto !important; }
+
+  /* Mobile nav menu */
+  .nav-links {
+    padding: 12px 16px 16px !important;
+  }
+  .nav-links a { font-size: 14px !important; padding: 10px 0 !important; }
+
+  /* ---- HERO ---- */
+  .hero { padding: 40px 0 50px !important; }
+  .hero .container { gap: 24px !important; }
+  .hero h1 { font-size: clamp(26px, 7vw, 38px) !important; letter-spacing: -0.03em !important; }
+  .hero-tag { font-size: 9px !important; padding: 5px 10px !important; letter-spacing: 1.5px !important; }
+  .hero-sub { font-size: 14px !important; line-height: 1.55 !important; }
+  .hero-sub span { font-size: inherit !important; }
+  .hero-numbers { gap: 12px !important; padding: 14px 16px !important; }
+  .hero-num-val { font-size: 24px !important; }
+  .hero-num-label { font-size: 9px !important; letter-spacing: 0.5px !important; }
+
+  /* Cube / 3D — smaller */
+  #threejs-cube-container { max-width: 240px !important; height: 240px !important; }
+
+  /* ---- SECTION TITLES ---- */
+  .section-title { font-size: clamp(22px, 5.5vw, 32px) !important; margin-bottom: 28px !important; }
+  .section-sub { font-size: 14px !important; }
+
+  /* ---- SERVICES ---- */
+  .services-grid { gap: 12px !important; }
+  .service-card { padding: 24px 20px !important; border-radius: 16px !important; }
+  .service-icon { width: 44px !important; height: 44px !important; font-size: 20px !important; margin-bottom: 12px !important; }
+  .service-card h3 { font-size: 16px !important; margin-bottom: 8px !important; }
+  .service-card p { font-size: 13px !important; line-height: 1.5 !important; }
+
+  /* ---- PORTFOLIO ---- */
+  .filter-buttons { gap: 6px !important; flex-wrap: wrap !important; justify-content: center !important; }
+  .filter-btn { font-size: 11px !important; padding: 6px 12px !important; }
+  .portfolio-grid { gap: 12px !important; }
+  .project-card { border-radius: 16px !important; }
+  .project-thumb { height: 160px !important; }
+  .project-content { padding: 16px !important; }
+  .project-content h4 { font-size: 15px !important; margin-bottom: 6px !important; }
+  .project-content p { font-size: 13px !important; }
+  .project-tag { font-size: 10px !important; margin-bottom: 6px !important; }
+
+  /* ---- MODALS ---- */
+  .modal-content { border-radius: 16px !important; margin: 12px !important; max-height: 90vh !important; }
+  .modal-header { padding: 16px 16px 0 !important; }
+  .modal-header h3 { font-size: 17px !important; }
+  .modal-body { padding: 16px !important; }
+  .modal-body h4 { font-size: 13px !important; }
+  .modal-body p, .modal-body li { font-size: 13px !important; }
+  .modal-tabs { gap: 6px !important; margin-bottom: 16px !important; flex-wrap: wrap !important; }
+  .tab-btn { font-size: 11px !important; padding: 6px 10px !important; }
+  .modal-close { width: 32px !important; height: 32px !important; font-size: 16px !important; }
+
+  /* ---- TESTIMONIALS ---- */
+  .testimonials-grid { gap: 12px !important; }
+  .testimonial-card { padding: 20px !important; border-radius: 16px !important; }
+  .testimonial-card p { font-size: 13px !important; line-height: 1.5 !important; }
+  .testimonial-name { font-size: 13px !important; }
+  .testimonial-role { font-size: 11px !important; }
+
+  /* ---- BLOG ---- */
+  .blog-grid { gap: 12px !important; }
+  .blog-card { border-radius: 16px !important; }
+  .blog-thumb { height: 140px !important; }
+  .blog-content { padding: 16px !important; }
+  .blog-content h4 { font-size: 14px !important; margin-bottom: 6px !important; }
+  .blog-content p { font-size: 12px !important; }
+  .blog-meta { font-size: 11px !important; }
+
+  /* ---- PROCESS ---- */
+  .process-steps { gap: 12px !important; }
+  .step { padding: 20px 16px !important; border-radius: 14px !important; }
+  .step-num { font-size: 32px !important; }
+  .step h4 { font-size: 15px !important; }
+  .step p { font-size: 13px !important; }
+  .step-icon { font-size: 28px !important; }
+
+  /* ---- FAQ ---- */
+  .faq-item { border-radius: 12px !important; }
+  .faq-question { font-size: 14px !important; padding: 16px !important; }
+  .faq-answer { font-size: 13px !important; padding: 0 16px 16px !important; }
+
+  /* ---- CTA / CONTACT ---- */
+  .cta-block { padding: 32px 20px !important; border-radius: 20px !important; }
+  .cta-block h2 { font-size: 22px !important; }
+  .cta-block p { font-size: 14px !important; }
+  .cta-note { font-size: 11px !important; }
+  .poll-cta { padding: 28px 16px !important; border-radius: 20px !important; }
+  .poll-cta h2 { font-size: 20px !important; }
+  .poll-subtitle { font-size: 13px !important; }
+  .poll-options { gap: 8px !important; }
+  .poll-option { padding: 14px 12px !important; border-radius: 12px !important; }
+  .poll-label { font-size: 13px !important; }
+  .poll-desc { font-size: 11px !important; }
+  .poll-icon { font-size: 24px !important; }
+
+  /* ---- FOOTER ---- */
+  .footer { padding: 32px 0 24px !important; }
+  .footer-top { flex-direction: column !important; gap: 20px !important; align-items: flex-start !important; }
+  .footer-logo { font-size: 20px !important; }
+  .footer-desc { font-size: 13px !important; max-width: 100% !important; }
+  .footer-links { flex-wrap: wrap !important; gap: 10px 16px !important; }
+  .footer-links a { font-size: 13px !important; }
+  .footer-bottom { flex-direction: column !important; gap: 8px !important; text-align: center !important; font-size: 12px !important; }
+
+  /* ---- FLOATING BUTTONS ---- */
+  .floating-telegram { width: 48px !important; height: 48px !important; bottom: 20px !important; right: 16px !important; }
+  .floating-telegram svg { width: 20px !important; height: 20px !important; }
+  .scroll-top { width: 40px !important; height: 40px !important; bottom: 76px !important; right: 16px !important; }
+  .livechat-toggle { width: 48px !important; height: 48px !important; bottom: 20px !important; left: 16px !important; }
+
+  /* ---- TECH STACK ---- */
+  .tech-grid { gap: 20px 30px !important; }
+  .tech-icon { width: 36px !important; height: 36px !important; }
+  .tech-item span { font-size: 11px !important; }
+
+  /* ---- PYTHON LAB ---- */
+  #python-lab .python-lab-title { font-size: clamp(22px,5.5vw,32px) !important; }
+  #python-lab .python-lab-desc { font-size: 13px !important; }
+  .python-editor-panel, .python-output-panel { border-radius: 12px !important; }
+  #python-code { font-size: 12px !important; min-height: 220px !important; padding: 14px !important; }
+  #python-output { font-size: 12px !important; }
+  .editor-footer { padding: 10px 12px !important; gap: 8px !important; }
+  .py-examples { gap: 6px !important; }
+  .py-example-btn { font-size: 10px !important; padding: 4px 8px !important; }
+  .btn-run-python { font-size: 12px !important; padding: 7px 14px !important; }
+  .python-lab-tag { font-size: 10px !important; padding: 5px 10px !important; }
+
+  /* ---- SKIN SWITCHER PANEL ---- */
+  .skin-panel { top: calc(100% + 8px) !important; }
+  .skin-option { padding: 8px 10px !important; gap: 10px !important; }
+  .skin-dot { width: 16px !important; height: 16px !important; }
+
+  /* ---- BUTTONS ---- */
+  .btn-primary { font-size: 14px !important; padding: 12px 24px !important; }
+  .btn-show-more { font-size: 13px !important; padding: 10px 20px !important; }
+  .btn-outline { font-size: 13px !important; padding: 10px 18px !important; }
+
+  /* ---- ROBOT ASSISTANT ---- */
+  #robot-assistant-css { display: none !important; }
+
+  /* ---- LIVECHAT ---- */
+  .livechat-panel { left: 8px !important; right: 8px !important; width: auto !important; bottom: 76px !important; height: 65vh !important; }
+}
+
+/* ---- SMALL PHONES (iPhone SE, 360px) ---- */
+@media (max-width: 400px) {
+  .hero h1 { font-size: clamp(22px, 7vw, 28px) !important; }
+  .hero-num-val { font-size: 20px !important; }
+  .section-title { font-size: clamp(20px, 5.5vw, 26px) !important; }
+  .service-card { padding: 18px 14px !important; }
+  .service-card h3 { font-size: 14px !important; }
+  .modal-content { margin: 6px !important; }
+  .filter-btn { font-size: 10px !important; padding: 5px 9px !important; }
+  .nav-cta { display: none !important; }
+  .skin-btn { padding: 0 8px !important; }
+  .python-lab-inner { gap: 16px !important; }
+  #python-code { min-height: 180px !important; font-size: 11px !important; }
+  .py-examples { display: none !important; }
+}
+
+/* ---- TABLET (769px — 1024px) ---- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { padding: 0 24px !important; }
+  .hero h1 { font-size: clamp(32px, 4.5vw, 46px) !important; }
+  .section-title { font-size: clamp(26px, 4vw, 36px) !important; }
+  .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .service-card { padding: 28px 24px !important; }
+  .skin-btn { padding: 0 12px !important; font-size: 13px !important; }
+  #skinLabel { display: none !important; }
+}
+
+/* ---- LANDSCAPE PHONE ---- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero { padding: 24px 0 32px !important; }
+  .hero .container { grid-template-columns: 1fr 1fr !important; gap: 20px !important; text-align: left !important; }
+  .hero-text { text-align: left !important; }
+  #threejs-cube-container { max-width: 200px !important; height: 200px !important; }
+  section { padding: 40px 0 !important; }
+}
+
+</style>
 </head>
 <body>
 
