@@ -4311,6 +4311,450 @@
 }
 
 </style>
+<style id="demo-css">
+
+/* ================================================================
+   DEMO SECTION — phone mockups + iframe previews
+================================================================ */
+#demo { padding: 100px 0; position: relative; overflow: hidden; }
+#demo::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, var(--glow-1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Tab selector */
+.demo-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+.demo-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.demo-tab:hover { border-color: var(--accent); color: var(--accent); }
+.demo-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+[data-theme="dark"] .demo-tab.active { color: #fff; }
+[data-skin="brutal"] .demo-tab.active { color: #0a0a0a; box-shadow: 3px 3px 0 #0a0a0a; border-color: #0a0a0a; }
+[data-skin="bento"] .demo-tab.active { color: #fff; }
+.demo-tab-icon { font-size: 16px; }
+
+/* Demo stage */
+.demo-stage {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  animation: demoFadeIn 0.35s ease;
+}
+.demo-stage.active { display: grid; }
+@media (max-width: 768px) { .demo-stage { grid-template-columns: 1fr !important; gap: 28px !important; } }
+@keyframes demoFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Info panel */
+.demo-info { display: flex; flex-direction: column; gap: 16px; }
+.demo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: rgba(0,240,255,0.1);
+  border: 1px solid rgba(0,240,255,0.25);
+  color: var(--accent);
+  width: fit-content;
+}
+.demo-title {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.demo-desc { font-size: 15px; color: var(--text-dim); line-height: 1.65; }
+.demo-features {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.demo-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.demo-feature::before {
+  content: '✓';
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(0,240,255,0.1);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.demo-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.demo-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+[data-theme="dark"] .demo-btn-primary { color: #fff; }
+[data-skin="bento"] .demo-btn-primary,
+[data-skin="brutal"] .demo-btn-primary { color: #fff; }
+.demo-btn-primary:hover { opacity: 0.85; transform: translateY(-2px); box-shadow: 0 8px 20px var(--accent-glow); }
+.demo-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1.5px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+.demo-btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ================================================================
+   PHONE MOCKUP
+================================================================ */
+.demo-phone-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.demo-phone {
+  width: 280px;
+  background: #0a0a0a;
+  border-radius: 40px;
+  border: 6px solid #1a1a1a;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 30px 80px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+/* Notch */
+.demo-phone::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 26px;
+  background: #0a0a0a;
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+.phone-status {
+  background: #111;
+  padding: 32px 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.phone-status-back {
+  color: rgba(255,255,255,0.5);
+  font-size: 18px;
+  line-height: 1;
+}
+.phone-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.phone-name {
+  flex: 1;
+}
+.phone-name strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.phone-name span {
+  font-size: 10px;
+  color: #4caf50;
+}
+.phone-chat {
+  height: 380px;
+  overflow-y: auto;
+  padding: 12px 10px;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  scrollbar-width: none;
+}
+.phone-chat::-webkit-scrollbar { display: none; }
+.chat-msg {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.chat-msg.visible { opacity: 1; transform: translateY(0); }
+.chat-msg.bot {
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.chat-msg.user {
+  background: var(--accent);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+  align-self: flex-end;
+  margin-left: auto;
+}
+[data-skin="bento"] .chat-msg.user,
+[data-skin="brutal"] .chat-msg.user,
+[data-skin="saas"] .chat-msg.user { color: #fff !important; }
+.chat-msg .msg-time {
+  font-size: 9px;
+  opacity: 0.5;
+  display: block;
+  margin-top: 3px;
+  text-align: right;
+}
+.chat-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  background: #1e1e2e;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  align-self: flex-start;
+  width: fit-content;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.chat-typing.visible { opacity: 1; }
+.typing-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%,60%,100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+.phone-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #111;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.phone-input-fake {
+  flex: 1;
+  height: 32px;
+  background: #1e1e2e;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+}
+.phone-send-btn {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.phone-send-btn svg { width: 14px; height: 14px; fill: white; }
+
+/* Replay button */
+.demo-replay {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.demo-replay:hover { color: var(--accent); }
+
+/* Glow behind phone */
+.demo-phone-glow {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(30px);
+  animation: phoneGlow 3s ease-in-out infinite alternate;
+}
+@keyframes phoneGlow {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to   { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ================================================================
+   IFRAME DEMO
+================================================================ */
+.demo-iframe-wrap {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  background: var(--surface);
+  aspect-ratio: 16/10;
+}
+.demo-iframe-bar {
+  background: #1a1a1a;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.iframe-dots { display: flex; gap: 5px; }
+.iframe-dot { width: 10px; height: 10px; border-radius: 50%; }
+.iframe-dot:nth-child(1) { background: #ff5f57; }
+.iframe-dot:nth-child(2) { background: #febc2e; }
+.iframe-dot:nth-child(3) { background: #28c840; }
+.iframe-url {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.demo-iframe-wrap iframe {
+  width: 100%;
+  height: 340px;
+  border: none;
+  display: block;
+  background: #fff;
+}
+.demo-iframe-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: opacity 0.3s;
+  border-radius: 20px;
+}
+.demo-iframe-overlay.hidden { opacity: 0; pointer-events: none; }
+.iframe-play-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px var(--accent-glow);
+  transition: transform 0.2s;
+}
+.iframe-play-btn:hover { transform: scale(1.1); }
+.iframe-play-btn svg { width: 24px; height: 24px; fill: white; margin-left: 3px; }
+.iframe-play-label { font-size: 14px; font-weight: 700; color: #fff; }
+.iframe-play-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+@media (max-width: 768px) {
+  .demo-tabs { gap: 6px; }
+  .demo-tab { font-size: 11px; padding: 8px 12px; }
+  .demo-tab-icon { font-size: 14px; }
+  .demo-phone { width: 240px; }
+  .phone-chat { height: 300px; }
+  #demo { padding: 60px 0; }
+  .demo-iframe-wrap iframe { height: 240px; }
+}
+
+</style>
 </head>
 <body>
 
@@ -4787,6 +5231,7 @@
       <a href="#services">Услуги</a>
       <a href="#portfolio">Портфолио</a>
       <a href="#process">Процесс</a>
+      <a href="#demo">Демо</a>
       <a href="#testimonials">Отзывы</a>
       <a href="#blog">Блог</a>
       <a href="#python-lab">Python Lab</a>
@@ -5905,6 +6350,216 @@ function switchBookingTab(tab, btn) {
 <!-- КОНЕЦ БЛОКА 1b -->
 
 <!-- НАЧАЛО БЛОКА 1c -->
+
+
+<!-- ============================================================
+     DEMO SECTION — Interactive phone mockups + iframe previews
+============================================================ -->
+<section id="demo">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center;">Демо проектов</h2>
+    <p class="section-sub" style="text-align:center;color:var(--text-muted);margin-bottom:40px;font-size:15px;">Интерактивные демонстрации — потрогай как работают боты</p>
+
+    <!-- Tab selector -->
+    <div class="demo-tabs">
+      <button class="demo-tab active" data-demo="booking">
+        <span class="demo-tab-icon">📅</span> Запись клиентов
+      </button>
+      <button class="demo-tab" data-demo="sales">
+        <span class="demo-tab-icon">🤖</span> Бот продаж
+      </button>
+      <button class="demo-tab" data-demo="quiz">
+        <span class="demo-tab-icon">📊</span> Quiz воронка
+      </button>
+      <button class="demo-tab" data-demo="crm">
+        <span class="demo-tab-icon">💼</span> CRM панель
+      </button>
+    </div>
+
+    <!-- ==================== DEMO 1: Booking bot ==================== -->
+    <div class="demo-stage active" id="demo-booking">
+      <div class="demo-info">
+        <span class="demo-badge">🤖 Telegram Bot · aiogram 3</span>
+        <h3 class="demo-title">Бот записи клиентов</h3>
+        <p class="demo-desc">Автоматизирует запись клиентов 24/7. Интегрирован с Google Calendar — клиент выбирает время, получает напоминание, может перенести или отменить запись без участия администратора.</p>
+        <div class="demo-features">
+          <div class="demo-feature">Выбор услуги, мастера и времени</div>
+          <div class="demo-feature">Автонапоминания за 24ч и 1ч до записи</div>
+          <div class="demo-feature">Google Calendar интеграция</div>
+          <div class="demo-feature">Панель администратора на веб-интерфейсе</div>
+        </div>
+        <div class="demo-actions">
+          <a href="https://t.me/Booking1_1Bot" target="_blank" rel="noopener" class="demo-btn-primary">
+            ▶ Попробовать живого бота
+          </a>
+          <a href="https://bookingbot-qnc7.onrender.com/admin" target="_blank" rel="noopener" class="demo-btn-secondary">
+            📊 CRM панель
+          </a>
+        </div>
+      </div>
+      <div class="demo-phone-wrap">
+        <div class="demo-phone-glow"></div>
+        <div class="demo-phone" id="phone-booking">
+          <div class="phone-status">
+            <span class="phone-status-back">‹</span>
+            <div class="phone-avatar">📅</div>
+            <div class="phone-name">
+              <strong>Booking Bot</strong>
+              <span>● онлайн</span>
+            </div>
+          </div>
+          <div class="phone-chat" id="chat-booking"></div>
+          <div class="phone-input-row">
+            <div class="phone-input-fake">Написать сообщение…</div>
+            <div class="phone-send-btn">
+              <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+            </div>
+          </div>
+        </div>
+        <button class="demo-replay" data-target="booking">↺ Запустить снова</button>
+      </div>
+    </div>
+
+    <!-- ==================== DEMO 2: Sales bot ==================== -->
+    <div class="demo-stage" id="demo-sales">
+      <div class="demo-info">
+        <span class="demo-badge">🤖 Telegram Bot · Воронка продаж</span>
+        <h3 class="demo-title">Бот продаж с CRM</h3>
+        <p class="demo-desc">Квалифицирует лидов, проводит по воронке, собирает контакты и передаёт в CRM. Работает 24/7 — не теряет ни одного клиента пока ты спишь.</p>
+        <div class="demo-features">
+          <div class="demo-feature">Автоматическая квалификация лидов</div>
+          <div class="demo-feature">Воронка с 5 этапами продаж</div>
+          <div class="demo-feature">Сбор контактов и передача в CRM</div>
+          <div class="demo-feature">Уведомления менеджеру о горячих лидах</div>
+        </div>
+        <div class="demo-actions">
+          <a href="https://t.me/Bro_piton?text=Хочу бота продаж" target="_blank" rel="noopener" class="demo-btn-primary">
+            💬 Обсудить проект
+          </a>
+          <a href="https://t.me/my_1shopbot" target="_blank" rel="noopener" class="demo-btn-secondary">
+            ▶ Живой пример
+          </a>
+        </div>
+      </div>
+      <div class="demo-phone-wrap">
+        <div class="demo-phone-glow"></div>
+        <div class="demo-phone" id="phone-sales">
+          <div class="phone-status">
+            <span class="phone-status-back">‹</span>
+            <div class="phone-avatar">🛍️</div>
+            <div class="phone-name">
+              <strong>Sales Bot</strong>
+              <span>● онлайн</span>
+            </div>
+          </div>
+          <div class="phone-chat" id="chat-sales"></div>
+          <div class="phone-input-row">
+            <div class="phone-input-fake">Написать сообщение…</div>
+            <div class="phone-send-btn">
+              <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+            </div>
+          </div>
+        </div>
+        <button class="demo-replay" data-target="sales">↺ Запустить снова</button>
+      </div>
+    </div>
+
+    <!-- ==================== DEMO 3: Quiz ==================== -->
+    <div class="demo-stage" id="demo-quiz">
+      <div class="demo-info">
+        <span class="demo-badge">📊 Telegram Mini App · Quiz воронка</span>
+        <h3 class="demo-title">Quiz-Funnel Mini App</h3>
+        <p class="demo-desc">Квиз внутри Telegram — пользователь отвечает на вопросы и получает персональный результат. Отличный инструмент для сбора лидов и сегментации аудитории.</p>
+        <div class="demo-features">
+          <div class="demo-feature">Квиз с ветвлением по ответам</div>
+          <div class="demo-feature">Персональные результаты для каждого</div>
+          <div class="demo-feature">Аналитика ответов в дашборде</div>
+          <div class="demo-feature">Сбор заявок по результату квиза</div>
+        </div>
+        <div class="demo-actions">
+          <a href="https://t.me/quizforexbot" target="_blank" rel="noopener" class="demo-btn-primary">
+            ▶ Открыть в Telegram
+          </a>
+          <a href="https://quiz-funnel-final.onrender.com/dashboard" target="_blank" rel="noopener" class="demo-btn-secondary">
+            📊 Дашборд аналитики
+          </a>
+        </div>
+      </div>
+      <div class="demo-phone-wrap">
+        <div class="demo-phone-glow"></div>
+        <div class="demo-phone" id="phone-quiz">
+          <div class="phone-status">
+            <span class="phone-status-back">‹</span>
+            <div class="phone-avatar">📊</div>
+            <div class="phone-name">
+              <strong>Quiz Bot</strong>
+              <span>● онлайн</span>
+            </div>
+          </div>
+          <div class="phone-chat" id="chat-quiz"></div>
+          <div class="phone-input-row">
+            <div class="phone-input-fake">Написать сообщение…</div>
+            <div class="phone-send-btn">
+              <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+            </div>
+          </div>
+        </div>
+        <button class="demo-replay" data-target="quiz">↺ Запустить снова</button>
+      </div>
+    </div>
+
+    <!-- ==================== DEMO 4: CRM iframe ==================== -->
+    <div class="demo-stage" id="demo-crm">
+      <div class="demo-info">
+        <span class="demo-badge">💼 Web Dashboard · FastAPI + PostgreSQL</span>
+        <h3 class="demo-title">CRM панель управления</h3>
+        <p class="demo-desc">Веб-дашборд для управления клиентами из Telegram-бота. Просматривай заявки, управляй статусами, смотри аналитику — всё в одном интерфейсе.</p>
+        <div class="demo-features">
+          <div class="demo-feature">Список клиентов с фильтрами и поиском</div>
+          <div class="demo-feature">Управление статусами заявок</div>
+          <div class="demo-feature">Аналитика и статистика</div>
+          <div class="demo-feature">Синхронизация с Telegram ботом</div>
+        </div>
+        <div class="demo-actions">
+          <a href="https://shopbot-osyd.onrender.com/admin" target="_blank" rel="noopener" class="demo-btn-primary">
+            🔗 Открыть CRM панель
+          </a>
+          <a href="https://t.me/Bro_piton?text=Хочу CRM систему" target="_blank" rel="noopener" class="demo-btn-secondary">
+            💬 Хочу такую же
+          </a>
+        </div>
+      </div>
+      <div class="demo-phone-wrap" style="width:100%;max-width:100%;">
+        <div class="demo-iframe-wrap" style="width:100%;">
+          <div class="demo-iframe-bar">
+            <div class="iframe-dots">
+              <div class="iframe-dot"></div>
+              <div class="iframe-dot"></div>
+              <div class="iframe-dot"></div>
+            </div>
+            <div class="iframe-url">shopbot-osyd.onrender.com/admin</div>
+          </div>
+          <iframe
+            id="crm-iframe"
+            src="about:blank"
+            data-src="https://shopbot-osyd.onrender.com/admin"
+            title="CRM Dashboard Demo"
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin allow-forms">
+          </iframe>
+          <div class="demo-iframe-overlay" id="crm-overlay">
+            <div class="iframe-play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="iframe-play-label">Загрузить CRM панель</div>
+            <div class="iframe-play-sub">Нажми чтобы открыть демо дашборд</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- TESTIMONIALS -->
 <section id="testimonials" class="container" style="padding: 60px 0;">
@@ -8591,6 +9246,157 @@ sys.stderr = _stderr_cap
 
   // Preload Pyodide after 3s (background)
   setTimeout(() => loadPyodide().catch(()=>{}), 3000);
+})();
+</script>
+
+
+<script>
+// ============================================================
+// DEMO SECTION — phone chat animations + iframe
+// ============================================================
+(function() {
+
+  // ---- Chat scripts for each bot ----
+  const CHATS = {
+    booking: [
+      { from: 'bot',  text: '👋 Привет! Я бот записи клиентов.\n\nВыбери услугу:', delay: 600 },
+      { from: 'bot',  text: '💆 Массаж — 1500₽\n✂️ Стрижка — 800₽\n💅 Маникюр — 1200₽', delay: 1200 },
+      { from: 'user', text: '💆 Массаж', delay: 2400 },
+      { from: 'bot',  text: 'Отлично! Выбери мастера:\n\n👤 Анна — 5.0 ⭐\n👤 Мария — 4.9 ⭐', delay: 3200 },
+      { from: 'user', text: 'Анна', delay: 4400 },
+      { from: 'bot',  text: '📅 Свободные слоты у Анны:\n\n• Сегодня 16:00\n• Завтра 11:00\n• Завтра 15:00', delay: 5200 },
+      { from: 'user', text: 'Завтра 11:00', delay: 6400 },
+      { from: 'bot',  text: '✅ Запись подтверждена!\n\n📋 Массаж с Анной\n🗓 Завтра в 11:00\n💰 1500₽\n\nНапомню за час до визита 🔔', delay: 7200 },
+    ],
+    sales: [
+      { from: 'bot',  text: '👋 Привет! Я помогу подобрать Telegram-бота для вашего бизнеса.\n\nЧем занимается ваш бизнес?', delay: 600 },
+      { from: 'user', text: 'У меня салон красоты', delay: 1800 },
+      { from: 'bot',  text: '✂️ Отлично! Для салона красоты обычно нужно:\n\n• Запись клиентов онлайн\n• Напоминания о визитах\n• Программа лояльности\n\nЕсть ли у вас сайт или уже работаете в Telegram?', delay: 2800 },
+      { from: 'user', text: 'Только Инстаграм', delay: 4200 },
+      { from: 'bot',  text: '📱 Понял! Telegram-бот отлично дополнит Инстаграм.\n\nСколько клиентов в месяц примерно? Это поможет подобрать тариф.', delay: 5200 },
+      { from: 'user', text: 'Около 50-80 человек', delay: 6400 },
+      { from: 'bot',  text: '💡 Для 50-80 клиентов подойдёт тариф Старт.\n\n💰 Стоимость: от 25 000₽\n⏱ Срок: 5-7 дней\n\nОтправить вам детальное предложение?', delay: 7400 },
+    ],
+    quiz: [
+      { from: 'bot',  text: '📊 Привет! Пройди короткий квиз и узнай, какой бот подойдёт твоему бизнесу.\n\nВопрос 1/4:\n🏢 Какой у тебя бизнес?', delay: 600 },
+      { from: 'bot',  text: '🛍️ Интернет-магазин\n💆 Услуги / салон\n🏋️ Фитнес / обучение\n🏠 Недвижимость', delay: 1200 },
+      { from: 'user', text: '💆 Услуги / салон', delay: 2400 },
+      { from: 'bot',  text: 'Вопрос 2/4:\n📱 Как сейчас записываются клиенты?', delay: 3200 },
+      { from: 'bot',  text: '📞 По телефону\n📸 Через Instagram DM\n🌐 Через сайт\n😓 Никак, теряем клиентов', delay: 3800 },
+      { from: 'user', text: '📸 Через Instagram DM', delay: 5200 },
+      { from: 'bot',  text: 'Вопрос 3/4:\n⏰ Сколько заявок вы теряете из-за того что не успеваете ответить?', delay: 6200 },
+      { from: 'user', text: 'Много, наверное 20-30%', delay: 7600 },
+      { from: 'bot',  text: '🎯 Результат готов!\n\nТебе подойдёт: **Бот записи + воронка продаж**\n\n📈 Автоматизирует 80% рутины\n💰 ROI за 1-2 месяца\n\n→ Получить детальное предложение', delay: 8600 },
+    ],
+  };
+
+  // ---- Render one chat ----
+  function renderChat(name, chatEl) {
+    if (!chatEl) return;
+    chatEl.innerHTML = '';
+    const messages = CHATS[name];
+    if (!messages) return;
+
+    let i = 0;
+    function next() {
+      if (i >= messages.length) return;
+      const msg = messages[i++];
+
+      // Show typing indicator before bot messages
+      if (msg.from === 'bot') {
+        const typing = document.createElement('div');
+        typing.className = 'chat-typing';
+        typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        chatEl.appendChild(typing);
+        chatEl.scrollTop = chatEl.scrollHeight;
+
+        setTimeout(() => {
+          typing.classList.add('visible');
+          setTimeout(() => {
+            typing.remove();
+            appendMsg(msg);
+            setTimeout(next, 600);
+          }, 900);
+        }, 100);
+      } else {
+        setTimeout(() => { appendMsg(msg); setTimeout(next, 400); }, 200);
+      }
+    }
+
+    function appendMsg(msg) {
+      const div = document.createElement('div');
+      div.className = 'chat-msg ' + msg.from;
+      const now = new Date();
+      const time = now.getHours() + ':' + String(now.getMinutes()).padStart(2,'0');
+      div.innerHTML = msg.text.replace(/\n/g,'<br>') + '<span class="msg-time">' + time + '</span>';
+      chatEl.appendChild(div);
+      chatEl.scrollTop = chatEl.scrollHeight;
+      requestAnimationFrame(() => div.classList.add('visible'));
+    }
+
+    // Start with first message immediately
+    next();
+  }
+
+  // ---- Tab switching ----
+  const tabs = document.querySelectorAll('.demo-tab');
+  const stages = document.querySelectorAll('.demo-stage');
+  const rendered = {};
+
+  function activateDemo(name) {
+    tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-demo') === name));
+    stages.forEach(s => s.classList.toggle('active', s.id === 'demo-' + name));
+    if (CHATS[name] && !rendered[name]) {
+      rendered[name] = true;
+      const chatEl = document.getElementById('chat-' + name);
+      setTimeout(() => renderChat(name, chatEl), 300);
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateDemo(tab.getAttribute('data-demo')));
+  });
+
+  // ---- Replay buttons ----
+  document.querySelectorAll('.demo-replay').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-target');
+      const chatEl = document.getElementById('chat-' + name);
+      rendered[name] = true; // mark as rendered so we re-render manually
+      renderChat(name, chatEl);
+    });
+  });
+
+  // ---- CRM iframe load on click ----
+  const crmOverlay = document.getElementById('crm-overlay');
+  const crmIframe  = document.getElementById('crm-iframe');
+  if (crmOverlay && crmIframe) {
+    crmOverlay.addEventListener('click', () => {
+      crmIframe.src = crmIframe.getAttribute('data-src');
+      crmOverlay.classList.add('hidden');
+    });
+  }
+
+  // ---- Auto-start first demo when section scrolls into view ----
+  const demoSection = document.getElementById('demo');
+  let autoStarted = false;
+  if (demoSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !autoStarted) {
+        autoStarted = true;
+        const chatEl = document.getElementById('chat-booking');
+        rendered['booking'] = true;
+        setTimeout(() => renderChat('booking', chatEl), 400);
+      }
+    }, { threshold: 0.3 });
+    obs.observe(demoSection);
+  } else if (demoSection) {
+    // fallback
+    const chatEl = document.getElementById('chat-booking');
+    rendered['booking'] = true;
+    setTimeout(() => renderChat('booking', chatEl), 1000);
+  }
+
 })();
 </script>
 
