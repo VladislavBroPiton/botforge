@@ -215,8 +215,8 @@
     background-clip: text;
     color: transparent;
   }
-  .nav-links { display: flex; gap: 36px; font-weight: 500; color: var(--text-dim); }
-  .nav-links a { text-decoration: none; color: inherit; font-size: 15px; transition: color 0.2s; position: relative; }
+  .nav-links { display: flex; gap: 22px; font-weight: 500; color: var(--text-dim); }
+  .nav-links a { text-decoration: none; color: inherit; font-size: 13px; transition: color 0.2s; position: relative; }
   .nav-links a::after {
     content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
     background: linear-gradient(90deg, var(--accent), var(--accent-2));
@@ -2330,8 +2330,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 0 16px;
-  height: 44px;
+  padding: 0 12px;
+  height: 40px;
   background: var(--surface-solid);
   border: 1.5px solid var(--border);
   border-radius: 40px;
@@ -4754,6 +4754,21 @@
   .demo-iframe-wrap iframe { height: 240px; }
 }
 
+
+/* ---- MEDIUM SCREENS: compact header ---- */
+@media (max-width: 1280px) {
+  .nav-links { gap: 16px !important; }
+  .nav-links a { font-size: 13px !important; }
+  #skinLabel { display: none !important; }
+  .skin-btn { padding: 0 10px !important; }
+  .skin-btn svg { display: none !important; }
+}
+@media (max-width: 1100px) {
+  .nav-links { gap: 12px !important; }
+  .nav-links a { font-size: 12px !important; }
+  .nav-cta { font-size: 12px !important; padding: 8px 14px !important; }
+}
+
 </style>
 </head>
 <body>
@@ -5234,7 +5249,7 @@
       <a href="#demo">Демо</a>
       <a href="#testimonials">Отзывы</a>
       <a href="#blog">Блог</a>
-      <a href="#python-lab">Python Lab</a>
+      <a href="#python-lab">Lab 🐍</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Контакты</a>
       <a href="https://t.me/Bro_piton?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D0%B8%D1%88%D1%83%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%B1%D0%BE%D1%82%D0%B0" class="nav-cta" target="_blank">Написать в Telegram</a>
